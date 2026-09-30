@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEFD — TE-POWER</title>
+<script>
+function applyTheme(){
+  try{
+    var t = localStorage.getItem('tepower-theme');
+    if(!t){ t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+    document.documentElement.setAttribute('data-theme', t);
+  }catch(e){}
+}
+applyTheme();
+// при возврате со страницы, сохранённой браузером в bfcache (например, кнопкой "назад"
+// или быстрой навигацией туда-обратно), заново считываем тему — иначе может показаться
+// устаревший снимок страницы без применения текущей темы
+window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); });
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+
+</head>
+<body>
+<div class="topbar"><div class="wrap topbar__row">
+<div>Пн–Пт 08:00–17:00 · г. Воронеж</div>
+<div class="topbar__contacts"><a href="tel:+74732574041" class="topbar__link">+7 (473) 257-40-41</a><a href="mailto:russia@te-power.ru" class="topbar__link">russia@te-power.ru</a></div>
+</div></div>
+<header class="header"><div class="wrap header__row">
+<a href="../index.html" class="logo">
+  <img class="logo__img logo__img--light" src="../assets/logo-light-theme.png" alt="TE-POWER">
+  <img class="logo__img logo__img--dark" src="../assets/logo-dark-theme.png" alt="TE-POWER">
+</a>
+<nav class="header__nav" id="primary-nav"><a href="../index.html" class="header__nav-link">Главная</a><a href="../produktsiya.html" class="header__nav-link header__nav-link--active">Продукция</a><a href="../novosti.html" class="header__nav-link">Новости</a><a href="../podderzhka.html" class="header__nav-link">Поддержка</a><a href="../o-kompanii.html" class="header__nav-link">О компании</a><a href="../kontakty.html" class="header__nav-link">Контакты</a></nav>
+<div class="header__actions">
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Переключить тему" title="Светлая / тёмная тема">
+  <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z" fill="currentColor"/></svg>
+  <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+</button>
+  <button type="button" onclick="openCallbackModal()" class="btn btn--accent header__call-btn">
+    <svg class="header__call-icon" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4.7c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    <span class="header__call-text">Заказать звонок</span>
+  </button>
+</div>
+<svg class="header__burger" onclick="toggleMobileNav()" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+</div></header>
+
+<div class="wrap breadcrumbs"><a href="../produktsiya.html" class="breadcrumbs__link">Продукция</a> / <a href="../produktsiya.html#moduli-filtratsii" class="breadcrumbs__link">Модули фильтрации</a> / TEFD</div>
+<section class="series-hero"><div class="wrap series-hero__row">
+  <div><h1 class="series-hero__title">TEFD </h1><p class="series-hero__subtitle">Модули фильтрации для DC сетей</p></div>
+</div></section>
+<div class="wrap series-layout">
+  <aside class="spec-panel">
+    <div class="spec-panel__photo"><img src="https://te-power.ru/wp-content/uploads/TEFD5.png" alt="TEFD"></div>
+    <h4 class="spec-panel__title">Параметры серии</h4>
+    <div class="spec-panel__row"><span>Ток</span><span class="spec-panel__row-value">2.5–40 А</span></div><div class="spec-panel__row"><span>Темп. корпуса</span><span class="spec-panel__row-value">−60…+125°C</span></div><div class="spec-panel__row"><span>Гарантия</span><span class="spec-panel__row-value">20 лет</span></div>
+    
+    <div class="spec-panel__related">
+<div class="spec-panel__related-title">Другие серии этой категории</div>
+<a href="tefs.html" class="spec-panel__related-link">Серия TEFS →</a>
+</div>
+  </aside>
+  <div>
+    <p class="series-layout__description">Фильтры электромагнитных помех для DC сетей, согласованы по посадочным размерам с рядом типономиналов серии TESD.</p>
+    <div class="note">Полный модельный ряд серии TEFD — в <a href="../assets/catalog-2026-2027.pdf" target="_blank" rel="noreferrer" class="note__link">PDF каталоге продукции</a> или на странице <a href="https://te-power.ru/information/" target="_blank" rel="noreferrer" class="note__link">технической информации</a>.</div>
+  </div>
+</div>
+
+<footer class="footer">
+<div class="wrap footer__mobile-info">
+  <div>Пн–Пт 08:00–17:00 · г. Воронеж</div>
+  <div><a href="tel:+74732574041">+7 (473) 257-40-41</a></div>
+  <div><a href="mailto:russia@te-power.ru">russia@te-power.ru</a></div>
+</div>
+<div class="wrap footer__row">
+<div>© ООО «ТЕ». Все материалы — интеллектуальная собственность компании.</div>
+<div>394036, г. Воронеж, ул. Комиссаржевской, 10 · <a href="tel:+74732574041">+7 (473) 257-40-41</a></div>
+</div></footer>
+<div class="callback-modal" id="callback-modal" data-callback-email="CallBack@te-power.ru">
+  <div class="callback-modal__overlay" onclick="closeCallbackModal()"></div>
+  <div class="callback-modal__panel">
+    <button type="button" class="callback-modal__close" onclick="closeCallbackModal()" aria-label="Закрыть">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <h3 class="callback-modal__title">Заказать звонок</h3>
+    <p class="callback-modal__note">Оставьте телефон — перезвоним в рабочее время (Пн–Пт 08:00–17:00).</p>
+    <form class="form" onsubmit="return submitCallback(event)">
+      <div class="form__field"><label class="form__label">Телефон *</label><input class="form__input" type="tel" name="phone" required pattern=".*\S.*" autofocus></div>
+      <div class="form__field"><label class="form__label">Имя (необязательно)</label><input class="form__input" type="text" name="name"></div>
+      <p class="form__required-note">* Поле, обязательное для заполнения</p>
+      <button type="submit" class="btn btn--accent callback-modal__submit">Заказать звонок</button>
+    </form>
+  </div>
+</div>
+<script src="../theme.js"></script>
+</body>
+</html>

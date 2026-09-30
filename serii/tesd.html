@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TESD — TE-POWER</title>
+<script>
+function applyTheme(){
+  try{
+    var t = localStorage.getItem('tepower-theme');
+    if(!t){ t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+    document.documentElement.setAttribute('data-theme', t);
+  }catch(e){}
+}
+applyTheme();
+// при возврате со страницы, сохранённой браузером в bfcache (например, кнопкой "назад"
+// или быстрой навигацией туда-обратно), заново считываем тему — иначе может показаться
+// устаревший снимок страницы без применения текущей темы
+window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); });
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+
+</head>
+<body>
+<div class="topbar"><div class="wrap topbar__row">
+<div>Пн–Пт 08:00–17:00 · г. Воронеж</div>
+<div class="topbar__contacts"><a href="tel:+74732574041" class="topbar__link">+7 (473) 257-40-41</a><a href="mailto:russia@te-power.ru" class="topbar__link">russia@te-power.ru</a></div>
+</div></div>
+<header class="header"><div class="wrap header__row">
+<a href="../index.html" class="logo">
+  <img class="logo__img logo__img--light" src="../assets/logo-light-theme.png" alt="TE-POWER">
+  <img class="logo__img logo__img--dark" src="../assets/logo-dark-theme.png" alt="TE-POWER">
+</a>
+<nav class="header__nav" id="primary-nav"><a href="../index.html" class="header__nav-link">Главная</a><a href="../produktsiya.html" class="header__nav-link header__nav-link--active">Продукция</a><a href="../novosti.html" class="header__nav-link">Новости</a><a href="../podderzhka.html" class="header__nav-link">Поддержка</a><a href="../o-kompanii.html" class="header__nav-link">О компании</a><a href="../kontakty.html" class="header__nav-link">Контакты</a></nav>
+<div class="header__actions">
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Переключить тему" title="Светлая / тёмная тема">
+  <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z" fill="currentColor"/></svg>
+  <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+</button>
+  <button type="button" onclick="openCallbackModal()" class="btn btn--accent header__call-btn">
+    <svg class="header__call-icon" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4.7c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    <span class="header__call-text">Заказать звонок</span>
+  </button>
+</div>
+<svg class="header__burger" onclick="toggleMobileNav()" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+</div></header>
+
+<div class="wrap breadcrumbs"><a href="../produktsiya.html" class="breadcrumbs__link">Продукция</a> / <a href="../produktsiya.html#dc-dc-moduli" class="breadcrumbs__link">DC/DC модули</a> / TESD</div>
+<section class="series-hero series-hero--plain"><div class="wrap series-hero__row">
+  <div><h1 class="series-hero__title">TESD </h1><p class="series-hero__subtitle">DC/DC преобразователи с безоптронной обратной связью</p></div>
+</div></section>
+<div class="wrap series-page">
+<section class="series-intro">
+  <div class="series-intro__col">
+    <h2 class="series-intro__title">Особенности</h2>
+    <ul class="check-list">
+      <li>Сделано в России, безоптронная обратная связь</li>
+      <li>Выходная мощность от 5 до 500 Вт, КПД до 93 %</li>
+      <li>Предельная рабочая температура корпуса −60…+125 °C</li>
+      <li>Металлический алюминиевый корпус с крепёжными фланцами или без</li>
+      <li>Варианты входного напряжения:
+        <ul class="check-list__sub">
+          <li>12W — 12 В (9…36 В) по ГОСТ 54073-2010</li>
+          <li>27 — 27 В (17…36 В) по ГОСТ 19705</li>
+          <li>24W — 24 В (18…75 В), выбросы до 80 В</li>
+        </ul>
+      </li>
+      <li>Один или два гальванически развязанных выхода, выходы можно соединять последовательно</li>
+      <li>Регулировка выходного напряжения и дистанционное управление</li>
+      <li>Полный комплекс защит с автовосстановлением:
+        <ul class="check-list__sub">
+          <li>от короткого замыкания и перегрузки;</li>
+          <li>от перенапряжения на выходе;</li>
+          <li>от перегрева.</li>
+        </ul>
+      </li>
+      <li>Прочность изоляции вход/выход 1500 В</li>
+      <li>Pin-to-pin аналоги модулей МДМ-П и МДМ-ЕП (БКЮС)</li>
+      <li>Расширенная гарантия 20 лет</li>
+    </ul>
+  </div>
+  <div class="series-intro__col">
+    <div class="series-intro__photo"><img src="../content/images/tesd10.jpeg" alt="Модуль TESD10"></div>
+    <h2 class="series-intro__title">Документация серии</h2>
+    <ul class="doc-list">
+    <li><a class="doc-list__link" href="../content/docs/tesd/ТУ-TESD.pdf" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--tu">ТУ</span>Технические условия ТЛДР.436630.001 ТУ</a></li>
+    <li><a class="doc-list__link" href="../content/docs/tesd/ДШ-TESD10.pdf" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--ds">ДШ</span>Даташит TESD10</a></li>
+    <li><a class="doc-list__link" href="../content/docs/tesd/ДШ-TESD15.pdf" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--ds">ДШ</span>Даташит TESD15</a></li>
+    <li><a class="doc-list__link" href="../content/docs/tesd/ДШ-TESD30.pdf" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--ds">ДШ</span>Даташит TESD30</a></li>
+    <li><a class="doc-list__link" href="../content/docs/tesd/ДШ-TESD60.pdf" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--ds">ДШ</span>Даташит TESD60</a></li>
+    <li><a class="doc-list__link" href="../content/docs/tesd/ДШ-TESD100.pdf" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--ds">ДШ</span>Даташит TESD100</a></li>
+    <li><a class="doc-list__link" href="../content/docs/tesd/ДШ-TESD200.pdf" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--ds">ДШ</span>Даташит TESD200</a></li>
+    <li><a class="doc-list__link" href="../content/docs/tesd/ДШ-TESD480.pdf" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--ds">ДШ</span>Даташит TESD480</a></li>
+    <li><a class="doc-list__link" href="../content/docs/tesd/ДШ-TESD500.pdf" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--ds">ДШ</span>Даташит TESD500</a></li>
+    </ul>
+    <p class="series-intro__more">3D-модели и остальные файлы — на странице <a href="../podderzhka.html" class="note__link">Поддержка</a> или по запросу у менеджера.</p>
+  </div>
+</section>
+
+<section class="series-models">
+  <h2 class="series-models__title">Модели</h2>
+  <div class="series-models__scroll">
+  <table class="series-models__table">
+  <thead><tr><th>Типоразмер</th><th>Мощность</th><th>Размеры**, мм</th><th>Входное напряжение***</th><th>Стандартные выходные напряжения*</th><th>Макс. вых. ток****</th><th>Типовой КПД</th><th>Даташит</th></tr></thead>
+  <tbody>
+<tr class="series-models__group-start">
+  <td rowspan="2" class="series-models__name"><a class="series-models__model" href="tesd10.html">TESD10</a></td>
+  <td class="series-models__per">5 Вт</td>
+  <td rowspan="2"><span class="series-models__line">40×20,2×10,15 <small>с фланцами</small></span><span class="series-models__line">30,2×20,2×10,15 <small>без фланцев</small></span></td>
+  <td rowspan="2" class="series-models__inputs"><span class="series-models__line"><b>12W</b> — 12 В (9…36 В)</span><span class="series-models__line"><b>27</b> — 27 В (17…36 В)</span><span class="series-models__line"><b>24W</b> — 24 В (18…75 В)</span></td>
+  <td rowspan="2" class="series-models__volts">3,3; 5; 9; 12; 15; 24; 27; 36; 48; 60; ±5; ±12; <span class="series-models__nowrap">±15 В</span></td>
+  <td class="series-models__per">1 А</td>
+  <td rowspan="2">90 %</td>
+  <td rowspan="2"><a class="series-models__ds" href="../content/docs/tesd/ДШ-TESD10.pdf" target="_blank" rel="noreferrer" title="Даташит TESD10 (PDF)"><span class="doc-icon doc-icon--ds">ДШ</span></a></td>
+</tr>
+<tr>
+  <td class="series-models__per">10 Вт</td>
+  <td class="series-models__per">2 А</td>
+</tr>
+<tr class="series-models__group-start">
+  <td rowspan="2" class="series-models__name"><a class="series-models__model" href="tesd15.html">TESD15</a></td>
+  <td class="series-models__per">10 Вт</td>
+  <td rowspan="2"><span class="series-models__line">50×30,2×11 <small>с фланцами</small></span><span class="series-models__line">40,2×30×10,2 <small>без фланцев</small></span></td>
+  <td rowspan="2" class="series-models__inputs"><span class="series-models__line"><b>12W</b> — 12 В (9…36 В)</span><span class="series-models__line"><b>27</b> — 27 В (17…36 В)</span><span class="series-models__line"><b>24W</b> — 24 В (18…75 В)</span></td>
+  <td rowspan="2" class="series-models__volts">5; 12; 15; 24; 27; 36; 48; 60; ±5; ±12; <span class="series-models__nowrap">±15 В</span></td>
+  <td class="series-models__per">2 А</td>
+  <td rowspan="2">88 %</td>
+  <td rowspan="2"><a class="series-models__ds" href="../content/docs/tesd/ДШ-TESD15.pdf" target="_blank" rel="noreferrer" title="Даташит TESD15 (PDF)"><span class="doc-icon doc-icon--ds">ДШ</span></a></td>
+</tr>
+<tr>
+  <td class="series-models__per">15 Вт</td>
+  <td class="series-models__per">3 А</td>
+</tr>
+<tr class="series-models__group-start">
+  <td rowspan="2" class="series-models__name"><a class="series-models__model" href="tesd30.html">TESD30</a></td>
+  <td class="series-models__per">20 Вт</td>
+  <td rowspan="2"><span class="series-models__line">57,5×33×11 <small>с фланцами</small></span><span class="series-models__line">47,5×33×11 <small>без фланцев</small></span></td>
+  <td rowspan="2" class="series-models__inputs"><span class="series-models__line"><b>12W</b> — 12 В (9…36 В)</span><span class="series-models__line"><b>27</b> — 27 В (17…36 В)</span><span class="series-models__line"><b>24W</b> — 24 В (18…75 В)</span></td>
+  <td rowspan="2" class="series-models__volts">5; 12; 15; 24; 27; 36; 48; 60; ±5; ±12; <span class="series-models__nowrap">±15 В</span></td>
+  <td class="series-models__per">4 А</td>
+  <td rowspan="2">89 %</td>
+  <td rowspan="2"><a class="series-models__ds" href="../content/docs/tesd/ДШ-TESD30.pdf" target="_blank" rel="noreferrer" title="Даташит TESD30 (PDF)"><span class="doc-icon doc-icon--ds">ДШ</span></a></td>
+</tr>
+<tr>
+  <td class="series-models__per">30 Вт</td>
+  <td class="series-models__per">6 А</td>
+</tr>
+<tr class="series-models__group-start">
+  <td rowspan="2" class="series-models__name"><a class="series-models__model" href="tesd60.html">TESD60</a></td>
+  <td class="series-models__per">40 Вт</td>
+  <td rowspan="2"><span class="series-models__line">67,5×40,2×11 <small>с фланцами</small></span><span class="series-models__line">57,5×40,2×11 <small>без фланцев</small></span></td>
+  <td rowspan="2" class="series-models__inputs"><span class="series-models__line"><b>12W</b> — 12 В (9…36 В)</span><span class="series-models__line"><b>27</b> — 27 В (17…36 В)</span><span class="series-models__line"><b>24W</b> — 24 В (18…75 В)</span></td>
+  <td rowspan="2" class="series-models__volts">5; 12; 15; 24; 27; 36; 48; 60; ±5; ±12; <span class="series-models__nowrap">±15 В</span></td>
+  <td class="series-models__per">8 А</td>
+  <td rowspan="2">92 %</td>
+  <td rowspan="2"><a class="series-models__ds" href="../content/docs/tesd/ДШ-TESD60.pdf" target="_blank" rel="noreferrer" title="Даташит TESD60 (PDF)"><span class="doc-icon doc-icon--ds">ДШ</span></a></td>
+</tr>
+<tr>
+  <td class="series-models__per">60 Вт</td>
+  <td class="series-models__per">12 А</td>
+</tr>
+<tr class="series-models__group-start">
+  <td rowspan="2" class="series-models__name"><a class="series-models__model" href="tesd100.html">TESD100</a></td>
+  <td class="series-models__per">80 Вт</td>
+  <td rowspan="2"><span class="series-models__line">84,5×52,5×12,85 <small>с фланцами</small></span></td>
+  <td rowspan="2" class="series-models__inputs"><span class="series-models__line"><b>12W</b> — 12 В (9…36 В)</span><span class="series-models__line"><b>27</b> — 27 В (17…36 В)</span><span class="series-models__line"><b>24W</b> — 24 В (18…75 В)</span></td>
+  <td rowspan="2" class="series-models__volts">5; 12; 15; 24; 27; 36; 48; <span class="series-models__nowrap">60 В</span></td>
+  <td class="series-models__per">16 А</td>
+  <td rowspan="2">92 %</td>
+  <td rowspan="2"><a class="series-models__ds" href="../content/docs/tesd/ДШ-TESD100.pdf" target="_blank" rel="noreferrer" title="Даташит TESD100 (PDF)"><span class="doc-icon doc-icon--ds">ДШ</span></a></td>
+</tr>
+<tr>
+  <td class="series-models__per">100 Вт</td>
+  <td class="series-models__per">20 А</td>
+</tr>
+<tr class="series-models__group-start">
+  <td rowspan="2" class="series-models__name"><a class="series-models__model" href="tesd200.html">TESD200</a></td>
+  <td class="series-models__per">150 Вт</td>
+  <td rowspan="2"><span class="series-models__line">107×67,7×12,85 <small>с фланцами</small></span></td>
+  <td rowspan="2" class="series-models__inputs"><span class="series-models__line"><b>12W</b> — 12 В (9…36 В)</span><span class="series-models__line"><b>27</b> — 27 В (17…36 В)</span><span class="series-models__line"><b>24W</b> — 24 В (18…75 В)</span></td>
+  <td rowspan="2" class="series-models__volts">12; 15; 24; 27; 36; 48; <span class="series-models__nowrap">60 В</span></td>
+  <td class="series-models__per">12,5 А</td>
+  <td rowspan="2">90 %</td>
+  <td rowspan="2"><a class="series-models__ds" href="../content/docs/tesd/ДШ-TESD200.pdf" target="_blank" rel="noreferrer" title="Даташит TESD200 (PDF)"><span class="doc-icon doc-icon--ds">ДШ</span></a></td>
+</tr>
+<tr>
+  <td class="series-models__per">200 Вт</td>
+  <td class="series-models__per">16,7 А</td>
+</tr>
+<tr class="series-models__group-start">
+  <td class="series-models__name"><a class="series-models__model" href="tesd480.html">TESD480</a></td>
+  <td class="series-models__per">480 Вт</td>
+  <td><span class="series-models__line">139×97×12,9 <small>с фланцами</small></span><span class="series-models__line">127×97×12,9 <small>без фланцев</small></span></td>
+  <td class="series-models__inputs"><span class="series-models__line"><b>12W</b> — 12 В (9…36 В)</span><span class="series-models__line"><b>27</b> — 27 В (17…36 В)</span></td>
+  <td class="series-models__volts">12; 15; 24; 27; 36; 48; <span class="series-models__nowrap">60 В</span></td>
+  <td class="series-models__per">40 А</td>
+  <td>85 %</td>
+  <td><a class="series-models__ds" href="../content/docs/tesd/ДШ-TESD480.pdf" target="_blank" rel="noreferrer" title="Даташит TESD480 (PDF)"><span class="doc-icon doc-icon--ds">ДШ</span></a></td>
+</tr>
+<tr class="series-models__group-start">
+  <td rowspan="2" class="series-models__name"><a class="series-models__model" href="tesd500.html">TESD500</a></td>
+  <td class="series-models__per">400 Вт</td>
+  <td rowspan="2"><span class="series-models__line">122×84,2×15 <small>с фланцами</small></span></td>
+  <td rowspan="2" class="series-models__inputs"><span class="series-models__line"><b>27</b> — 27 В (17…36 В)</span></td>
+  <td rowspan="2" class="series-models__volts">12; 15; 24; 27; 36; 48; <span class="series-models__nowrap">60 В</span></td>
+  <td class="series-models__per">33,3 А</td>
+  <td rowspan="2">92 %</td>
+  <td rowspan="2"><a class="series-models__ds" href="../content/docs/tesd/ДШ-TESD500.pdf" target="_blank" rel="noreferrer" title="Даташит TESD500 (PDF)"><span class="doc-icon doc-icon--ds">ДШ</span></a></td>
+</tr>
+<tr>
+  <td class="series-models__per">500 Вт</td>
+  <td class="series-models__per">41,7 А</td>
+</tr>
+
+  </tbody>
+  </table>
+  </div>
+  <div class="series-models__notes">
+    <p>* Модули с нестандартным выходным напряжением — по запросу: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>.</p>
+    <p>** Без учёта длины выводов.</p>
+    <p>*** Индекс входного напряжения ставится в наименование вместо «x», например TESD10-27S05-UT.</p>
+    <p>**** При выходном напряжении 5 В (если 5 В нет — при минимальном стандартном).</p>
+  </div>
+</section>
+
+<div class="series-related">
+  <span class="series-related__title">Другие серии этой категории:</span>
+  <a href="tesds.html" class="series-related__link">TESDs</a><a href="tesh.html" class="series-related__link">TESH</a><a href="teh.html" class="series-related__link">TEH (ТЕН)</a><a href="tpd.html" class="series-related__link">ТПД</a>
+</div>
+</div>
+
+<footer class="footer">
+<div class="wrap footer__mobile-info">
+  <div>Пн–Пт 08:00–17:00 · г. Воронеж</div>
+  <div><a href="tel:+74732574041">+7 (473) 257-40-41</a></div>
+  <div><a href="mailto:russia@te-power.ru">russia@te-power.ru</a></div>
+</div>
+<div class="wrap footer__row">
+<div>© ООО «ТЕ». Все материалы — интеллектуальная собственность компании.</div>
+<div>394036, г. Воронеж, ул. Комиссаржевской, 10 · <a href="tel:+74732574041">+7 (473) 257-40-41</a></div>
+</div></footer>
+<div class="callback-modal" id="callback-modal" data-callback-email="CallBack@te-power.ru">
+  <div class="callback-modal__overlay" onclick="closeCallbackModal()"></div>
+  <div class="callback-modal__panel">
+    <button type="button" class="callback-modal__close" onclick="closeCallbackModal()" aria-label="Закрыть">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <h3 class="callback-modal__title">Заказать звонок</h3>
+    <p class="callback-modal__note">Оставьте телефон — перезвоним в рабочее время (Пн–Пт 08:00–17:00).</p>
+    <form class="form" onsubmit="return submitCallback(event)">
+      <div class="form__field"><label class="form__label">Телефон *</label><input class="form__input" type="tel" name="phone" required pattern=".*\S.*" autofocus></div>
+      <div class="form__field"><label class="form__label">Имя (необязательно)</label><input class="form__input" type="text" name="name"></div>
+      <p class="form__required-note">* Поле, обязательное для заполнения</p>
+      <button type="submit" class="btn btn--accent callback-modal__submit">Заказать звонок</button>
+    </form>
+  </div>
+</div>
+<script src="../theme.js"></script>
+</body>
+</html>
