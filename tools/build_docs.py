@@ -23,7 +23,6 @@ docs += [
     dict(series='tps', type='ДШ', name='ТПС5000', href='content/docs/tps/ТПС5000-380С60-КМ.PDF'),
     dict(series='tefd', type='ТУ', name='TEFD', href='content/docs/tefd/ТУ-TEFD.pdf'),
     dict(series='dft', type='ТУ', name='ДФТ, ДФТК, ДФТП, ДФТПК', href='content/docs/dft/ТУ-ДФТ.pdf'),
-    dict(series='dftp', type='ТУ', name='ДФТ, ДФТК, ДФТП, ДФТПК', href='content/docs/dft/ТУ-ДФТ.pdf'),
 ]
 # ТПД и ТПИ — документы пока на старом сайте
 docs += [
@@ -37,7 +36,7 @@ GROUPS = [
     ('AC/DC модули', [('tps', 'ТПС'), ('jetas', 'JETAs'), ('tesav', 'TESAV')]),
     ('Инверторы', [('tpi', 'ТПИ')]),
     ('Модули фильтрации', [('tefd', 'TEFD'), ('tefs', 'TEFS'), ('tpf', 'ТПФ'), ('tefa', 'TEFA')]),
-    ('Дроссели фильтрации', [('dft', 'ДФТ, ДФТК'), ('dftp', 'ДФТП, ДФТПК')]),
+    ('Дроссели фильтрации', [('dft', 'ДФТ, ДФТК, ДФТП, ДФТПК')]),
 ]
 TYPES = [('ТУ', 'tu', 'Технические условия'), ('ДШ', 'ds', 'Даташиты'), ('3D', '3d', '3D-модели и чертежи')]
 TYPE_LABEL = {'ТУ': 'Технические условия', 'ДШ': 'Даташит', '3D': '3D-модель'}

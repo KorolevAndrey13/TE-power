@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ДФТ, ДФТК — TE-POWER</title>
+<title>ДФТ, ДФТК, ДФТП, ДФТПК — TE-POWER</title>
 <script>
 function applyTheme(){
   try{
@@ -47,9 +47,9 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
 <svg class="header__burger" onclick="toggleMobileNav()" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
 </div></header>
 
-<div class="wrap breadcrumbs"><a href="../produktsiya.html" class="breadcrumbs__link">Продукция</a> / <a href="../produktsiya.html#drosseli" class="breadcrumbs__link">Дроссели фильтрации</a> / ДФТ, ДФТК</div>
+<div class="wrap breadcrumbs"><a href="../produktsiya.html" class="breadcrumbs__link">Продукция</a> / <a href="../produktsiya.html#drosseli" class="breadcrumbs__link">Дроссели фильтрации</a> / ДФТ, ДФТК, ДФТП, ДФТПК</div>
 <section class="series-hero series-hero--plain"><div class="wrap series-hero__row">
-  <div><h1 class="series-hero__title">ДФТ, ДФТК </h1><p class="series-hero__subtitle">Дроссели фильтрации для DC сетей</p></div>
+  <div><h1 class="series-hero__title">ДФТ, ДФТК, ДФТП, ДФТПК</h1><p class="series-hero__subtitle">Дроссели фильтрации для DC сетей: корпусные и бескорпусные, с подмагничиванием и без</p></div>
 </div></section>
 <div class="wrap series-page">
 <section class="series-intro">
@@ -67,17 +67,41 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
     </ul>
   </div>
   <div class="series-intro__col">
-    <div class="series-intro__photo"><img src="../content/images/dft.png" alt="Дроссели ДФТ, ДФТК"></div>
+    <div class="series-intro__photo"><img src="../content/images/dft.png" alt="Дроссели ДФТ, ДФТК, ДФТП, ДФТПК"></div>
     <h2 class="series-intro__title">Документация серии</h2>
     <ul class="doc-list">
       <li><a class="doc-list__link" href="../content/docs/dft/ТУ-ДФТ.pdf" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--tu">ТУ</span>Технические условия ТЛДР.670109.001 ТУ</a></li>
     </ul>
-    <p class="series-intro__more">Даташиты, технические условия и 3D-модели — по запросу у менеджера: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>. Также см. страницу <a href="../podderzhka.html" class="note__link">Техническая поддержка</a>.</p>
+    <p class="series-intro__more">Даташиты и 3D-модели — по запросу у менеджера: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>. Также см. страницу <a href="../podderzhka.html" class="note__link">Техническая поддержка</a>.</p>
   </div>
 </section>
 
 <section class="series-models">
-  <h2 class="series-models__title">Модели</h2>
+  <h2 class="series-models__title">Виды дросселей</h2>
+  <div class="series-models__scroll">
+  <table class="series-models__table">
+  <thead><tr><th>Вид</th><th>Бескорпусные</th><th>Корпусные</th></tr></thead>
+  <tbody>
+<tr class="series-models__group-start">
+  <td class="series-models__name"><b>Без подмагничивания</b><br>с компенсацией рабочего тока, подавляют несимметричные помехи 0,009–100 МГц</td>
+  <td><span class="series-models__model">ДФТ</span></td>
+  <td><span class="series-models__model">ДФТК</span></td>
+</tr>
+<tr class="series-models__group-start">
+  <td class="series-models__name"><b>С подмагничиванием</b><br>допускают подмагничивание рабочим током с сохранением линейности характеристик</td>
+  <td><span class="series-models__model">ДФТП</span></td>
+  <td><span class="series-models__model">ДФТПК</span></td>
+</tr>
+  </tbody>
+  </table>
+  </div>
+  <div class="series-models__notes">
+    <p>Бескорпусные дроссели применяются в аппаратуре, которая сама обеспечивает герметизацию и защиту от влаги, инея, росы и перепадов давления.</p>
+  </div>
+</section>
+
+<section class="series-models">
+  <h2 class="series-models__title">ДФТ, ДФТК — без подмагничивания</h2>
   <div class="series-models__scroll">
   <table class="series-models__table">
   <thead><tr><th>Тип</th><th>Номинальный проходной ток</th><th>Размеры**, мм</th><th>Индуктивность обмотки, мкГн (1 кГц, 1 В)</th><th>Индуктивность обмотки, мкГн (100 кГц, 1 В)</th><th>Диаметр выводов, мм</th></tr></thead>
@@ -128,18 +152,53 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
   </tbody>
   </table>
   </div>
+  <h2 class="series-models__title">ДФТП, ДФТПК — с подмагничиванием</h2>
+  <div class="series-models__scroll">
+  <table class="series-models__table">
+  <thead><tr><th>Тип</th><th>Номинальный проходной ток</th><th>Размеры**, мм</th><th>Индуктивность обмотки, мкГн (1 кГц, 1 В)</th><th>Индуктивность обмотки, мкГн (100 кГц, 1 В)</th><th>Диаметр выводов, мм</th></tr></thead>
+  <tbody>
+<tr class="series-models__group-start">
+  <td class="series-models__name"><span class="series-models__model">ДФТПК7,5</span></td>
+  <td>0,2–4 А</td>
+  <td>14,5×14,5×10</td>
+  <td>3–715</td>
+  <td>11–2860</td>
+  <td>0,8</td>
+</tr>
+<tr class="series-models__group-start">
+  <td class="series-models__name"><span class="series-models__model">ДФТПК15</span></td>
+  <td>0,4–4 А</td>
+  <td>18×18×10</td>
+  <td>10–1075</td>
+  <td>40–4300</td>
+  <td rowspan="2">1</td>
+</tr>
+<tr class="series-models__group-start">
+  <td class="series-models__name"><span class="series-models__model">ДФТПК30</span></td>
+  <td>0,4–6 А</td>
+  <td>22×22×10</td>
+  <td>8–1915</td>
+  <td>30–7660</td>
+</tr>
+<tr class="series-models__group-start">
+  <td class="series-models__name"><span class="series-models__model">ДФТПК60</span></td>
+  <td>0,4–20 А</td>
+  <td>26×26×12,5</td>
+  <td>1–3564</td>
+  <td>5–14250</td>
+  <td>1,2</td>
+</tr>
+  </tbody>
+  </table>
+  </div>
   <div class="series-models__notes">
     <p>Пример наименования: <b>ДФТК7,5-2А4,0</b> — тип дросселя (ДФТК7,5), электрическая схема (2 — двухобмоточная), номинальное входное напряжение (А — 12 В, В — 27 В, Д — 60 В, Н — 110 В, М — 230 В, Р — 5 В) и номинальный проходной ток, А (4,0).</p>
+    <p>Параметры в таблицах — по каталогу, для корпусного исполнения (ДФТК, ДФТПК). Параметры бескорпусных ДФТ и ДФТП — по запросу.</p>
     <p>* В каталоге указано «900–460» — вероятно, опечатка; уточняйте у менеджера.</p>
     <p>** Без учёта длины выводов. Индуктивность — одной обмотки, не менее.</p>
     <p>Подбор исполнения под требуемые ток и индуктивность — по запросу: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>.</p>
   </div>
 </section>
-
-<div class="series-related">
-  <span class="series-related__title">Другие серии этой категории:</span>
-  <a href="dftp.html" class="series-related__link">ДФТП, ДФТПК</a>
-</div>
 </div>
 
 <footer class="footer">
