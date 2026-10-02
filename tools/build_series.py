@@ -15,7 +15,7 @@ SERIES = [
   # Данные — из даташитов TESDs (стр. 1 и 3), размеры — со страницы серии в каталоге 2026–2027.
   slug='tesds', name='TESDs', badge=None,
   subtitle='DC/DC преобразователи с повышенной энергетической плотностью',
-  photo='http://te-power.ru/wp-content/uploads/TESDs25-main.png',
+  photo='../content/images/tesds25.png',
   inputs=[('12W', '12 В', '9…36 В', 'по ГОСТ 54073-2010'), ('27', '27 В', '17…36 В', 'по ГОСТ 19705'),
           ('24W', '24 В', '18…75 В', 'выбросы до 80 В'), ('48', '48 В', '36…75 В', 'TESDs300, TESDs500')],
   outs=['5', '12', '15', '24', '27', '36', '48', '60'], duals=['5', '12', '15'],
@@ -106,7 +106,7 @@ SERIES = [
  dict(
   slug='tesh', name='TESH', badge=None,
   subtitle='DC/DC преобразователи со стандартной или высоковольтной сетью',
-  photo='https://te-power.ru/wp-content/uploads/TESAV-TESH20241209-300x128.png',
+  photo='../content/images/tesav-tesh.png',
   inputs=[('96', '96 В', '58…135 В', ''), ('110', '110 В', '66…160 В', 'выбросы до 170 В'),
           ('150W', '150 В', '110…375 В', ''), ('230', '230 В', '175…342 В', '')],
   outs=['5', '9', '12', '15', '24', '27', '36', '48', '60'], duals=['5', '12', '15'],
@@ -150,7 +150,7 @@ SERIES = [
  dict(
   slug='tps', name='ТПС', badge=None, category=('AC/DC модули', 'ac-dc-moduli'),
   subtitle='Трёхфазные AC/DC источники электропитания',
-  photo='https://te-power.ru/wp-content/uploads/ТПС1000-4000-300x145.png',
+  photo='../content/images/tps1000-4000.png',
   inputs=[('380', '~380 В', '323…440 В', '3 фазы, 50 Гц'), ('220', '~220 В', '187…253 В', '3 фазы, 400 Гц'),
           ('115', '~115 В', '104…122 В', '3 фазы, 400 Гц')],
   outs=['12', '15', '24', '27', '36', '48', '60'], duals=[],
@@ -181,7 +181,7 @@ SERIES = [
  dict(
   slug='jetas', name='JETAs', badge=None, category=('AC/DC модули', 'ac-dc-moduli'),
   subtitle='Однофазные AC/DC источники электропитания',
-  photo='https://te-power.ru/wp-content/uploads/JETAs300-scaled-1-300x176.png',
+  photo='../content/images/jetas300.png',
   inputs=[('115', '~115 В', '80…138 В', 'выбросы до 150 В'), ('230', '~230 В', '176…242 В', 'выбросы до 264 В'),
           ('230W', '~230 В', '100…242 В', 'по запросу 100…264 В')],
   outs=['5', '9', '12', '15', '24', '27', '36', '48', '60'], duals=['5', '12', '15'],
@@ -217,7 +217,7 @@ SERIES = [
  dict(
   slug='tesav', name='TESAV', badge=None, category=('AC/DC модули', 'ac-dc-moduli'),
   subtitle='Низкопрофильные однофазные AC/DC источники электропитания',
-  photo='https://te-power.ru/wp-content/uploads/TESAV-TESH20241209-300x128.png',
+  photo='../content/images/tesav-tesh.png',
   inputs=[('115', '~115 В', '80…138 В', '50…400 Гц, выброс 180 В / 0,1 с'), ('230', '~230 В', '176…264 В', '46…440 Гц')],
   outs=['5', '9', '12', '15', '24', '27', '36', '48', '60'], duals=['5', '12', '15'],
   chan=('S', 'D'), dual_fmt='repeat',

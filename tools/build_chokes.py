@@ -40,7 +40,7 @@ for ser in SERIES:
     path = os.path.join(ROOT, f'serii/{ser["slug"]}.html')
     html = io.open(path, encoding='utf-8').read().replace('\r\n', '\n')
     head, foot = html[:html.index('<div class="wrap breadcrumbs">')], html[html.index('<footer class="footer">'):]
-    photo = 'https://te-power.ru/wp-content/uploads/dft-2-300x239.png'
+    photo = '../content/images/dft.png'
     # одинаковые соседние значения (размер, диаметр выводов) — одна ячейка
     t = ser['types']; n = len(t)
     span = [[1] * 6 for _ in range(n)]

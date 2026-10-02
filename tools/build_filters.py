@@ -8,7 +8,7 @@ CAT = ('Модули фильтрации', 'moduli-filtratsii')
 
 SERIES = [
  dict(slug='tefd', name='TEFD', subtitle='Модули защиты и фильтрации для DC сетей',
-      photo='https://te-power.ru/wp-content/uploads/TEFD5.png',
+      photo='../content/images/tefd5.png',
       docs=[('ТУ', 'tu', 'tefd/ТУ-TEFD.pdf', 'Технические условия TEFD')],
       inputs=[('12W', '=12 В (9…36 В)'), ('24W', '=24 В (17…84 В)')],
       bodies=[('U', 'с фланцами')], body_prefix='',
@@ -53,7 +53,7 @@ SERIES = [
       related=[('tefa.html', 'TEFA'), ('tefd.html', 'TEFD'), ('tefs.html', 'TEFS')]),
  # TEFS: схемы наименования нет ни в каталоге, ни в документах — только страница серии
  dict(slug='tefs', name='TEFS', subtitle='Модули защиты для DC сетей', no_sizes=True,
-      photo='https://te-power.ru/wp-content/uploads/TESAV100-F5-400x200.png',
+      photo='../content/images/tesav100.png',
       inputs=[('', '=9…36 В'), ('', '=17…80 В')], bodies=[], body_prefix='', temps=[('', '−60…+125 °C')],
       features=['Номинальный ток 5, 10 и 20 А',
                 ('Защиты:', ['от обратной полярности;', 'от превышения выходного тока;', 'от повышенного и пониженного напряжения.']),
