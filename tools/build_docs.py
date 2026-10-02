@@ -14,6 +14,17 @@ for m in re.finditer(r'<tr data-series="([^"]+)" data-type="([^"]+)"[^>]*>\s*<td
 assert docs, 'документы не найдены'
 # даташиты TESDs (добавлены в content/docs/tesds)
 docs += [dict(series='tesds', type='ДШ', name=f'TESDs{n}', href=f'content/docs/tesds/ДШ-TESDs{n}.pdf') for n in (15, 25, 40, 60, 150, 300, 500)]
+# документы, добавленные в content/docs позже
+docs += [dict(series='tesh', type='ДШ', name=f'TESH{n}', href=f'content/docs/tesh/TESH{n}.pdf') for n in (50, 200, 500)]
+docs += [
+    dict(series='teh', type='ДШ', name='TEH8', href='content/docs/teh/TEН8.pdf'),
+    dict(series='teh', type='ДШ', name='TEH20', href='content/docs/teh/TEН20.pdf'),
+    dict(series='teh', type='ДШ', name='ТЕНс3', href='content/docs/teh/ТЕНс3.pdf'),
+    dict(series='tps', type='ДШ', name='ТПС5000', href='content/docs/tps/ТПС5000-380С60-КМ.PDF'),
+    dict(series='tefd', type='ТУ', name='TEFD', href='content/docs/tefd/ТУ-TEFD.pdf'),
+    dict(series='dft', type='ТУ', name='ДФТ, ДФТК, ДФТП, ДФТПК', href='content/docs/dft/ТУ-ДФТ.pdf'),
+    dict(series='dftp', type='ТУ', name='ДФТ, ДФТК, ДФТП, ДФТПК', href='content/docs/dft/ТУ-ДФТ.pdf'),
+]
 # ТПД и ТПИ — документы пока на старом сайте
 docs += [
     dict(series='tpd', type='ДШ', name='ТПД (описание серии)', href='http://te-power.ru/wp-content/uploads/ТПД.pdf'),

@@ -9,6 +9,7 @@ CAT = ('Модули фильтрации', 'moduli-filtratsii')
 SERIES = [
  dict(slug='tefd', name='TEFD', subtitle='Модули защиты и фильтрации для DC сетей',
       photo='https://te-power.ru/wp-content/uploads/TEFD5.png',
+      docs=[('ТУ', 'tu', 'tefd/ТУ-TEFD.pdf', 'Технические условия TEFD')],
       inputs=[('12W', '=12 В (9…36 В)'), ('24W', '=24 В (17…84 В)')],
       bodies=[('U', 'с фланцами')], body_prefix='',
       temps=[('T', '−60…+125 °C'), ('S', '−60…+110 °C')],
@@ -63,6 +64,14 @@ SERIES = [
              dict(name='TEFS20', cur='20', dims='95×67,7×12,85', imp='—', iso='—', compat='—')],
       related=[('tefd.html', 'TEFD'), ('tefa.html', 'TEFA'), ('tpf.html', 'ТПФ')]),
 ]
+
+def doc_list(ser):
+    # ссылки на документы серии из content/docs; пусто — если документов нет
+    if not ser.get('docs'):
+        return ''
+    return '<ul class="doc-list">\n      ' + '\n      '.join(
+        f'<li><a class="doc-list__link" href="../content/docs/{f}" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--{c}">{t}</span>{label}</a></li>'
+        for t, c, f, label in ser['docs']) + '\n    </ul>\n    '
 
 def split_page(path):
     html = io.open(path, encoding='utf-8').read().replace('\r\n', '\n')
@@ -141,7 +150,7 @@ def build(ser):
   <div class="series-intro__col">
     <div class="series-intro__photo"><img src="{ser['photo']}" alt="Модуль {ser['name']}"></div>
     <h2 class="series-intro__title">Документация серии</h2>
-    <p class="series-intro__more">Даташиты, технические условия и 3D-модели по этой серии — по запросу у менеджера: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>. Также см. страницу <a href="../podderzhka.html" class="note__link">Техническая поддержка</a>.</p>
+    {doc_list(ser)}<p class="series-intro__more">Даташиты, технические условия и 3D-модели по этой серии — по запросу у менеджера: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>. Также см. страницу <a href="../podderzhka.html" class="note__link">Техническая поддержка</a>.</p>
   </div>
 </section>
 
@@ -208,7 +217,7 @@ def build(ser):
   <div class="series-intro__col">
     <div class="series-intro__photo"><img src="{ser['photo']}" alt="Модуль {s['name']}"></div>
     <h2 class="series-intro__title">Документация</h2>
-    <p class="series-intro__more">Даташит и 3D-модель — по запросу у менеджера: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>.</p>
+    {doc_list(ser)}<p class="series-intro__more">Даташит и 3D-модель — по запросу у менеджера: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>.</p>
   </div>
 </section>
 

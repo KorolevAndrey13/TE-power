@@ -16,6 +16,9 @@ FEATURES = [
 ]
 CODE = ('Пример наименования: <b>ДФТК7,5-2А4,0</b> — тип дросселя (ДФТК7,5), электрическая схема (2 — двухобмоточная), '
         'номинальное входное напряжение (А — 12 В, В — 27 В, Д — 60 В, Н — 110 В, М — 230 В, Р — 5 В) и номинальный проходной ток, А (4,0).')
+# ТУ общие для ДФТ, ДФТК, ДФТП, ДФТПК
+DOCS = ('<ul class="doc-list">\n      <li><a class="doc-list__link" href="../content/docs/dft/ТУ-ДФТ.pdf" target="_blank" rel="noreferrer">'
+        '<span class="doc-icon doc-icon--tu">ТУ</span>Технические условия ТЛДР.670109.001 ТУ</a></li>\n    </ul>\n    ')
 SERIES = [
  dict(slug='dft', title='ДФТ, ДФТК', subtitle='Дроссели фильтрации для DC сетей',
       types=[('ДФТК7,5', '0,2–1,5', '14,5×14,5×10', '790–3600', '196–900', '0,8'),
@@ -78,7 +81,7 @@ for ser in SERIES:
   <div class="series-intro__col">
     <div class="series-intro__photo"><img src="{photo}" alt="Дроссели {ser['title']}"></div>
     <h2 class="series-intro__title">Документация серии</h2>
-    <p class="series-intro__more">Даташиты, технические условия и 3D-модели — по запросу у менеджера: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>. Также см. страницу <a href="../podderzhka.html" class="note__link">Техническая поддержка</a>.</p>
+    {DOCS}<p class="series-intro__more">Даташиты, технические условия и 3D-модели — по запросу у менеджера: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>. Также см. страницу <a href="../podderzhka.html" class="note__link">Техническая поддержка</a>.</p>
   </div>
 </section>
 

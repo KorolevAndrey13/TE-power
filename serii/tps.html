@@ -78,6 +78,7 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
     <h2 class="series-intro__title">Документация серии</h2>
     <ul class="doc-list">
       <li><a class="doc-list__link" href="../content/docs/tps/ТУ-ТПС.pdf" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--tu">ТУ</span>Технические условия ТПС</a></li>
+      <li><a class="doc-list__link" href="../content/docs/tps/ТПС5000-380С60-КМ.PDF" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--ds">ДШ</span>Даташит ТПС5000</a></li>
     </ul>
     <p class="series-intro__more">3D-модели и остальные файлы — на странице <a href="../podderzhka.html" class="note__link">Поддержка</a> или по запросу у менеджера.</p>
   </div>
@@ -87,7 +88,7 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
   <h2 class="series-models__title">Модели</h2>
   <div class="series-models__scroll">
   <table class="series-models__table">
-  <thead><tr><th>Типоразмер</th><th>Мощность</th><th>Размеры**, мм</th><th>Входное напряжение***</th><th>Стандартные выходные напряжения*</th><th>Макс. вых. ток****</th><th>Типовой КПД</th></tr></thead>
+  <thead><tr><th>Типоразмер</th><th>Мощность</th><th>Размеры**, мм</th><th>Входное напряжение***</th><th>Стандартные выходные напряжения*</th><th>Макс. вых. ток****</th><th>Типовой КПД</th><th>Даташит</th></tr></thead>
   <tbody>
 <tr class="series-models__group-start">
   <td rowspan="2" class="series-models__name"><a class="series-models__model" href="tps1000.html">ТПС1000</a></td>
@@ -97,6 +98,7 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
   <td rowspan="3" class="series-models__volts">12; 15; 24; 27; 36; <span class="series-models__nowrap">48 В</span></td>
   <td class="series-models__per">41,7 А</td>
   <td rowspan="5">92 %</td>
+  <td rowspan="2">—</td>
 </tr>
 <tr>
   <td class="series-models__per">1000 Вт</td>
@@ -107,6 +109,7 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
   <td class="series-models__per">1500 Вт</td>
   <td><span class="series-models__line">280×170×48</span></td>
   <td class="series-models__per">125 А</td>
+  <td>—</td>
 </tr>
 <tr class="series-models__group-start">
   <td class="series-models__name"><a class="series-models__model" href="tps2000.html">ТПС2000</a></td>
@@ -114,6 +117,7 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
   <td><span class="series-models__line">210×116×37</span></td>
   <td class="series-models__volts">15; 24; 27; 36; 48; <span class="series-models__nowrap">60 В</span></td>
   <td class="series-models__per">133 А</td>
+  <td>—</td>
 </tr>
 <tr class="series-models__group-start">
   <td class="series-models__name"><a class="series-models__model" href="tps3000.html">ТПС3000</a></td>
@@ -121,6 +125,7 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
   <td><span class="series-models__line">250×141×38</span></td>
   <td rowspan="3" class="series-models__volts">24; 27; 36; 48; <span class="series-models__nowrap">60 В</span></td>
   <td class="series-models__per">125 А</td>
+  <td>—</td>
 </tr>
 <tr class="series-models__group-start">
   <td class="series-models__name"><a class="series-models__model" href="tps4000.html">ТПС4000</a></td>
@@ -128,12 +133,14 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
   <td><span class="series-models__line">280×170×48</span></td>
   <td class="series-models__per">167 А</td>
   <td rowspan="2">93 %</td>
+  <td>—</td>
 </tr>
 <tr class="series-models__group-start">
   <td class="series-models__name"><a class="series-models__model" href="tps5000.html">ТПС5000</a></td>
   <td class="series-models__per">5000 Вт</td>
   <td><span class="series-models__line">300×170×39</span></td>
   <td class="series-models__per">208 А</td>
+  <td><a class="series-models__ds" href="../content/docs/tps/ТПС5000-380С60-КМ.PDF" target="_blank" rel="noreferrer" title="Даташит (PDF)"><span class="doc-icon doc-icon--ds">ДШ</span></a></td>
 </tr>
   </tbody>
   </table>

@@ -84,7 +84,8 @@ SERIES = [
   outs=['3.3', '5', '12', '15'], duals=['5', '12', '15'],
   chan=('С', 'Д'), dual_fmt='slash',
   temps=[('T', '−60…+125 °C'), ('В', '−60…+110 °C')],
-  docs=[('ДШ', 'ds', 'teh/ДШ-TEH5.pdf', 'Даташит TEH5')],
+  docs=[('ДШ', 'ds', 'teh/ДШ-TEH5.pdf', 'Даташит TEH5'), ('ДШ', 'ds', 'teh/TEН8.pdf', 'Даташит TEH8'),
+        ('ДШ', 'ds', 'teh/ТЕНс3.pdf', 'Даташит ТЕНс3 (3 Вт, 22,3×11,6×9,8 мм)')],
   features=['Pin-to-pin замена модулей TEN производства Traco Power', 'Выходная мощность от 5 до 40 Вт, КПД до 88 %',
             'Предельная рабочая температура корпуса −60…+125 °C', 'Металлический алюминиевый корпус без фланцев, монтаж на печатную плату',
             'INPUTS', 'Один или два гальванически развязанных выхода (TEH5)',
@@ -94,11 +95,11 @@ SERIES = [
   sizes=[
    # TEH5 — токи и КПД из даташита; TEH8 — P/U. КПД типоразмера — среднее одноканальных TEH5 (76, 78, 83, 83).
    dict(slug='teh8', name='TEH8', models=[('TEH5', 5), ('TEH8', 8)], dims=[('32×20×10', 'C')], dual_models=['TEH5'], kpd=80,
-        filt='TEFD2.5', ds='teh/ДШ-TEH5.pdf', analog='TEN (Traco Power)',
+        filt='TEFD2.5', ds='teh/ДШ-TEH5.pdf', ds_more=[('teh/TEН8.pdf', 'Даташит TEH8')], analog='TEN (Traco Power)',
         currents={('TEH5', '3.3'): '1,2', ('TEH5', '5'): '1', ('TEH5', '12'): '0,5', ('TEH5', '15'): '0,4',
                   ('TEH5', '±5'): '0,5', ('TEH5', '±12'): '0,25', ('TEH5', '±15'): '0,2'}),
    dict(slug='teh40', name='TEH40', models=[('TEH20', 20), ('TEH30', 30), ('TEH40', 40)], dims=[('50,8×25,4×10,2', 'C')], dual_models=[], kpd=88,
-        filt='TEFD5', analog='TEN (Traco Power)'),
+        filt='TEFD5', ds='teh/TEН20.pdf', ds_name='TEH20', analog='TEN (Traco Power)'),
   ],
   related=[('tesd.html', 'TESD'), ('tesds.html', 'TESDs'), ('tesh.html', 'TESH'), ('tpd.html', 'ТПД')],
  ),
@@ -119,9 +120,9 @@ SERIES = [
             'Параллельная работа (TESH200, TESH500)', 'Холостой ход без подгрузки, фиксированная частота преобразования',
             PROTECT, 'Прочность изоляции вход/выход 1500 В', 'Расширенная гарантия 20 лет'],
   sizes=[
-   dict(slug='tesh50', name='TESH50', models=[('TESH50', 50)], dims=[('84,5×52,5×12,85', 'U')], dual=True, kpd=93, filt='внешний фильтр'),
-   dict(slug='tesh200', name='TESH200', models=[('TESH100', 100), ('TESH200', 200)], dims=[('107×67,7×12,85', 'U')], dual=False, kpd=93, filt='внешний фильтр'),
-   dict(slug='tesh500', name='TESH500', models=[('TESH300', 300), ('TESH500', 500)], dims=[('122×84×15', 'U')], dual=False, kpd=93, filt='внешний фильтр'),
+   dict(slug='tesh50', name='TESH50', models=[('TESH50', 50)], dims=[('84,5×52,5×12,85', 'U')], dual=True, kpd=93, filt='внешний фильтр', ds='tesh/TESH50.pdf'),
+   dict(slug='tesh200', name='TESH200', models=[('TESH100', 100), ('TESH200', 200)], dims=[('107×67,7×12,85', 'U')], dual=False, kpd=93, filt='внешний фильтр', ds='tesh/TESH200.pdf', ds_name='TESH200'),
+   dict(slug='tesh500', name='TESH500', models=[('TESH300', 300), ('TESH500', 500)], dims=[('122×84×15', 'U')], dual=False, kpd=93, filt='внешний фильтр', ds='tesh/TESH500.pdf', ds_name='TESH500'),
   ],
   related=[('tesd.html', 'TESD'), ('tesds.html', 'TESDs'), ('teh.html', 'TEH (ТЕН)'), ('tpd.html', 'ТПД')],
  ),
@@ -173,7 +174,7 @@ SERIES = [
    dict(slug='tps4000', name='ТПС4000', models=[('ТПС4000', 4000)], dims=[('280×170×48', 'К'), ('280×170×48', 'Н')], kpd=93,
         model_outs={'ТПС4000': ['24', '27', '36', '48', '60']}, filt='ТПФ15'),
    dict(slug='tps5000', name='ТПС5000', models=[('ТПС5000', 5000)], dims=[('300×170×39', 'К'), ('300×170×39', 'Н')], kpd=93,
-        model_outs={'ТПС5000': ['24', '27', '36', '48', '60']}, filt='ТПФ15'),
+        model_outs={'ТПС5000': ['24', '27', '36', '48', '60']}, filt='ТПФ15', ds='tps/ТПС5000-380С60-КМ.PDF'),
   ],
   related=[('jetas.html', 'JETAs'), ('tesav.html', 'TESAV')],
  ),
@@ -293,6 +294,11 @@ def doc_list(ser, extra=None, tail=None):
         out.append(f'<li><a class="doc-list__link" href="{href}" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--{c}">{t}</span>{label}</a></li>')
     return '\n      '.join(out)
 
+def size_docs(s, default_name):
+    # даташиты типоразмера: основной (ds, подпись ds_name) и дополнительные (ds_more)
+    docs = [('ДШ', 'ds', s['ds'], 'Даташит ' + s.get('ds_name', default_name))] if s.get('ds') else []
+    return docs + [('ДШ', 'ds', f, label) for f, label in s.get('ds_more', [])]
+
 def split_page(path):
     html = io.open(path, encoding='utf-8').read().replace('\r\n', '\n')
     head = html[:html.index('<div class="wrap breadcrumbs">')]
@@ -408,7 +414,7 @@ def build(ser):
     <div class="series-intro__photo"><img src="{ser['photo']}" alt="Модуль {page_title}"></div>
     <h2 class="series-intro__title">Документация серии</h2>
     <ul class="doc-list">
-      {doc_list(ser, tail=[('ДШ', 'ds', x['ds'], 'Даташит ' + x['name']) for x in ser['sizes'] if x.get('ds')])}
+      {doc_list(ser, tail=[d for x in ser['sizes'] for d in size_docs(x, x['name'])])}
     </ul>
     <p class="series-intro__more">3D-модели и остальные файлы — на странице <a href="../podderzhka.html" class="note__link">Поддержка</a> или по запросу у менеджера.</p>
   </div>
@@ -493,7 +499,7 @@ def build(ser):
         def val(b):
             return ''.join(f'<span class="spec-panel__row-line">{x}</span>' for x in b) if isinstance(b, list) else b
         params_html = ''.join(f'<div class="spec-panel__row"><span>{a}</span><span class="spec-panel__row-value">{val(b)}</span></div>' for a, b in params)
-        extra = [('ДШ', 'ds', s['ds'], f'Даташит {s["models"][0][0]}')] if s.get('ds') else []
+        extra = size_docs(s, s['models'][0][0])
         ncols = 8 + (1 if has_dual else 0) + (1 if show_body else 0)
         body = f'''<div class="wrap breadcrumbs"><a href="../produktsiya.html" class="breadcrumbs__link">Продукция</a> / <a href="../produktsiya.html#{ser.get('category', ('', 'dc-dc-moduli'))[1]}" class="breadcrumbs__link">{ser.get('category', ('DC/DC модули', ''))[0]}</a> / <a href="{slug}.html" class="breadcrumbs__link">{page_title}</a> / {s['name']}</div>
 <section class="series-hero series-hero--plain"><div class="wrap series-hero__row">
