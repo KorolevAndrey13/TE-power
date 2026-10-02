@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Поддержка — TE-POWER</title>
+<script>
+function applyTheme(){
+  try{
+    var t = localStorage.getItem('tepower-theme');
+    if(!t){ t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+    document.documentElement.setAttribute('data-theme', t);
+  }catch(e){}
+}
+applyTheme();
+// при возврате со страницы, сохранённой браузером в bfcache (например, кнопкой "назад"
+// или быстрой навигацией туда-обратно), заново считываем тему — иначе может показаться
+// устаревший снимок страницы без применения текущей темы
+window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); });
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="topbar"><div class="wrap topbar__row">
+<div>Пн–Пт 08:00–17:00 · г. Воронеж</div>
+<div class="topbar__contacts"><a href="tel:+74732574041" class="topbar__link">+7 (473) 257-40-41</a><a href="mailto:russia@te-power.ru" class="topbar__link">russia@te-power.ru</a></div>
+</div></div>
+<header class="header"><div class="wrap header__row">
+<a href="index.html" class="logo">
+  <img class="logo__img logo__img--light" src="assets/logo-light-theme.png" alt="TE-POWER">
+  <img class="logo__img logo__img--dark" src="assets/logo-dark-theme.png" alt="TE-POWER">
+</a>
+<nav class="header__nav" id="primary-nav"><a href="index.html" class="header__nav-link">Главная</a><a href="produktsiya.html" class="header__nav-link">Продукция</a><a href="novosti.html" class="header__nav-link">Новости</a><a href="podderzhka.html" class="header__nav-link header__nav-link--active">Поддержка</a><a href="o-kompanii.html" class="header__nav-link">О компании</a><a href="kontakty.html" class="header__nav-link">Контакты</a></nav>
+<div class="header__actions">
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Переключить тему" title="Светлая / тёмная тема">
+  <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z" fill="currentColor"/></svg>
+  <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+</button>
+  <button type="button" onclick="openCallbackModal()" class="btn btn--accent header__call-btn">
+    <svg class="header__call-icon" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4.7c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    <span class="header__call-text">Заказать звонок</span>
+  </button>
+</div>
+<svg class="header__burger" onclick="toggleMobileNav()" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+</div></header>
+
+<section class="support-hero"><div class="wrap">
+  <div class="eyebrow">Поддержка</div>
+  <h1 class="support-hero__title">Документация и техническая поддержка</h1>
+  <p class="support-hero__contact-line">Если у вас возникнут вопросы, Вы можете обратиться к нам — ответим по телефону или почте в рабочее время (Пн–Пт 08:00–17:00).</p>
+  <a href="tel:+74732574041" class="support-hero__phone">☎ +7 (473) 257-40-41</a>
+</div></section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="section__title">Документация</h2>
+    <div class="note">
+      Полный каталог продукции —
+      <a href="assets/catalog-2026-2027.pdf" target="_blank" rel="noreferrer" class="note__link">PDF каталог 2026–2027</a>.
+      Актуальные технические условия (ТУ), даташиты (ДШ) и 3D-модели по каждой серии — в таблице ниже; так же они доступны на странице каждой серии в разделе <a href="produktsiya.html" class="note__link">Продукция</a>.
+    </div>
+    <div class="docs-filter">
+  <input id="docs-search" type="text" placeholder="Поиск по названию…" class="docs-filter__input" oninput="filterDocs()">
+  <select id="docs-filter-series" class="docs-filter__select" onchange="filterDocs()"><option value="">Все серии</option><option value="tesd">TESD</option><option value="tesds">TESDs</option><option value="tesh">TESH</option><option value="teh">TEH (ТЕН)</option><option value="tefd">TEFD</option><option value="tefs">TEFS</option><option value="tps">ТПС</option><option value="jetas">JETAs</option><option value="tesav">TESAV</option><option value="tpf">ТПФ</option><option value="tefa">TEFA</option><option value="dft">ДФТ, ДФТК</option><option value="dftp">ДФТП, ДФТПК</option></select>
+  <select id="docs-filter-type" class="docs-filter__select" onchange="filterDocs()"><option value="">Все типы</option><option value="ТУ">Технические условия</option><option value="ДШ">Даташит</option><option value="3D">3D-модель / чертёж</option></select>
+</div>
+<table class="docs-table">
+  <thead><tr><th>Серия</th><th>Тип</th><th>Документ</th><th></th></tr></thead>
+  <tbody><tr data-series="tesd" data-type="ДШ" data-search="tesd дш tesd10">
+  <td>TESD</td>
+  <td>Даташит</td>
+  <td>TESD10</td>
+  <td><a href="content/docs/tesd/ДШ-TESD10.pdf" target="_blank" rel="noreferrer" class="model-table__doc-badge">Открыть ↓</a></td>
+</tr><tr data-series="tesd" data-type="ДШ" data-search="tesd дш tesd100">
+  <td>TESD</td>
+  <td>Даташит</td>
+  <td>TESD100</td>
+  <td><a href="content/docs/tesd/ДШ-TESD100.pdf" target="_blank" rel="noreferrer" class="model-table__doc-badge">Открыть ↓</a></td>
+</tr><tr data-series="tesd" data-type="ДШ" data-search="tesd дш tesd15">
+  <td>TESD</td>
+  <td>Даташит</td>
+  <td>TESD15</td>
+  <td><a href="content/docs/tesd/ДШ-TESD15.pdf" target="_blank" rel="noreferrer" class="model-table__doc-badge">Открыть ↓</a></td>
+</tr><tr data-series="tesd" data-type="ДШ" data-search="tesd дш tesd200">
+  <td>TESD</td>
+  <td>Даташит</td>
+  <td>TESD200</td>
+  <td><a href="content/docs/tesd/ДШ-TESD200.pdf" target="_blank" rel="noreferrer" class="model-table__doc-badge">Открыть ↓</a></td>
+</tr><tr data-series="tesd" data-type="ДШ" data-search="tesd дш tesd30">
+  <td>TESD</td>
+  <td>Даташит</td>
+  <td>TESD30</td>
+  <td><a href="content/docs/tesd/ДШ-TESD30.pdf" target="_blank" rel="noreferrer" class="model-table__doc-badge">Открыть ↓</a></td>
+</tr><tr data-series="tesd" data-type="ДШ" data-search="tesd дш tesd480">
+  <td>TESD</td>
+  <td>Даташит</td>
+  <td>TESD480</td>
+  <td><a href="content/docs/tesd/ДШ-TESD480.pdf" target="_blank" rel="noreferrer" class="model-table__doc-badge">Открыть ↓</a></td>
+</tr><tr data-series="tesd" data-type="ДШ" data-search="tesd дш tesd500">
+  <td>TESD</td>
+  <td>Даташит</td>
+  <td>TESD500</td>
+  <td><a href="content/docs/tesd/ДШ-TESD500.pdf" target="_blank" rel="noreferrer" class="model-table__doc-badge">Открыть ↓</a></td>
+</tr><tr data-series="tesd" data-type="ДШ" data-search="tesd дш tesd60">
+  <td>TESD</td>
+  <td>Даташит</td>
+  <td>TESD60</td>
+  <td><a href="content/docs/tesd/ДШ-TESD60.pdf" target="_blank" rel="noreferrer" class="model-table__doc-badge">Открыть ↓</a></td>
+</tr><tr data-series="tesd" data-type="ТУ" data-search="tesd ту tesd">
+  <td>TESD</td>
+  <td>Технические условия</td>
+  <td>TESD</td>
+  <td><a href="content/docs/tesd/ТУ-TESD.pdf" target="_blank" rel="noreferrer" class="model-table__doc-badge">Открыть ↓</a></td>
+</tr><tr data-series="tesds" data-type="ТУ" data-search="tesds ту tesds">
+  <td>TESDs</td>
+  <td>Технические условия</td>
+  <td>TESDs</td>
+  <td><a href="content/docs/tesds/ТУ-TESDs.pdf" target="_blank" rel="noreferrer" class="model-table__doc-badge">Открыть ↓</a></td>
+</tr><tr data-series="tesh" data-type="ТУ" data-search="tesh ту tesh">
+  <td>TESH</td>
+  <td>Технические условия</td>
+  <td>TESH</td>
+  <td><a href="content/docs/tesh/ТУ-TESH.pdf" target="_blank" rel="noreferrer" class="model-table__doc-badge">Открыть ↓</a></td>
+</tr><tr data-series="teh" data-type="ДШ" data-search="teh (тен) дш teh5">
+  <td>TEH (ТЕН)</td>
+  <td>Даташит</td>
+  <td>TEH5</td>
+  <td><a href="content/docs/teh/ДШ-TEH5.pdf" target="_blank" rel="noreferrer" class="model-table__doc-badge">Открыть ↓</a></td>
+</tr><tr data-series="tps" data-type="ТУ" data-search="тпс ту тпс">
+  <td>ТПС</td>
+  <td>Технические условия</td>
+  <td>ТПС</td>
+  <td><a href="content/docs/tps/ТУ-ТПС.pdf" target="_blank" rel="noreferrer" class="model-table__doc-badge">Открыть ↓</a></td>
+</tr><tr data-series="jetas" data-type="ТУ" data-search="jetas ту jetas">
+  <td>JETAs</td>
+  <td>Технические условия</td>
+  <td>JETAs</td>
+  <td><a href="content/docs/jetas/ТУ-JETAs.pdf" target="_blank" rel="noreferrer" class="model-table__doc-badge">Открыть ↓</a></td>
+</tr><tr data-series="tesav" data-type="ТУ" data-search="tesav ту tesav">
+  <td>TESAV</td>
+  <td>Технические условия</td>
+  <td>TESAV</td>
+  <td><a href="content/docs/tesav/ТУ-TESAV.pdf" target="_blank" rel="noreferrer" class="model-table__doc-badge">Открыть ↓</a></td>
+</tr></tbody>
+</table>
+<div id="docs-empty" class="note" style="display:none;">Ничего не найдено — попробуйте другой запрос.</div>
+  </div>
+</section>
+
+<footer class="footer">
+<div class="wrap footer__mobile-info">
+  <div>Пн–Пт 08:00–17:00 · г. Воронеж</div>
+  <div><a href="tel:+74732574041">+7 (473) 257-40-41</a></div>
+  <div><a href="mailto:russia@te-power.ru">russia@te-power.ru</a></div>
+</div>
+<div class="wrap footer__row">
+<div>© ООО «ТЕ». Все материалы — интеллектуальная собственность компании.</div>
+<div>394036, г. Воронеж, ул. Комиссаржевской, 10 · <a href="tel:+74732574041">+7 (473) 257-40-41</a></div>
+</div></footer>
+<div class="callback-modal" id="callback-modal" data-callback-email="CallBack@te-power.ru">
+  <div class="callback-modal__overlay" onclick="closeCallbackModal()"></div>
+  <div class="callback-modal__panel">
+    <button type="button" class="callback-modal__close" onclick="closeCallbackModal()" aria-label="Закрыть">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <h3 class="callback-modal__title">Заказать звонок</h3>
+    <p class="callback-modal__note">Оставьте телефон — перезвоним в рабочее время (Пн–Пт 08:00–17:00).</p>
+    <form class="form" onsubmit="return submitCallback(event)">
+      <div class="form__field"><label class="form__label">Телефон *</label><input class="form__input" type="tel" name="phone" required pattern=".*\S.*" autofocus></div>
+      <div class="form__field"><label class="form__label">Имя (необязательно)</label><input class="form__input" type="text" name="name"></div>
+      <p class="form__required-note">* Поле, обязательное для заполнения</p>
+      <button type="submit" class="btn btn--accent callback-modal__submit">Заказать звонок</button>
+    </form>
+  </div>
+</div>
+<script src="theme.js"></script>
+</body>
+</html>
