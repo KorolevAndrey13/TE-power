@@ -31,7 +31,7 @@ SERIES = [
             PROTECT, 'Прочность изоляции вход/выход 1500 В', 'Совместимые фильтры ЭМП серии TEFD', 'Расширенная гарантия 20 лет'],
   sizes=[
    dict(slug='tesds15', name='TESDs15', models=[('TESDs15', 15)], dims=[('40×20×10,15', 'U')], dual=True, kpd=86,
-        inputs=['12W', '27', '24W'], filt='TEFD2.5', ds='tesds/ДШ-TESDs15.pdf',
+        inputs=['12W', '27', '24W'], filt='TEFD2.5', ds='tesds/ДШ-TESDs15.pdf', photo='../content/images/tesds15.webp',
         # ±12 В на канал: в даташите 1,25 А (это 30 Вт при 15 Вт) — взято 15/2/12 = 0,62 А, как у TESD15
         currents={('TESDs15', '5'): '3', ('TESDs15', '12'): '1,25', ('TESDs15', '15'): '1', ('TESDs15', '24'): '0,62',
                   ('TESDs15', '27'): '0,55', ('TESDs15', '36'): '0,41', ('TESDs15', '48'): '0,31', ('TESDs15', '60'): '0,25',
@@ -512,7 +512,7 @@ def build(ser):
     {params_html}
   </div>
   <div class="series-intro__col">
-    <div class="series-intro__photo"><img src="{ser['photo']}" alt="Модуль {s['name']}"></div>
+    <div class="series-intro__photo"><img src="{s.get('photo', ser['photo'])}" alt="Модуль {s['name']}"></div>
     <h2 class="series-intro__title">Документация</h2>
     <ul class="doc-list">
       {doc_list(ser, extra)}
