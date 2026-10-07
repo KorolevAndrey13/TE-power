@@ -78,7 +78,7 @@ SERIES = [
  dict(
   slug='teh', name='TEH', page_title='TEH (ТЕН)', badge='Новинка',
   subtitle='Изолированные DC/DC преобразователи — pin-to-pin аналоги модулей TEN (Traco Power)',
-  photo='../content/images/teh.png',
+  photo='../content/images/ten.webp',
   inputs=[('12', '12 В', '9…36 В', 'по ГОСТ 54073-2010'), ('27', '27 В', '17…36 В', 'по ГОСТ 19705'),
           ('24', '24 В', '18…75 В', 'выбросы до 80 В')],
   outs=['3.3', '5', '12', '15'], duals=['5', '12', '15'],
@@ -94,12 +94,17 @@ SERIES = [
             PROTECT, 'Прочность изоляции вход/выход 1500 В', 'Совместимые фильтры ЭМП серии TEFD', 'Расширенная гарантия 20 лет'],
   sizes=[
    # TEH5 — токи и КПД из даташита; TEH8 — P/U. КПД типоразмера — среднее одноканальных TEH5 (76, 78, 83, 83).
-   dict(slug='teh8', name='TEH8', models=[('TEH5', 5), ('TEH8', 8)], dims=[('32×20×10', 'C')], dual_models=['TEH5'], kpd=80,
+   dict(slug='teh8', name='TEH8', models=[('TEH5', 5), ('TEH8', 8)], dims=[('32×20×10', 'C')], dual_models=['TEH5'], kpd=80, photo='../content/images/teh.png',
         filt='TEFD2.5', ds='teh/ДШ-TEH5.pdf', ds_more=[('teh/TEН8.pdf', 'Даташит TEH8')], analog='TEN (Traco Power)',
         currents={('TEH5', '3.3'): '1,2', ('TEH5', '5'): '1', ('TEH5', '12'): '0,5', ('TEH5', '15'): '0,4',
                   ('TEH5', '±5'): '0,5', ('TEH5', '±12'): '0,25', ('TEH5', '±15'): '0,2'}),
-   dict(slug='teh20', name='TEH20', models=[('TEH20', 20), ('TEH30', 30), ('TEH40', 40)], dims=[('50,8×25,4×10,2', 'C')], dual_models=[], kpd=88,
-        filt='TEFD5', ds='teh/TEН20.pdf', analog='TEN (Traco Power)'),
+   # TEH20, TEH30, TEH40 — один корпус, у каждой модели своя страница
+   dict(slug='teh20', name='TEH20', models=[('TEH20', 20)], dims=[('50,8×25,4×10,2', 'C')], dual_models=[], kpd=88,
+        filt='TEFD5', ds='teh/TEН20.pdf', analog='TEN (Traco Power)', photo='../content/images/ten.webp'),
+   dict(slug='teh30', name='TEH30', models=[('TEH30', 30)], dims=[('50,8×25,4×10,2', 'C')], dual_models=[], kpd=88,
+        filt='TEFD5', analog='TEN (Traco Power)', photo='../content/images/ten.webp'),
+   dict(slug='teh40', name='TEH40', models=[('TEH40', 40)], dims=[('50,8×25,4×10,2', 'C')], dual_models=[], kpd=88,
+        filt='TEFD5', analog='TEN (Traco Power)', photo='../content/images/ten.webp'),
   ],
   related=[('tesd.html', 'TESD'), ('tesds.html', 'TESDs'), ('tesh.html', 'TESH'), ('tpd.html', 'ТПД')],
  ),
