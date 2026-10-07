@@ -84,6 +84,7 @@ SERIES = [
   outs=['3.3', '5', '12', '15'], duals=['5', '12', '15'],
   chan=('С', 'Д'), dual_fmt='slash',
   temps=[('T', '−60…+125 °C'), ('В', '−60…+110 °C')],
+  merge_extra=('dims',),
   docs=[('ДШ', 'ds', 'teh/ДШ-TEH5.pdf', 'Даташит TEH5'), ('ДШ', 'ds', 'teh/TEН8.pdf', 'Даташит TEH8'),
         ('ДШ', 'ds', 'teh/ТЕНс3.pdf', 'Даташит ТЕНс3')],
   features=['Pin-to-pin замена модулей производства Traco Power', 'Выходная мощность от 5 до 40 Вт, КПД до 88 %',
@@ -371,7 +372,7 @@ def build(ser):
             eff=f'<td>{s["kpd"]} %</td>',
             ds=ds_cell)))
     # одинаковые значения у соседних типоразмеров — одна ячейка
-    MERGE = ('inputs', 'volts', 'eff')
+    MERGE = ('inputs', 'volts', 'eff') + tuple(ser.get('merge_extra', ()))  # merge_extra — доп. колонки серии, напр. габариты
     span = [dict() for _ in groups]
     for col in ('name', 'dims', 'inputs', 'volts', 'eff', 'ds'):
         g = 0
