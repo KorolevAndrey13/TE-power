@@ -126,7 +126,7 @@ button{font-family:inherit; cursor:pointer;}
 .carousel__slide--news{background-color:rgb(20,24,27); cursor:pointer;}
 
 .carousel__slide--product{background:linear-gradient(120deg, rgb(15,19,22) 0%, rgb(23,29,34) 60%, rgb(15,19,22) 100%); cursor:pointer;}
-.carousel__product-img{position:absolute; right:64px; top:50%; transform:translateY(-50%); max-height:62%; width:auto; filter:drop-shadow(0 24px 44px rgba(0,0,0,.55));}
+.carousel__product-img{position:absolute; right:56px; top:50%; transform:translateY(-50%); max-height:84%; max-width:46%; width:auto; object-fit:contain; filter:drop-shadow(0 24px 44px rgba(0,0,0,.55));}
 @media (max-width:900px){ .carousel__product-img{display:none;} }
 .carousel__news-overlay{
   position:relative; z-index:2; width:100%; height:100%; padding:56px 64px;
