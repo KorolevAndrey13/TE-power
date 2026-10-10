@@ -376,6 +376,7 @@ button{font-family:inherit; cursor:pointer;}
 .series-intro__title{font-size:22px; font-weight:800; margin-bottom:16px;}
 .series-intro__photo{background:none; border:none; padding:0; margin-bottom:28px; display:flex; align-items:center; justify-content:center;}
 .series-intro__photo img{max-height:195px;}
+.series-intro__photo img[src$="tesd500.webp"]{max-height:225px;}  /* TESD500: фото крупнее остальных */
 [data-theme="dark"] .series-intro__photo img{border-radius:4px;}
 .series-intro__more{font-size:13px; color:var(--graphite-2); margin-top:16px;}
 
