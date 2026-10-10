@@ -292,7 +292,7 @@ button{font-family:inherit; cursor:pointer;}
 .spec-panel{position:sticky; top:78px; background:var(--panel); border:1px solid var(--line); border-radius:4px; padding:22px;}
 @media (max-width:900px){ .spec-panel{position:static;} }
 .spec-panel__photo{width:100%; background:none; border:none; padding:0; margin-bottom:18px; display:flex; align-items:center; justify-content:center;}
-.spec-panel__photo img{max-height:300px; max-width:100%; width:auto; height:auto;}
+.spec-panel__photo img{max-height:195px;}
 [data-theme="dark"] .spec-panel__photo img{border-radius:4px;}
 .spec-panel__title{font-family:var(--mono); font-size:12px; text-transform:uppercase; color:var(--graphite-3); margin-bottom:14px;}
 .spec-panel__row{display:flex; justify-content:space-between; gap:8px; padding:9px 0; border-top:1px solid var(--bg); font-size:13px;}
@@ -375,7 +375,8 @@ button{font-family:inherit; cursor:pointer;}
 @media (max-width:860px){ .series-intro{grid-template-columns:minmax(0,1fr); gap:32px;} }
 .series-intro__title{font-size:22px; font-weight:800; margin-bottom:16px;}
 .series-intro__photo{background:none; border:none; padding:0; margin-bottom:28px; display:flex; align-items:center; justify-content:center;}
-.series-intro__photo img{max-height:300px; max-width:100%; width:auto; height:auto;}
+.series-intro__photo img{max-height:195px;}
+.series-intro__photo img[src$="tesd500.webp"]{max-height:225px;}  /* TESD500: фото крупнее остальных */
 [data-theme="dark"] .series-intro__photo img{border-radius:4px;}
 .series-intro__more{font-size:13px; color:var(--graphite-2); margin-top:16px;}
 
