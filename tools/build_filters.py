@@ -41,7 +41,7 @@ SERIES = [
              dict(name='TEFA20', slug='tefa20', cur='20', dims='134×84×27,5', imp='1200 А', iso='=1000 В', compat='JETAs1000 … JETAs3000')],
       related=[('tpf.html', 'ТПФ'), ('tefd.html', 'TEFD'), ('tefs.html', 'TEFS')]),
  dict(slug='tpf', name='ТПФ', subtitle='Модуль защиты и фильтрации для трёхфазных AC сетей',
-      photo='https://te-power.ru/wp-content/uploads/TEFA20241209-387x200.png',
+      photo='../content/images/tpf.webp',
       inputs=[('380', '~380 В (304…456 В)')],
       bodies=[('К', 'клеммные колодки'), ('Н', 'ножевые контакты')], body_prefix='',
       temps=[('Л', '−40…+85 °C'), ('М', '−50…+85 °C')],
