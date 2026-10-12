@@ -100,7 +100,7 @@ SERIES = [
         filt='TEFD2.5', ds='teh/ДШ-TEH5.pdf', analog='TEN (Traco Power)',
         currents={('TEH5', '3.3'): '1,2', ('TEH5', '5'): '1', ('TEH5', '12'): '0,5', ('TEH5', '15'): '0,4',
                   ('TEH5', '±5'): '0,5', ('TEH5', '±12'): '0,25', ('TEH5', '±15'): '0,2'}),
-   dict(slug='teh8', name='TEH8', models=[('TEH8', 8)], dims=[('32×20×10', 'C')], dual_models=['TEH8'], kpd=85, photo='../content/images/teh.png',
+   dict(slug='teh8', name='TEH8', models=[('TEH8', 8)], dims=[('32×20×10', 'C')], dual_models=['TEH8'], kpd=85, photo='../content/images/ten5.webp',
         filt='TEFD2.5', ds='teh/TEН8.pdf', analog='TEN (Traco Power)',
         currents={('TEH8', '3.3'): '2', ('TEH8', '5'): '1,5', ('TEH8', '12'): '0,665', ('TEH8', '15'): '0,535',
                   ('TEH8', '±5'): '0,8', ('TEH8', '±12'): '0,335', ('TEH8', '±15'): '0,265'}),
