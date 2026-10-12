@@ -279,7 +279,9 @@ document.addEventListener('DOMContentLoaded', initScrollShades);
 window.addEventListener('resize', updateScrollShades);
 
 // ---------- Корзина ----------
-// Хранится в localStorage браузера посетителя: [{name, desc, qty}]. Заявка отправляется письмом
+// Хранится в localStorage браузера посетителя: [{id, name, desc, qty}]. id = название@типоразмер:
+// один и тот же модуль (напр. TESD10) бывает в разных корпусах — это разные позиции.
+// Заявка отправляется письмом
 // (mailto), как и «Заказать звонок».
 var CART_KEY = 'tepower-cart';
 var CART_EMAIL = 'russia@te-power.ru';
@@ -290,9 +292,12 @@ function saveCart(cart){
   try{ localStorage.setItem(CART_KEY, JSON.stringify(cart)); }catch(e){}
   updateCartBadge();
 }
-function cartIndex(cart, name){
-  for(var i = 0; i < cart.length; i++){ if(cart[i].name === name) return i; }
+function cartIndex(cart, id){
+  for(var i = 0; i < cart.length; i++){ if((cart[i].id || cart[i].name) === id) return i; }
   return -1;
+}
+function cartBtnId(btn){
+  return btn.getAttribute('data-cart-id') || btn.getAttribute('data-cart-name');
 }
 function cartCount(){
   return getCart().reduce(function(n, item){ return n + item.qty; }, 0);
@@ -326,7 +331,7 @@ function updateCartBadge(){
   });
   var cart = getCart();
   document.querySelectorAll('.cart-btn').forEach(function(btn){
-    var inCart = cartIndex(cart, btn.getAttribute('data-cart-name')) !== -1;
+    var inCart = cartIndex(cart, cartBtnId(btn)) !== -1;
     btn.classList.toggle('cart-btn--added', inCart);
     btn.title = inCart ? 'В корзине — нажмите, чтобы убрать' : 'Добавить в корзину';
   });
@@ -339,9 +344,10 @@ function initCartButtons(){
     if(!btn) return;
     var cart = getCart();
     var name = btn.getAttribute('data-cart-name');
-    var i = cartIndex(cart, name);
+    var id = cartBtnId(btn);
+    var i = cartIndex(cart, id);
     if(i === -1){
-      cart.push({name: name, desc: btn.getAttribute('data-cart-desc') || '', qty: 1});
+      cart.push({id: id, name: name, desc: btn.getAttribute('data-cart-desc') || '', qty: 1});
       showCartToast(name + ' добавлен в корзину');
     }else{
       cart.splice(i, 1);
@@ -392,7 +398,7 @@ function renderCartPage(){
     var input = tr.querySelector('.cart__qty-input');
     input.value = item.qty;
     function setQty(q){
-      var c = getCart(), i = cartIndex(c, item.name);
+      var c = getCart(), i = cartIndex(c, item.id || item.name);
       if(i === -1) return;
       c[i].qty = Math.max(1, q || 1);
       saveCart(c);
@@ -403,7 +409,7 @@ function renderCartPage(){
     });
     input.addEventListener('change', function(){ setQty(parseInt(input.value, 10)); });
     tr.querySelector('.cart__remove').addEventListener('click', function(){
-      var c = getCart(), i = cartIndex(c, item.name);
+      var c = getCart(), i = cartIndex(c, item.id || item.name);
       if(i !== -1){ c.splice(i, 1); saveCart(c); }
       renderCartPage();
     });

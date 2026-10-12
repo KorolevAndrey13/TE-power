@@ -90,12 +90,12 @@ for slug, (title, ds, photo, dims, inputs, suffix, models, eff_max, analogs) in 
                 for b, dim in bodies:
                     for t, temp in TEMPS:
                         name = f'{m}-{k}{code}-{b}{t}{suffix}'
-                        desc = f'{p} Вт; вход {INPUTS[k]}; выход {uo} В; каналов: {ch}; {dim} мм; {temp}'
+                        desc = f'типоразмер {title}; {p} Вт; вход {INPUTS[k]}; выход {uo} В; каналов: {ch}; {dim} мм; {temp}'
                         rows.append(
                             f'<tr data-model="{m}" data-power="{p}" data-in="{k}" data-out="{uo}" data-cur="{i}" data-dims="{dim}" data-temp="{temp}" data-ch="{ch}">'
                             f'<td class="size-models__name">{name}</td><td>{p} Вт</td><td>{INPUTS[k]}</td>'
                             f'<td>{uo} В</td>{ch_td}<td>{cur_html}</td><td>{dim} мм</td><td>{temp}</td>'
-                            f'<td><button type="button" class="cart-btn" data-cart-name="{name}" data-cart-desc="{desc}" title="Добавить в корзину" aria-label="Добавить {name} в корзину">{CART_SVG}</button></td></tr>')
+                            f'<td><button type="button" class="cart-btn" data-cart-id="{name}@{slug}" data-cart-name="{name}" data-cart-desc="{desc}" title="Добавить в корзину" aria-label="Добавить {name} в корзину">{CART_SVG}</button></td></tr>')
     powers = [p for _, p, _ in models]
     outs = sorted({u for _, _, c in models for u, _ in c}, key=num)
     outs = [u.replace('.', ',') for u in outs]

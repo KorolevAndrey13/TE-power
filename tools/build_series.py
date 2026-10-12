@@ -479,12 +479,12 @@ def build(ser):
                         for t, temp in ser['temps']:
                             nm = f'{m}-{k}{code}-{body}{t}'
                             inp = (f'{a} ({b})' if a.startswith('~') else f'={a} ({b})')
-                            desc = f'{p} Вт; вход {inp}; выход {uo} В; каналов: {ch}; {dim} мм; {temp}'
+                            desc = f'типоразмер {s["name"]}; {p} Вт; вход {inp}; выход {uo} В; каналов: {ch}; {dim} мм; {temp}'
                             rows.append(
                                 f'<tr data-model="{m}" data-power="{p}" data-in="{k}" data-out="{uo}" data-cur="{i}" data-dims="{dim}" data-body="{body}" data-temp="{temp}" data-ch="{ch}">'
                                 f'<td class="size-models__name">{nm}</td><td>{p} Вт</td><td>{inp}</td>'
                                 f'<td>{uo} В</td>{ch_td}<td>{cur_html}</td>' + (f'<td>{body_label(s, body)}</td>' if show_body else '') + f'<td>{dim} мм</td><td>{temp}</td>'
-                                f'<td><button type="button" class="cart-btn" data-cart-name="{nm}" data-cart-desc="{desc}" title="Добавить в корзину" aria-label="Добавить {nm} в корзину">{CART_SVG}</button></td></tr>')
+                                f'<td><button type="button" class="cart-btn" data-cart-id="{nm}@{s["slug"]}" data-cart-name="{nm}" data-cart-desc="{desc}" title="Добавить в корзину" aria-label="Добавить {nm} в корзину">{CART_SVG}</button></td></tr>')
         powers = [str(p) for _, p in s['models']]
         outs_opts = [ru(u) for u in outs_single] + (['±' + d for d in ser['duals']] if has_dual else [])
         cur_opts = sorted({re.search(r'data-cur="([^"]+)"', r).group(1) for r in rows}, key=num)
