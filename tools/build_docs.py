@@ -42,6 +42,11 @@ TYPES = [('ТУ', 'tu', 'Технические условия'), ('ДШ', 'ds',
 TYPE_LABEL = {'ТУ': 'Технические условия', 'ДШ': 'Даташит', '3D': '3D-модель'}
 DL_SVG = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 
+def doc_order(d):
+    # по мощности/номиналу: TESD10, TESD15 … TESD500; документы без числа — в конце, по названию
+    m = re.search(r'\d+(?:[.,]\d+)?', d['name'])
+    return (float(m.group(0).replace(',', '.')) if m else float('inf'), d['name'])
+
 series_names = {k: v for _, items in GROUPS for k, v in items}
 known = set(series_names)
 assert all(d['series'] in known for d in docs), {d['series'] for d in docs} - known
@@ -57,7 +62,7 @@ for gtitle, items in GROUPS:
                    f'<span>{title}</span><span class="docs-browser__count">{len(own)}</span></button>')
         blocks = []
         for t, c, tl in TYPES:
-            items_t = [d for d in own if d['type'] == t]
+            items_t = sorted((d for d in own if d['type'] == t), key=doc_order)
             if not items_t:
                 continue
             lis = []
