@@ -24,12 +24,31 @@ docs += [
     dict(series='tefd', type='ТУ', name='TEFD', href='content/docs/tefd/ТУ-TEFD.pdf'),
     dict(series='dft', type='ТУ', name='ДФТ, ДФТК, ДФТП, ДФТПК', href='content/docs/dft/ТУ-ДФТ.pdf'),
 ]
-# ТПД и ТПИ — документы пока на старом сайте
+# даташиты, ТУ и руководства по применению из пакета документов 10.2026
+docs += [dict(series='jetas', type='ДШ', name=f'JETAs{n}', href=f'content/docs/jetas/ДШ-JETAs{n}.pdf') for n in (60, 120, 300, 700, 1200, 1500, 2000)]
+docs += [dict(series='tps', type='ДШ', name=f'ТПС{n}', href=f'content/docs/tps/ДШ-ТПС{n}.pdf') for n in (1000, 1500, 2000, 3000, 4000)]
+docs += [dict(series='tesav', type='ДШ', name=f'TESAV{n}', href=f'content/docs/tesav/ДШ-TESAV{n}.pdf') for n in (50, 100, 200, 500)]
+docs += [dict(series='tefd', type='ДШ', name=f'TEFD{n}', href=f'content/docs/tefd/ДШ-TEFD{n}.pdf') for n in ('2.5', 5, 10, 20, 40)]
+docs += [dict(series='tefa', type='ДШ', name=f'TEFA{n}', href=f'content/docs/tefa/ДШ-TEFA{n}.pdf') for n in (1, 5, 10, 20)]
+docs += [dict(series='tefs', type='ДШ', name=f'TEFS{n}', href=f'content/docs/tefs/ДШ-TEFS{n}.pdf') for n in (5, 10, 20)]
 docs += [
-    dict(series='tpd', type='ДШ', name='ТПД (описание серии)', href='http://te-power.ru/wp-content/uploads/ТПД.pdf'),
-    dict(series='tpi', type='ДШ', name='ТПИ200', href='http://te-power.ru/wp-content/uploads/TПИ200.pdf'),
-    dict(series='tpi', type='ДШ', name='ТПИ2500', href='http://te-power.ru/wp-content/uploads/TПИ2500.pdf'),
+    dict(series='tefa', type='ТУ', name='TEFA', href='content/docs/tefa/ТУ-TEFA.pdf'),
+    dict(series='tefs', type='ТУ', name='TEFS', href='content/docs/tefs/ТУ-TEFS.pdf'),
+    dict(series='tpf', type='ДШ', name='ТПФ15', href='content/docs/tpf/ДШ-ТПФ15.pdf'),
+    dict(series='dft', type='ДШ', name='ДФТ, ДФТК', href='content/docs/dft/ДШ-ДФТ-ДФТК.pdf'),
+    dict(series='dft', type='ДШ', name='ДФТП, ДФТПК', href='content/docs/dft/ДШ-ДФТП-ДФТПК.pdf'),
+    dict(series='tpd', type='ДШ', name='ТПД', href='content/docs/tpd/ДШ-ТПД.pdf'),
+    dict(series='tpi', type='ДШ', name='ТПИ200', href='content/docs/tpi/ДШ-ТПИ200.pdf'),
+    dict(series='tpi', type='ДШ', name='ТПИ2500', href='content/docs/tpi/ДШ-ТПИ2500.pdf'),
 ]
+RP_TESD = 'content/docs/common/РП-TESD-TESDs.pdf'
+RP_AC = 'content/docs/common/РП-JETAs-ТПС.pdf'
+RAD = 'content/docs/common/Рекомендации-по-выбору-радиатора.pdf'
+docs += [dict(series=k, type='РП', name='TESD и TESDs', href=RP_TESD) for k in ('tesd', 'tesds')]
+docs += [dict(series=k, type='РП', name='JETAs и ТПС', href=RP_AC) for k in ('jetas', 'tps')]
+# рекомендации по радиатору — для всех AC/DC и DC/DC модулей
+docs += [dict(series=k, type='РП', name='~радиатор', label='Рекомендации по выбору радиатора', href=RAD)
+         for k in ('tesd', 'tesds', 'tesh', 'teh', 'tpd', 'tps', 'jetas', 'tesav')]
 
 GROUPS = [
     ('DC/DC модули', [('tesd', 'TESD'), ('tesds', 'TESDs'), ('tesh', 'TESH'), ('teh', 'TEH (ТЕН)'), ('tpd', 'ТПД')]),
@@ -38,8 +57,8 @@ GROUPS = [
     ('Модули фильтрации', [('tefd', 'TEFD'), ('tefs', 'TEFS'), ('tpf', 'ТПФ'), ('tefa', 'TEFA')]),
     ('Дроссели фильтрации', [('dft', 'ДФТ, ДФТК, ДФТП, ДФТПК')]),
 ]
-TYPES = [('ТУ', 'tu', 'Технические условия'), ('ДШ', 'ds', 'Даташиты'), ('3D', '3d', '3D-модели и чертежи')]
-TYPE_LABEL = {'ТУ': 'Технические условия', 'ДШ': 'Даташит', '3D': '3D-модель'}
+TYPES = [('ТУ', 'tu', 'Технические условия'), ('ДШ', 'ds', 'Даташиты'), ('РП', 'rp', 'Руководства по применению'), ('3D', '3d', '3D-модели и чертежи')]
+TYPE_LABEL = {'ТУ': 'Технические условия', 'ДШ': 'Даташит', 'РП': 'Руководство по применению', '3D': '3D-модель'}
 DL_SVG = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 
 def doc_order(d):
@@ -67,8 +86,8 @@ for gtitle, items in GROUPS:
                 continue
             lis = []
             for d in items_t:
-                label = f'{TYPE_LABEL[t]} {d["name"]}'
-                search = f'{t} {title} {TYPE_LABEL[t]} {d["name"]}'.lower()
+                label = d.get('label') or f'{TYPE_LABEL[t]} {d["name"]}'
+                search = f'{t} {title} {label}'.lower()
                 external = d['href'].startswith('http')
                 dl = '' if external else ' download'
                 lis.append(

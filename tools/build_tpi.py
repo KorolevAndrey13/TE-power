@@ -11,8 +11,8 @@ tpl = io.open(os.path.join(ROOT, 'serii/tpd.html'), encoding='utf-8').read().rep
 HEAD = tpl[:tpl.index('<div class="wrap breadcrumbs">')]
 FOOT = tpl[tpl.index('<footer class="footer">'):]
 
-DS200 = 'http://te-power.ru/wp-content/uploads/TПИ200.pdf'
-DS2500 = 'http://te-power.ru/wp-content/uploads/TПИ2500.pdf'
+DS200 = '../content/docs/tpi/ДШ-ТПИ200.pdf'
+DS2500 = '../content/docs/tpi/ДШ-ТПИ2500.pdf'
 PHOTO = '../content/images/tpi200.webp'
 CART_SVG = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="19.5" r="1.4" fill="currentColor"/><circle cx="17" cy="19.5" r="1.4" fill="currentColor"/></svg>'
 REQ = 'Модули с нестандартным выходным напряжением — по запросу: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>.'

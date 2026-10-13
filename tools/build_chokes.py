@@ -16,9 +16,13 @@ FEATURES = [
 ]
 CODE = ('Пример наименования: <b>ДФТК7,5-2А4,0</b> — тип дросселя (ДФТК7,5), электрическая схема (2 — двухобмоточная), '
         'номинальное входное напряжение (А — 12 В, В — 27 В, Д — 60 В, Н — 110 В, М — 230 В, Р — 5 В) и номинальный проходной ток, А (4,0).')
-# ТУ общие для ДФТ, ДФТК, ДФТП, ДФТПК
+# ТУ общие для ДФТ, ДФТК, ДФТП, ДФТПК; даташиты — по группам
 DOCS = ('<ul class="doc-list">\n      <li><a class="doc-list__link" href="../content/docs/dft/ТУ-ДФТ.pdf" target="_blank" rel="noreferrer">'
-        '<span class="doc-icon doc-icon--tu">ТУ</span>Технические условия ТЛДР.670109.001 ТУ</a></li>\n    </ul>\n    ')
+        '<span class="doc-icon doc-icon--tu">ТУ</span>Технические условия ТЛДР.670109.001 ТУ</a></li>\n'
+        '      <li><a class="doc-list__link" href="../content/docs/dft/ДШ-ДФТ-ДФТК.pdf" target="_blank" rel="noreferrer">'
+        '<span class="doc-icon doc-icon--ds">ДШ</span>Даташит ДФТ, ДФТК</a></li>\n'
+        '      <li><a class="doc-list__link" href="../content/docs/dft/ДШ-ДФТП-ДФТПК.pdf" target="_blank" rel="noreferrer">'
+        '<span class="doc-icon doc-icon--ds">ДШ</span>Даташит ДФТП, ДФТПК</a></li>\n    </ul>\n    ')
 TITLE = 'ДФТ, ДФТК, ДФТП, ДФТПК'
 SUBTITLE = 'Дроссели фильтрации для DC сетей: корпусные и бескорпусные, с подмагничиванием и без'
 # виды дросселей по ТУ ТЛДР.670109.001 (п. 1.2–1.4): К — корпусное исполнение, П — с подмагничиванием

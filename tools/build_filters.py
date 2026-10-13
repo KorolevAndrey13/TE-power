@@ -19,13 +19,14 @@ SERIES = [
                 ('Вносимое затухание:', ['0,15…0,3 МГц — 30 дБ;', '0,3…1 МГц — 40 дБ;', '1…10 МГц — 50 дБ;', '10…30 МГц — 60 дБ.']),
                 'Максимальный импульсный ток защиты 250–1200 А', 'Прочность изоляции вход/корпус, выход/корпус 1000 В',
                 'Согласованы по посадочным размерам с модулями серии TESD', 'Расширенная гарантия 20 лет'],
-      sizes=[dict(name='TEFD2.5', slug='tefd2-5', cur='2,5', dims='40×20,2×10,15', imp='250–1200 А', iso='=1000 В', compat='TESD5, TESD10, TESD15'),
-             dict(name='TEFD5', slug='tefd5', cur='5', dims='50×30,2×10,15', imp='250–1200 А', iso='=1000 В', compat='TESD20, TESD30'),
-             dict(name='TEFD10', slug='tefd10', cur='10', dims='57,5×33,2×10,15', imp='250–1200 А', iso='=1000 В', compat='TESD40, TESD60'),
-             dict(name='TEFD20', slug='tefd20', cur='20', dims='67,5×40,2×10,15', imp='250–1200 А', iso='=1000 В', compat='TESD100, TESD150, TESD200'),
-             dict(name='TEFD40', slug='tefd40', cur='40', dims='84,5×52,5×12,85', imp='250–1200 А', iso='=1000 В', compat='TESD500')],
+      sizes=[dict(name='TEFD2.5', ds='tefd/ДШ-TEFD2.5.pdf', slug='tefd2-5', cur='2,5', dims='40×20,2×10,15', imp='250–1200 А', iso='=1000 В', compat='TESD5, TESD10, TESD15'),
+             dict(name='TEFD5', ds='tefd/ДШ-TEFD5.pdf', slug='tefd5', cur='5', dims='50×30,2×10,15', imp='250–1200 А', iso='=1000 В', compat='TESD20, TESD30'),
+             dict(name='TEFD10', ds='tefd/ДШ-TEFD10.pdf', slug='tefd10', cur='10', dims='57,5×33,2×10,15', imp='250–1200 А', iso='=1000 В', compat='TESD40, TESD60'),
+             dict(name='TEFD20', ds='tefd/ДШ-TEFD20.pdf', slug='tefd20', cur='20', dims='67,5×40,2×10,15', imp='250–1200 А', iso='=1000 В', compat='TESD100, TESD150, TESD200'),
+             dict(name='TEFD40', ds='tefd/ДШ-TEFD40.pdf', slug='tefd40', cur='40', dims='84,5×52,5×12,85', imp='250–1200 А', iso='=1000 В', compat='TESD500')],
       related=[('tefs.html', 'TEFS'), ('tpf.html', 'ТПФ'), ('tefa.html', 'TEFA')]),
  dict(slug='tefa', name='TEFA', subtitle='Модули защиты и фильтрации для однофазных AC сетей',
+      docs=[('ТУ', 'tu', 'tefa/ТУ-TEFA.pdf', 'Технические условия TEFA')],
       photo='https://te-power.ru/wp-content/uploads/TEFA20241209-387x200.png',
       inputs=[('115', '~115 В (83…138 В)'), ('230', '~230 В (182…264 В)'), ('230W', '~230 В (100…264 В)')],
       bodies=[('С', 'клеммные колодки'), ('Н', 'ножевые контакты')], body_prefix='S',
@@ -35,10 +36,10 @@ SERIES = [
                 'Рабочая температура корпуса до −50…+85 °C', 'Максимальный импульсный ток защиты 1200 А',
                 'Прочность изоляции вход/корпус, выход/корпус 1000 В', 'Рекомендуются к применению с модулями JETAs и TESAV',
                 'Расширенная гарантия 20 лет'],
-      sizes=[dict(name='TEFA1', slug='tefa1', cur='1', dims='67,5×40,2×10,15', imp='1200 А', iso='=1000 В', compat='JETAs30, JETAs40, JETAs60'),
-             dict(name='TEFA5', slug='tefa5', cur='5', dims='101×51×19', imp='1200 А', iso='=1000 В', compat='JETAs80 … JETAs300'),
-             dict(name='TEFA10', slug='tefa10', cur='10', dims='111×61×21', imp='1200 А', iso='=1000 В', compat='JETAs500, JETAs600, JETAs700'),
-             dict(name='TEFA20', slug='tefa20', cur='20', dims='134×84×27,5', imp='1200 А', iso='=1000 В', compat='JETAs1000 … JETAs3000')],
+      sizes=[dict(name='TEFA1', ds='tefa/ДШ-TEFA1.pdf', slug='tefa1', cur='1', dims='67,5×40,2×10,15', imp='1200 А', iso='=1000 В', compat='JETAs30, JETAs40, JETAs60'),
+             dict(name='TEFA5', ds='tefa/ДШ-TEFA5.pdf', slug='tefa5', cur='5', dims='101×51×19', imp='1200 А', iso='=1000 В', compat='JETAs80 … JETAs300'),
+             dict(name='TEFA10', ds='tefa/ДШ-TEFA10.pdf', slug='tefa10', cur='10', dims='111×61×21', imp='1200 А', iso='=1000 В', compat='JETAs500, JETAs600, JETAs700'),
+             dict(name='TEFA20', ds='tefa/ДШ-TEFA20.pdf', slug='tefa20', cur='20', dims='134×84×27,5', imp='1200 А', iso='=1000 В', compat='JETAs1000 … JETAs3000')],
       related=[('tpf.html', 'ТПФ'), ('tefd.html', 'TEFD'), ('tefs.html', 'TEFS')]),
  dict(slug='tpf', name='ТПФ', subtitle='Модуль защиты и фильтрации для трёхфазных AC сетей',
       photo='../content/images/tpf.webp',
@@ -49,29 +50,36 @@ SERIES = [
                 'Входное напряжение ~380 В (304…456 В), 3 фазы', 'Рабочая температура корпуса до −50…+85 °C',
                 'Вносимое затухание 30 дБ (1–10 МГц)', 'Прочность изоляции вход/корпус, выход/корпус ~1500 В',
                 'Рекомендуется к применению с модулями серии ТПС', 'Расширенная гарантия 20 лет'],
-      sizes=[dict(name='ТПФ15', slug='tpf15', cur='15', dims='134×84×28', imp='—', iso='~1500 В', compat='ТПС500 … ТПС5000')],
+      sizes=[dict(name='ТПФ15', ds='tpf/ДШ-ТПФ15.pdf', slug='tpf15', cur='15', dims='134×84×28', imp='—', iso='~1500 В', compat='ТПС500 … ТПС5000')],
       related=[('tefa.html', 'TEFA'), ('tefd.html', 'TEFD'), ('tefs.html', 'TEFS')]),
  # TEFS: схемы наименования нет ни в каталоге, ни в документах — только страница серии
  dict(slug='tefs', name='TEFS', subtitle='Модули защиты для DC сетей', no_sizes=True,
+      docs=[('ТУ', 'tu', 'tefs/ТУ-TEFS.pdf', 'Технические условия TEFS')],
       photo='../content/images/tesav100.png',
       inputs=[('', '=9…36 В'), ('', '=17…80 В')], bodies=[], body_prefix='', temps=[('', '−60…+125 °C')],
       features=['Номинальный ток 5, 10 и 20 А',
                 ('Защиты:', ['от обратной полярности;', 'от превышения выходного тока;', 'от повышенного и пониженного напряжения.']),
                 'Дистанционное включение и выключение', 'Выводы индикации режимов работы',
                 'Входное напряжение 9…36 В или 17…80 В', 'Рабочая температура корпуса −60…+125 °C', 'Расширенная гарантия 20 лет'],
-      sizes=[dict(name='TEFS5', cur='5', dims='57,5×40,2×10,15', imp='—', iso='—', compat='—'),
-             dict(name='TEFS10', cur='10', dims='72,5×52,5×12,85', imp='—', iso='—', compat='—'),
-             dict(name='TEFS20', cur='20', dims='95×67,7×12,85', imp='—', iso='—', compat='—')],
+      sizes=[dict(name='TEFS5', ds='tefs/ДШ-TEFS5.pdf', cur='5', dims='57,5×40,2×10,15', imp='—', iso='—', compat='—'),
+             dict(name='TEFS10', ds='tefs/ДШ-TEFS10.pdf', cur='10', dims='72,5×52,5×12,85', imp='—', iso='—', compat='—'),
+             dict(name='TEFS20', ds='tefs/ДШ-TEFS20.pdf', cur='20', dims='95×67,7×12,85', imp='—', iso='—', compat='—')],
       related=[('tefd.html', 'TEFD'), ('tefa.html', 'TEFA'), ('tpf.html', 'ТПФ')]),
 ]
 
-def doc_list(ser):
-    # ссылки на документы серии из content/docs; пусто — если документов нет
-    if not ser.get('docs'):
+def doc_list(ser, size=None):
+    # ссылки на документы из content/docs: на странице серии — документы серии и даташиты всех типоразмеров,
+    # на странице типоразмера — его даташит и документы серии; пусто — если документов нет
+    sizes = [size] if size else ser['sizes']
+    docs = ([('ДШ', 'ds', s['ds'], 'Даташит ' + s['name']) for s in sizes if s.get('ds')] if size else [])
+    docs += ser.get('docs', [])
+    if not size:
+        docs += [('ДШ', 'ds', s['ds'], 'Даташит ' + s['name']) for s in sizes if s.get('ds')]
+    if not docs:
         return ''
     return '<ul class="doc-list">\n      ' + '\n      '.join(
         f'<li><a class="doc-list__link" href="../content/docs/{f}" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--{c}">{t}</span>{label}</a></li>'
-        for t, c, f, label in ser['docs']) + '\n    </ul>\n    '
+        for t, c, f, label in docs) + '\n    </ul>\n    '
 
 def split_page(path):
     html = io.open(path, encoding='utf-8').read().replace('\r\n', '\n')
@@ -217,7 +225,7 @@ def build(ser):
   <div class="series-intro__col">
     <div class="series-intro__photo"><img src="{ser['photo']}" alt="Модуль {s['name']}"></div>
     <h2 class="series-intro__title">Документация</h2>
-    {doc_list(ser)}<p class="series-intro__more">Даташит и 3D-модель — по запросу у менеджера: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>.</p>
+    {doc_list(ser, s)}<p class="series-intro__more">Даташит и 3D-модель — по запросу у менеджера: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>.</p>
   </div>
 </section>
 
