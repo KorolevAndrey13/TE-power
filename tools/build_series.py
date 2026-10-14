@@ -294,8 +294,11 @@ def feature_html(s, ser):
             items.append(f'<li>{f}</li>')
     return '\n      '.join(items)
 
+DOC_ORDER = {'ТУ': 0, 'ДШ': 1, '3D': 2}
+
 def doc_list(ser, extra=None, tail=None):
     docs = list(extra or []) + ser['docs'] + list(tail or [])
+    docs.sort(key=lambda d: DOC_ORDER.get(d[0], 9))  # сначала ТУ, затем даташиты, затем 3D-модели
     seen, out = set(), []
     for t, c, f, label in docs:
         if f in seen:

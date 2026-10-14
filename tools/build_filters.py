@@ -77,6 +77,7 @@ def doc_list(ser, size=None):
         docs += [('ДШ', 'ds', s['ds'], 'Даташит ' + s['name']) for s in sizes if s.get('ds')]
     if not docs:
         return ''
+    docs.sort(key=lambda d: {'ТУ': 0, 'ДШ': 1, '3D': 2}.get(d[0], 9))  # сначала ТУ, затем даташиты, затем 3D
     return '<ul class="doc-list">\n      ' + '\n      '.join(
         f'<li><a class="doc-list__link" href="../content/docs/{f}" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--{c}">{t}</span>{label}</a></li>'
         for t, c, f, label in docs) + '\n    </ul>\n    '

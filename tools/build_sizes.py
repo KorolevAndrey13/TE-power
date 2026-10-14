@@ -135,8 +135,8 @@ for slug, (title, ds, photo, dims, inputs, suffix, models, eff_max, analogs) in 
     <div class="series-intro__photo"><img src="../content/images/{photo}" alt="Модуль {title}"></div>
     <h2 class="series-intro__title">Документация</h2>
     <ul class="doc-list">
-      <li><a class="doc-list__link" href="../content/docs/tesd/{ds}" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--ds">ДШ</span>Даташит {title}</a></li>
       <li><a class="doc-list__link" href="../content/docs/tesd/ТУ-TESD.pdf" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--tu">ТУ</span>Технические условия ТЛДР.436630.001 ТУ</a></li>
+      <li><a class="doc-list__link" href="../content/docs/tesd/{ds}" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--ds">ДШ</span>Даташит {title}</a></li>
     </ul>
   </div>
 </section>
