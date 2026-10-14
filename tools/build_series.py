@@ -430,7 +430,6 @@ def build(ser):
     <ul class="doc-list">
       {doc_list(ser, tail=[d for x in ser['sizes'] for d in size_docs(x, x['name'])])}
     </ul>
-    <p class="series-intro__more">3D-модели и остальные файлы — на странице <a href="../podderzhka.html" class="note__link">Поддержка</a> или по запросу у менеджера.</p>
   </div>
 </section>
 

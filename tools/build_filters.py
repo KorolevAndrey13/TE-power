@@ -159,7 +159,7 @@ def build(ser):
   <div class="series-intro__col">
     <div class="series-intro__photo"><img src="{ser['photo']}" alt="Модуль {ser['name']}"></div>
     <h2 class="series-intro__title">Документация серии</h2>
-    {doc_list(ser)}<p class="series-intro__more">Даташиты, технические условия и 3D-модели по этой серии — по запросу у менеджера: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>. Также см. страницу <a href="../podderzhka.html" class="note__link">Техническая поддержка</a>.</p>
+    {doc_list(ser)}
   </div>
 </section>
 
@@ -226,7 +226,7 @@ def build(ser):
   <div class="series-intro__col">
     <div class="series-intro__photo"><img src="{ser['photo']}" alt="Модуль {s['name']}"></div>
     <h2 class="series-intro__title">Документация</h2>
-    {doc_list(ser, s)}<p class="series-intro__more">Даташит и 3D-модель — по запросу у менеджера: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>.</p>
+    {doc_list(ser, s)}
   </div>
 </section>
 

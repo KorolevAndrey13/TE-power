@@ -112,7 +112,7 @@ body = f'''<div class="wrap breadcrumbs"><a href="../produktsiya.html" class="br
   <div class="series-intro__col">
     <div class="series-intro__photo"><img src="{photo}" alt="Дроссели {TITLE}"></div>
     <h2 class="series-intro__title">Документация серии</h2>
-    {DOCS}<p class="series-intro__more">Даташиты и 3D-модели — по запросу у менеджера: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>. Также см. страницу <a href="../podderzhka.html" class="note__link">Техническая поддержка</a>.</p>
+    {DOCS}
   </div>
 </section>
 
