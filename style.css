@@ -502,6 +502,7 @@ span.series-models__model{color:var(--graphite);}
   background:var(--panel); color:var(--graphite); width:100%;
 }
 .form__input:focus{outline:2px solid var(--accent); outline-offset:1px;}
+.form__honey{position:absolute; left:-9999px; width:1px; height:1px; opacity:0;}
 .form__required-note{font-size:12.5px; color:var(--graphite-3);}
 
 /* ==========================================================

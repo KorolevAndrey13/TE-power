@@ -170,12 +170,27 @@ with io.open(os.path.join(OUT, 'nginx.conf'), 'w', encoding='utf-8', newline='\n
 # .htaccess нового сайта на хостинге REG.RU (te-power.ru): переадресации старых адресов WordPress на этом же домене.
 # На GitHub Pages файл не действует, выкладывается на хостинг вместе с сайтом.
 DOMAIN = 'https://te-power.ru/'
+# Политика источников: скрипты и стили только свои (плюс встроенные в страницы), шрифты Google,
+# заявки из корзины — на formsubmit.co. Сайт нельзя встроить в чужой фрейм.
+CSP = ("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+       "font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co; "
+       "object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'")
 with io.open(os.path.join(ROOT, '.htaccess'), 'w', encoding='utf-8', newline='\n') as f:
     f.write('# Собирается tools/build_redirects.py — вручную не править.\n'
             'AddDefaultCharset UTF-8\n'
             'DirectoryIndex index.html\n'          # главная — index.html, даже если на сервере остался index.php WordPress
             'Options -Indexes\n'
             'ErrorDocument 404 /404.html\n\n'
+            '# Служебные файлы (.git, .env и т.п.) не отдаются\n'
+            '<FilesMatch "^\\.">\n  Require all denied\n</FilesMatch>\n\n'
+            '# Заголовки безопасности\n'
+            '<IfModule mod_headers.c>\n'
+            '  Header always set X-Content-Type-Options "nosniff"\n'
+            '  Header always set X-Frame-Options "SAMEORIGIN"\n'
+            '  Header always set Referrer-Policy "strict-origin-when-cross-origin"\n'
+            '  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"\n'
+            f'  Header always set Content-Security-Policy "{CSP}"\n'
+            '</IfModule>\n\n'
             '# Старые адреса te-power.ru (WordPress) → страницы и файлы нового сайта\n')
     for old, new, _, _ in rows:
         if old.rstrip('/') and new != '':

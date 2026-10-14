@@ -105,6 +105,7 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
       <h3 class="callback-modal__title">Оформить заявку</h3>
       <p class="callback-modal__note">Заявка со списком модулей придёт менеджеру. Мы свяжемся с вами, чтобы уточнить сроки и стоимость.</p>
       <form class="form order-modal__form" onsubmit="return submitCartOrder(event)">
+        <input class="form__honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="form__field"><label class="form__label">ФИО *</label><input class="form__input" type="text" name="fio" required pattern=".*\S.*" autocomplete="name"></div>
         <div class="form__field"><label class="form__label">Компания *</label><input class="form__input" type="text" name="company" required pattern=".*\S.*" autocomplete="organization"></div>
         <div class="form__field"><label class="form__label">Телефон *</label><input class="form__input" type="tel" name="phone" required pattern=".*\S.*" autocomplete="tel"></div>

@@ -474,7 +474,8 @@ function submitCartOrder(e){
   errorEl.hidden = true;
   btn.disabled = true;
   btn.textContent = 'Отправляем…';
-  var payload = {_subject: subject, _template: 'table', _captcha: 'false'};
+  // _honey — скрытое поле-ловушка: его заполняют только боты, такие заявки FormSubmit отбрасывает
+  var payload = {_subject: subject, _template: 'table', _captcha: 'false', _honey: f._honey ? f._honey.value : ''};
   if(fields['E-mail'].indexOf('@') !== -1) payload._replyto = fields['E-mail'];
   Object.keys(fields).forEach(function(k){ payload[k] = fields[k]; });
 

@@ -4,6 +4,20 @@ DirectoryIndex index.html
 Options -Indexes
 ErrorDocument 404 /404.html
 
+# Служебные файлы (.git, .env и т.п.) не отдаются
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# Заголовки безопасности
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"
+</IfModule>
+
 # Старые адреса te-power.ru (WordPress) → страницы и файлы нового сайта
 Redirect 301 "/news/" "https://te-power.ru/novosti.html"
 Redirect 301 "/contact/" "https://te-power.ru/kontakty.html"
