@@ -397,6 +397,7 @@ button{font-family:inherit; cursor:pointer;}
 .doc-icon--tu{color:var(--doc-tu);}
 .doc-icon--ds{color:var(--doc-ds);}
 .doc-icon--rp{color:var(--doc-rp);}
+.doc-icon--pdf{color:var(--accent);}
 
 /* ---- series-models: таблица моделей с объединёнными ячейками ---- */
 .series-models{padding-top:36px;}
