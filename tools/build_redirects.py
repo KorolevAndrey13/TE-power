@@ -167,6 +167,22 @@ with io.open(os.path.join(OUT, 'nginx.conf'), 'w', encoding='utf-8', newline='\n
     f.write('# Переадресация на новый сайт: вставить в блок server { … } старого сайта.\n')
     for old, new, _, _ in rows:
         f.write(f'location = "{old}" {{ return 301 {full(new)}; }}\n')
+# .htaccess нового сайта на хостинге REG.RU (te-power.ru): переадресации старых адресов WordPress на этом же домене.
+# На GitHub Pages файл не действует, выкладывается на хостинг вместе с сайтом.
+DOMAIN = 'https://te-power.ru/'
+with io.open(os.path.join(ROOT, '.htaccess'), 'w', encoding='utf-8', newline='\n') as f:
+    f.write('# Собирается tools/build_redirects.py — вручную не править.\n'
+            'AddDefaultCharset UTF-8\n'
+            'DirectoryIndex index.html\n'          # главная — index.html, даже если на сервере остался index.php WordPress
+            'Options -Indexes\n'
+            'ErrorDocument 404 /404.html\n\n'
+            '# Старые адреса te-power.ru (WordPress) → страницы и файлы нового сайта\n')
+    for old, new, _, _ in rows:
+        if old.rstrip('/') and new != '':
+            f.write(f'Redirect 301 "{old}" "{DOMAIN}{quote(new, safe="/.-_")}"\n')
+        elif old.rstrip('/'):
+            f.write(f'Redirect 301 "{old}" "{DOMAIN}"\n')
+
 with io.open(os.path.join(OUT, 'not-mapped.txt'), 'w', encoding='utf-8', newline='\n') as f:
     f.write('# Файлы старого сайта, которым на новом сайте нет замены (старые серии, каталоги прошлых лет, презентации).\n')
     f.write('\n'.join(missing) + '\n')

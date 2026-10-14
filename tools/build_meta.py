@@ -52,7 +52,7 @@ def esc(s):
     return html.escape(s, quote=True)
 
 pages = sorted(f.replace(os.sep, '/') for f in glob.glob('*.html', root_dir=ROOT) + glob.glob('serii/*.html', root_dir=ROOT)
-               + glob.glob('novosti/*.html', root_dir=ROOT))
+               + glob.glob('novosti/*.html', root_dir=ROOT) if f != '404.html')  # 404 собирает build_404.py
 sitemap = []
 for rel in pages:
     path = os.path.join(ROOT, rel)
