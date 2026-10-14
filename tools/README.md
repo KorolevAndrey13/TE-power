@@ -18,6 +18,7 @@ python tools/build_all.py
 | `build_filters.py` | TEFD, TEFA, ТПФ, TEFS | `SERIES` |
 | `build_chokes.py` | ДФТ/ДФТК, ДФТП/ДФТПК | `SERIES` |
 | `build_docs.py` | раздел «Документация» на `podderzhka.html` | `data/podderzhka-original.html` + списки в файле |
+| `build_meta.py` | метатеги всех страниц (описание, превью для соцсетей, canonical, иконка), `sitemap.xml`, `robots.txt` — запускается последним | `BASE` (адрес сайта) и `DESCRIPTIONS` в начале файла |
 
 Скрипты перезаписывают свои страницы целиком: правки, внесённые в эти страницы вручную,
 при следующей сборке пропадут — менять нужно данные в скриптах. Шапка и подвал страниц

@@ -4,7 +4,7 @@ import os, subprocess, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 # порядок важен: TESD-страницы типоразмеров берут шапку из serii/tesd.html, ТПИ — из serii/tpd.html
 STEPS = ['build_tesd.py', 'build_sizes.py', 'build_series.py', 'build_tpi.py',
-         'build_filters.py', 'build_chokes.py', 'build_docs.py']
+         'build_filters.py', 'build_chokes.py', 'build_docs.py', 'build_meta.py']  # build_meta — последним
 
 env = dict(os.environ, PYTHONIOENCODING='utf-8')
 for step in STEPS:

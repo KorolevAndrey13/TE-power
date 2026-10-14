@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /TE-power/tools/
+Disallow: /TE-power/korzina.html
+
+Sitemap: https://korolevandrey13.github.io/TE-power/sitemap.xml
