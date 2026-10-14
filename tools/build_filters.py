@@ -27,7 +27,7 @@ SERIES = [
       related=[('tefs.html', 'TEFS'), ('tpf.html', 'ТПФ'), ('tefa.html', 'TEFA')]),
  dict(slug='tefa', name='TEFA', subtitle='Модули защиты и фильтрации для однофазных AC сетей',
       docs=[('ТУ', 'tu', 'tefa/ТУ-TEFA.pdf', 'Технические условия TEFA')],
-      photo='https://te-power.ru/wp-content/uploads/TEFA20241209-387x200.png',
+      photo='../content/images/tefa.webp',
       inputs=[('115', '~115 В (83…138 В)'), ('230', '~230 В (182…264 В)'), ('230W', '~230 В (100…264 В)')],
       bodies=[('С', 'клеммные колодки'), ('Н', 'ножевые контакты')], body_prefix='S',
       temps=[('N', '−40…+85 °C'), ('P', '−50…+85 °C')],
