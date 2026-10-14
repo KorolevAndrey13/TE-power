@@ -37,7 +37,7 @@ SERIES = [
                   ('TESDs15', '27'): '0,55', ('TESDs15', '36'): '0,41', ('TESDs15', '48'): '0,31', ('TESDs15', '60'): '0,25',
                   ('TESDs15', '±5'): '1,5', ('TESDs15', '±12'): '0,62', ('TESDs15', '±15'): '0,5'}),
    dict(slug='tesds25', photo='../content/images/tesds25.webp', name='TESDs25', models=[('TESDs25', 25)], dims=[('40×20×10,25', 'C')], dual=False, kpd=86,
-        inputs=['12W', '27', '24W'], filt='TEFD2.5', ds='tesds/ДШ-TESDs25.pdf', body_labels={'C': 'с крепёжными отверстиями'},
+        inputs=['12W', '27', '24W'], filt='TEFD2.5', ds='tesds/ДШ-TESDs25.pdf', body_labels={'C': 'без фланцев'},
         currents={('TESDs25', '5'): '5', ('TESDs25', '12'): '2,1', ('TESDs25', '15'): '1,67', ('TESDs25', '24'): '1',
                   ('TESDs25', '27'): '0,92', ('TESDs25', '36'): '0,7', ('TESDs25', '48'): '0,52', ('TESDs25', '60'): '0,42'}),
    dict(slug='tesds40', name='TESDs40', models=[('TESDs40', 40)], dims=[('50×30×11', 'U')], dual=True, kpd=92,
