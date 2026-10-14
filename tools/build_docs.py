@@ -42,16 +42,16 @@ docs += [
     dict(series='tpi', type='ДШ', name='ТПИ2500', href='content/docs/tpi/ДШ-ТПИ2500.pdf'),
 ]
 # 3D-модели (STEP) — архивом на серию
-docs.append(dict(series='jetas', type='3D', name='JETAs', label='3D-модели JETAs (архив STEP, 13 моделей)', href='content/docs/jetas/3D-JETAs.zip'))
-docs.append(dict(series='tefa', type='3D', name='TEFA', label='3D-модели TEFA (архив STEP, 4 модели)', href='content/docs/tefa/3D-TEFA.zip'))
-docs.append(dict(series='tefd', type='3D', name='TEFD', label='3D-модели TEFD (архив STEP, 5 моделей)', href='content/docs/tefd/3D-TEFD.zip'))
-docs.append(dict(series='tefs', type='3D', name='TEFS', label='3D-модели TEFS (архив STEP, 3 модели)', href='content/docs/tefs/3D-TEFS.zip'))
-docs.append(dict(series='tesav', type='3D', name='TESAV', label='3D-модели TESAV (архив STEP, 5 моделей)', href='content/docs/tesav/3D-TESAV.zip'))
-docs.append(dict(series='tesd', type='3D', name='TESD', label='3D-модели TESD (архив STEP, 8 моделей)', href='content/docs/tesd/3D-TESD.zip'))
-docs.append(dict(series='tesds', type='3D', name='TESDs', label='3D-модели TESDs (архив STEP, 14 моделей)', href='content/docs/tesds/3D-TESDs.zip'))
-docs.append(dict(series='tesh', type='3D', name='TESH', label='3D-модели TESH (архив STEP, 5 моделей)', href='content/docs/tesh/3D-TESH.zip'))
-docs.append(dict(series='tps', type='3D', name='ТПС', label='3D-модели ТПС (архив STEP, 3 модели)', href='content/docs/tps/3D-ТПС.zip'))
-docs.append(dict(series='tpf', type='3D', name='ТПФ', label='3D-модели ТПФ (архив STEP, 1 модель)', href='content/docs/tpf/3D-ТПФ.zip'))
+docs.append(dict(series='jetas', type='3D', name='JETAs', label='3D-модели JETAs', href='content/docs/jetas/3D-JETAs.zip'))
+docs.append(dict(series='tefa', type='3D', name='TEFA', label='3D-модели TEFA', href='content/docs/tefa/3D-TEFA.zip'))
+docs.append(dict(series='tefd', type='3D', name='TEFD', label='3D-модели TEFD', href='content/docs/tefd/3D-TEFD.zip'))
+docs.append(dict(series='tefs', type='3D', name='TEFS', label='3D-модели TEFS', href='content/docs/tefs/3D-TEFS.zip'))
+docs.append(dict(series='tesav', type='3D', name='TESAV', label='3D-модели TESAV', href='content/docs/tesav/3D-TESAV.zip'))
+docs.append(dict(series='tesd', type='3D', name='TESD', label='3D-модели TESD', href='content/docs/tesd/3D-TESD.zip'))
+docs.append(dict(series='tesds', type='3D', name='TESDs', label='3D-модели TESDs', href='content/docs/tesds/3D-TESDs.zip'))
+docs.append(dict(series='tesh', type='3D', name='TESH', label='3D-модели TESH', href='content/docs/tesh/3D-TESH.zip'))
+docs.append(dict(series='tps', type='3D', name='ТПС', label='3D-модели ТПС', href='content/docs/tps/3D-ТПС.zip'))
+docs.append(dict(series='tpf', type='3D', name='ТПФ', label='3D-модели ТПФ', href='content/docs/tpf/3D-ТПФ.zip'))
 RP_TESD = 'content/docs/common/РП-TESD-TESDs.pdf'
 RP_AC = 'content/docs/common/РП-JETAs-ТПС.pdf'
 RAD = 'content/docs/common/Рекомендации-по-выбору-радиатора.pdf'
