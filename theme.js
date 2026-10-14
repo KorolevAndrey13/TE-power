@@ -223,7 +223,7 @@ function initModelFilters(){
     var rows = table.querySelectorAll('tbody tr:not(.size-models__empty)');
     var empty = table.querySelector('.size-models__empty');
     var section = table.closest('.series-models');
-    var toggle = section.querySelector('.size-models__toggle');
+    var toggle = section.querySelector('.series-models__toggle');
     var collapsed = true;
     function apply(){
       var matched = 0;
@@ -255,9 +255,9 @@ function initModelFilters(){
 document.addEventListener('DOMContentLoaded', initModelFilters);
 
 // Затемнение у края таблицы, пока её можно прокрутить вбок (узкие экраны).
-// Каждый .series-models__scroll оборачивается в .scroll-shade; классы --left/--right включают тень.
+// Каждый .table-scroll оборачивается в .scroll-shade; классы --left/--right включают тень.
 function initScrollShades(){
-  document.querySelectorAll('.series-models__scroll').forEach(function(box){
+  document.querySelectorAll('.table-scroll').forEach(function(box){
     if(box.parentNode.classList.contains('scroll-shade')) return;
     var wrap = document.createElement('div');
     wrap.className = 'scroll-shade';
@@ -497,7 +497,7 @@ function submitCartOrder(e){
     errorEl.appendChild(document.createTextNode('Не удалось отправить заявку. Попробуйте ещё раз или '));
     var a = document.createElement('a');
     a.href = mailtoFallback();
-    a.className = 'note__link';
+    a.className = 'text-link';
     a.textContent = 'отправьте её письмом';
     errorEl.appendChild(a);
     errorEl.appendChild(document.createTextNode('.'));

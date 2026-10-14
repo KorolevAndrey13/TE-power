@@ -168,7 +168,7 @@ def build(ser):
 
 <section class="series-models">
   <h2 class="series-models__title">Модели</h2>
-  <div class="series-models__scroll">
+  <div class="table-scroll">
   <table class="series-models__table">
   <thead><tr>{''.join(f'<th>{h}</th>' for h in heads)}</tr></thead>
   <tbody>
@@ -214,8 +214,8 @@ def build(ser):
             params.append(('Импульсный ток защиты', s['imp']))
         params += [('Прочность изоляции', s['iso']), ('Совместимые модули', s['compat']), ('Гарантия', '20 лет')]
         def val(v):
-            return ''.join(f'<span class="spec-panel__row-line">{x}</span>' for x in v) if isinstance(v, list) else v
-        params_html = ''.join(f'<div class="spec-panel__row"><span>{a}</span><span class="spec-panel__row-value">{val(v)}</span></div>' for a, v in params)
+            return ''.join(f'<span class="spec-list__row-line">{x}</span>' for x in v) if isinstance(v, list) else v
+        params_html = '<div class="spec-list">' + ''.join(f'<div class="spec-list__row"><span>{a}</span><span class="spec-list__row-value">{val(v)}</span></div>' for a, v in params) + '</div>'
         sbody = f'''<div class="wrap breadcrumbs"><a href="../produktsiya.html" class="breadcrumbs__link">Продукция</a> / <a href="../produktsiya.html#{CAT[1]}" class="breadcrumbs__link">{CAT[0]}</a> / <a href="{ser['slug']}.html" class="breadcrumbs__link">{ser['name']}</a> / {s['name']}</div>
 <section class="series-hero series-hero--plain"><div class="wrap series-hero__row">
   <div><h1 class="series-hero__title">{s['name']}</h1><p class="series-hero__subtitle">{ser['subtitle']}</p></div>
@@ -235,7 +235,7 @@ def build(ser):
 
 <section class="series-models">
   <h2 class="series-models__title">Модельный ряд {s['name']}</h2>
-  <div class="series-models__scroll">
+  <div class="table-scroll">
   <table class="series-models__table size-models" data-model-filter>
   <thead>
   <tr><th>Наименование</th><th>Проходной ток</th><th>Входное напряжение</th><th>Исполнение корпуса</th><th>Размеры*</th><th>Диапазон рабочих температур</th><th>Заказ</th></tr>
@@ -254,7 +254,7 @@ def build(ser):
   </tbody>
   </table>
   </div>
-  <button type="button" class="size-models__toggle" hidden></button>
+  <button type="button" class="series-models__toggle" hidden></button>
   <div class="series-models__notes">
     <p>* Без учёта длины выводов.</p>
   </div>

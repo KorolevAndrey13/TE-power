@@ -64,7 +64,7 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
 <div class="wrap contacts">
   <div class="contacts__info">
     <div class="eyebrow">Контакты</div>
-    <h1 style="font-size:30px; font-weight:800; margin:12px 0 18px;">Свяжитесь с нами</h1>
+    <h1 class="contacts__title">Свяжитесь с нами</h1>
     <div>
       394036, г. Воронеж, ул. Комиссаржевской, 10<br>
       <a href="tel:+74732574041">+7 (473) 257-40-41</a><br>
@@ -74,7 +74,7 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
   </div>
   <div class="contacts__form-card">
     <h3 class="contacts__form-title">Оставить заявку</h3>
-    <p class="contacts__form-note">Заявка откроется в вашей почтовой программе и отправится на <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>.</p>
+    <p class="contacts__form-note">Заявка откроется в вашей почтовой программе и отправится на <a href="mailto:russia@te-power.ru" class="text-link">russia@te-power.ru</a>.</p>
     <form class="form" onsubmit="return sendToEmail(event)">
       <div class="form__field"><label class="form__label">Имя *</label><input class="form__input" type="text" name="name" required pattern=".*\S.*"></div>
       <div class="form__field"><label class="form__label">Название компании *</label><input class="form__input" type="text" name="company" required pattern=".*\S.*"></div>

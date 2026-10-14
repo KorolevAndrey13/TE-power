@@ -118,8 +118,8 @@ for slug, (title, ds, photo, dims, inputs, suffix, models, eff_max, analogs) in 
     if analogs:
         params.append(('Pin-to-pin аналог', analogs))
     def val(b):
-        return ''.join(f'<span class="spec-panel__row-line">{x}</span>' for x in b) if isinstance(b, list) else b
-    params_html = ''.join(f'<div class="spec-panel__row"><span>{a}</span><span class="spec-panel__row-value">{val(b)}</span></div>' for a, b in params)
+        return ''.join(f'<span class="spec-list__row-line">{x}</span>' for x in b) if isinstance(b, list) else b
+    params_html = '<div class="spec-list">' + ''.join(f'<div class="spec-list__row"><span>{a}</span><span class="spec-list__row-value">{val(b)}</span></div>' for a, b in params) + '</div>'
 
     body = f'''<div class="wrap breadcrumbs"><a href="../produktsiya.html" class="breadcrumbs__link">Продукция</a> / <a href="../produktsiya.html#dc-dc-moduli" class="breadcrumbs__link">DC/DC модули</a> / <a href="tesd.html" class="breadcrumbs__link">TESD</a> / {title}</div>
 <section class="series-hero series-hero--plain"><div class="wrap series-hero__row">
@@ -143,7 +143,7 @@ for slug, (title, ds, photo, dims, inputs, suffix, models, eff_max, analogs) in 
 
 <section class="series-models">
   <h2 class="series-models__title">Модельный ряд {title}</h2>
-  <div class="series-models__scroll">
+  <div class="table-scroll">
   <table class="series-models__table size-models" data-model-filter>
   <thead>
   <tr><th>Наименование</th><th>Мощность</th><th>Входное напряжение</th><th>Выходное напряжение*</th>{'<th>Количество каналов</th>' if has_dual else ''}<th>Макс. вых. ток</th><th>Размеры**</th><th>Диапазон рабочих температур</th><th>Заказ</th></tr>
@@ -165,9 +165,9 @@ for slug, (title, ds, photo, dims, inputs, suffix, models, eff_max, analogs) in 
   </tbody>
   </table>
   </div>
-  <button type="button" class="size-models__toggle" hidden></button>
+  <button type="button" class="series-models__toggle" hidden></button>
   <div class="series-models__notes">
-    <p>* Модули с нестандартным выходным напряжением — по запросу: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>.</p>
+    <p>* Модули с нестандартным выходным напряжением — по запросу: <a href="mailto:russia@te-power.ru" class="text-link">russia@te-power.ru</a>.</p>
     <p>** Без учёта длины выводов.</p>
   </div>
 </section>

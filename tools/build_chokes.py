@@ -84,7 +84,7 @@ photo = '../content/images/dft.png'
 tables = []
 for g in GROUPS:
     tables.append(f"""  <h2 class="series-models__title">{g['title']}</h2>
-  <div class="series-models__scroll">
+  <div class="table-scroll">
   <table class="series-models__table">
   <thead><tr>{HEADS}</tr></thead>
   <tbody>
@@ -118,7 +118,7 @@ body = f'''<div class="wrap breadcrumbs"><a href="../produktsiya.html" class="br
 
 <section class="series-models">
   <h2 class="series-models__title">Виды дросселей</h2>
-  <div class="series-models__scroll">
+  <div class="table-scroll">
   <table class="series-models__table">
   <thead><tr><th>Вид</th><th>Бескорпусные</th><th>Корпусные</th></tr></thead>
   <tbody>
@@ -138,7 +138,7 @@ body = f'''<div class="wrap breadcrumbs"><a href="../produktsiya.html" class="br
     <p>Параметры в таблицах — по каталогу, для корпусного исполнения (ДФТК, ДФТПК). Параметры бескорпусных ДФТ и ДФТП — по запросу.</p>
     <p>* В каталоге указано «900–460» — вероятно, опечатка; уточняйте у менеджера.</p>
     <p>** Без учёта длины выводов. Индуктивность — одной обмотки, не менее.</p>
-    <p>Подбор исполнения под требуемые ток и индуктивность — по запросу: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>.</p>
+    <p>Подбор исполнения под требуемые ток и индуктивность — по запросу: <a href="mailto:russia@te-power.ru" class="text-link">russia@te-power.ru</a>.</p>
   </div>
 </section>
 </div>

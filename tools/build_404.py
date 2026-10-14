@@ -15,12 +15,12 @@ base = ('<script>document.write(\'<base href="\' + (location.hostname.slice(-10)
 head = head.replace('<meta charset="UTF-8">', '<meta charset="UTF-8">\n' + base, 1)
 head = head.replace('header__nav-link header__nav-link--active', 'header__nav-link')
 body = '''<section class="section">
-  <div class="wrap" style="padding-top:40px; padding-bottom:80px;">
+  <div class="wrap page">
     <div class="eyebrow">Ошибка 404</div>
-    <h1 class="section__title" style="margin-top:14px;">Страница не найдена</h1>
-    <p style="color:var(--graphite-2); max-width:640px; margin-bottom:26px;">Возможно, страница переехала: сайт ООО «ТЕ» обновился.
+    <h1 class="section__title section__title--spaced">Страница не найдена</h1>
+    <p class="section__lead">Возможно, страница переехала: сайт ООО «ТЕ» обновился.
       Модули и документацию можно найти в каталоге и на странице поддержки.</p>
-    <div style="display:flex; flex-wrap:wrap; gap:12px;">
+    <div class="section__actions">
       <a href="produktsiya.html" class="btn btn--accent">Каталог продукции</a>
       <a href="podderzhka.html" class="btn btn--line">Документация</a>
       <a href="index.html" class="btn btn--line">На главную</a>

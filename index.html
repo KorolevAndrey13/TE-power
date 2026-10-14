@@ -62,7 +62,7 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
 <svg class="header__burger" onclick="toggleMobileNav()" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
 </div></header>
 
-<section class="section" style="padding-top:32px; padding-bottom:32px;">
+<section class="section section--compact">
   <div class="wrap">
     <div class="carousel">
       <div class="carousel__viewport">
@@ -127,11 +127,11 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
   </div>
 </section>
 
-<section class="section" style="background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
-  <div class="wrap">
+<section class="section section--panel">
+  <div class="wrap catalog">
     <div class="eyebrow">Продукция</div>
-    <h2 class="section__title" style="margin-top:14px;">Продукция для ответственных сфер применения</h2>
-    <p style="color:var(--graphite-2); max-width:640px; margin-bottom:30px;">Компания «ТЕ» — разработчик и производитель DC/DC и AC/DC преобразователей, модулей фильтрации и дросселей для промышленной автоматики, транспорта и специальной техники. Полный цикл производства — в России, расширенная гарантия — 20 лет.</p>
+    <h2 class="section__title section__title--spaced">Продукция для ответственных сфер применения</h2>
+    <p class="section__lead">Компания «ТЕ» — разработчик и производитель DC/DC и AC/DC преобразователей, модулей фильтрации и дросселей для промышленной автоматики, транспорта и специальной техники. Полный цикл производства — в России, расширенная гарантия — 20 лет.</p>
     <div class="catalog__grid"><a href="serii/tesd.html" class="product-card">
     <div class="product-card__photo"><img src="content/images/tesd10.webp" alt="TESD" loading="lazy"></div>
     <div class="product-card__body">
@@ -175,7 +175,7 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
       <span class="product-card__power">200–2500 Вт</span>
     </div>
   </a></div>
-    <div style="margin-top:26px;"><a href="produktsiya.html" class="btn btn--accent">Весь каталог продукции →</a></div>
+    <div class="section__actions"><a href="produktsiya.html" class="btn btn--accent">Весь каталог продукции →</a></div>
   </div>
 </section>
 
@@ -183,7 +183,7 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
   <div class="wrap about-teaser">
     <div class="eyebrow">О компании</div>
     <h2 class="section__title about-teaser__title">ООО «ТЕ» — производитель модульных преобразователей и систем электропитания</h2>
-    <p style="color:var(--graphite-2); margin-bottom:18px;">На данный момент мы предоставляем для наших покупателей:</p>
+    <p class="about-teaser__lead">На данный момент мы предоставляем для наших покупателей:</p>
     <ul class="about-teaser__list">
       <li class="about-teaser__list-item">13 серий DC/DC и AC/DC преобразователей;</li>
       <li class="about-teaser__list-item">модули защиты, фильтрации и дроссели;</li>

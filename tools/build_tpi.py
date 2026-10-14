@@ -15,7 +15,7 @@ DS200 = '../content/docs/tpi/ДШ-ТПИ200.pdf'
 DS2500 = '../content/docs/tpi/ДШ-ТПИ2500.pdf'
 PHOTO = '../content/images/tpi200.webp'
 CART_SVG = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="19.5" r="1.4" fill="currentColor"/><circle cx="17" cy="19.5" r="1.4" fill="currentColor"/></svg>'
-REQ = 'Модули с нестандартным выходным напряжением — по запросу: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>.'
+REQ = 'Модули с нестандартным выходным напряжением — по запросу: <a href="mailto:russia@te-power.ru" class="text-link">russia@te-power.ru</a>.'
 
 INPUT = ('27', '=27 В (24…30 В)')
 BODIES = [('У', 'усиленный корпус с фланцами', 'с фланцами'), ('К', 'основание с крышкой и клеммными колодками', 'с клеммными колодками')]
@@ -97,13 +97,13 @@ series_body = f'''<div class="wrap breadcrumbs"><a href="../produktsiya.html" cl
       <li><a class="doc-list__link" href="{DS200}" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--ds">ДШ</span>Даташит ТПИ200</a></li>
       <li><a class="doc-list__link" href="{DS2500}" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--ds">ДШ</span>Даташит ТПИ2500</a></li>
     </ul>
-    <p class="series-intro__more">Технические характеристики и расчёт стоимости — по запросу у менеджера: <a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>, <a href="tel:+74732574041" class="note__link">+7 (473) 257-40-41</a>.</p>
+    <p class="series-intro__more">Технические характеристики и расчёт стоимости — по запросу у менеджера: <a href="mailto:russia@te-power.ru" class="text-link">russia@te-power.ru</a>, <a href="tel:+74732574041" class="text-link">+7 (473) 257-40-41</a>.</p>
   </div>
 </section>
 
 <section class="series-models">
   <h2 class="series-models__title">Модели</h2>
-  <div class="series-models__scroll">
+  <div class="table-scroll">
   <table class="series-models__table">
   <thead><tr><th>Типоразмер</th><th>Мощность</th><th>Размеры**, мм</th><th>Входное напряжение</th><th>Выходное напряжение*</th><th>Макс. вых. ток</th><th>КПД</th><th>Даташит</th></tr></thead>
   <tbody>
@@ -186,8 +186,8 @@ for s in SIZES:
         ('Гарантия', '20 лет'),
     ]
     def val(v):
-        return ''.join(f'<span class="spec-panel__row-line">{x}</span>' for x in v) if isinstance(v, list) else v
-    params_html = ''.join(f'<div class="spec-panel__row"><span>{a}</span><span class="spec-panel__row-value">{val(v)}</span></div>' for a, v in params)
+        return ''.join(f'<span class="spec-list__row-line">{x}</span>' for x in v) if isinstance(v, list) else v
+    params_html = '<div class="spec-list">' + ''.join(f'<div class="spec-list__row"><span>{a}</span><span class="spec-list__row-value">{val(v)}</span></div>' for a, v in params) + '</div>'
     body = f'''<div class="wrap breadcrumbs"><a href="../produktsiya.html" class="breadcrumbs__link">Продукция</a> / <a href="../produktsiya.html#invertory" class="breadcrumbs__link">Инверторы</a> / <a href="tpi.html" class="breadcrumbs__link">ТПИ</a> / {s['name']}</div>
 <section class="series-hero series-hero--plain"><div class="wrap series-hero__row">
   <div><h1 class="series-hero__title">{s['name']}</h1><p class="series-hero__subtitle">Отечественные DC/AC инверторы</p></div>
@@ -209,7 +209,7 @@ for s in SIZES:
 
 <section class="series-models">
   <h2 class="series-models__title">Модельный ряд {s['name']}</h2>
-  <div class="series-models__scroll">
+  <div class="table-scroll">
   <table class="series-models__table size-models size-models--merged">
   <thead>
   <tr><th>Наименование</th><th>Мощность</th><th>Входное напряжение</th><th>Выходное напряжение*</th><th>Макс. вых. ток</th><th>Исполнение корпуса</th><th>Размеры**</th><th>Диапазон рабочих температур</th><th>Заказ</th></tr>

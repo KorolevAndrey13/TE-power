@@ -112,7 +112,7 @@ for gtitle, items in GROUPS:
             f'<div class="docs-browser__head"><h3 class="docs-browser__title">{title}</h3><a href="serii/{key}.html" class="docs-browser__series-link">Страница серии →</a></div>'
             + ''.join(blocks) +
             f'<p class="docs-browser__none"{" hidden" if own else ""}>Документы по этой серии скоро появятся. Их можно запросить у менеджера: '
-            f'<a href="mailto:russia@te-power.ru" class="note__link">russia@te-power.ru</a>.</p></section>')
+            f'<a href="mailto:russia@te-power.ru" class="text-link">russia@te-power.ru</a>.</p></section>')
 
 series_opts = '<option value="">Все серии</option>' + ''.join(f'<option value="{k}">{v}</option>' for _, items in GROUPS for k, v in items)
 type_opts = '<option value="">Все типы</option>' + ''.join(f'<option value="{t}">{TYPE_LABEL[t] if t != "ДШ" else "Даташит"}</option>' for t, _, _ in TYPES).replace('>3D-модель<', '>3D-модель / чертёж<')
