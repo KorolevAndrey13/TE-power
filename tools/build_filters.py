@@ -67,7 +67,7 @@ SERIES = [
       related=[('tefd.html', 'TEFD'), ('tefa.html', 'TEFA'), ('tpf.html', 'ТПФ')]),
 ]
 
-def doc_list(ser, size=None):
+def doc_list(ser, size=None, models3d=False):
     # ссылки на документы из content/docs: на странице серии — документы серии и даташиты всех типоразмеров,
     # на странице типоразмера — его даташит и документы серии; пусто — если документов нет
     sizes = [size] if size else ser['sizes']
@@ -75,6 +75,9 @@ def doc_list(ser, size=None):
     docs += ser.get('docs', [])
     if not size:
         docs += [('ДШ', 'ds', s['ds'], 'Даташит ' + s['name']) for s in sizes if s.get('ds')]
+    f = f"{ser['slug']}/3D-{ser['name']}.zip"  # архив STEP-моделей серии — на странице серии
+    if models3d and os.path.exists(os.path.join(ROOT, 'content/docs', f)):
+        docs.append(('3D', '3d', f, f"3D-модели {ser['name']}"))
     if not docs:
         return ''
     docs.sort(key=lambda d: {'ТУ': 0, 'ДШ': 1, '3D': 2}.get(d[0], 9))  # сначала ТУ, затем даташиты, затем 3D
@@ -159,7 +162,7 @@ def build(ser):
   <div class="series-intro__col">
     <div class="series-intro__photo"><img src="{ser['photo']}" alt="Модуль {ser['name']}"></div>
     <h2 class="series-intro__title">Документация серии</h2>
-    {doc_list(ser)}
+    {doc_list(ser, models3d=True)}
   </div>
 </section>
 

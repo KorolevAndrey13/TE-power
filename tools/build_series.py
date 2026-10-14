@@ -308,6 +308,11 @@ def doc_list(ser, extra=None, tail=None):
         out.append(f'<li><a class="doc-list__link" href="{href}" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--{c}">{t}</span>{label}</a></li>')
     return '\n      '.join(out)
 
+def models3d(ser):
+    # архив STEP-моделей серии (content/docs/<серия>/3D-<имя>.zip), если он есть
+    f = f"{ser['slug']}/3D-{ser['name']}.zip"
+    return [('3D', '3d', f, f"3D-модели {ser['name']}")] if os.path.exists(os.path.join(ROOT, 'content/docs', f)) else []
+
 def size_docs(s, default_name):
     # даташиты типоразмера: основной (ds, подпись ds_name) и дополнительные (ds_more)
     docs = [('ДШ', 'ds', s['ds'], 'Даташит ' + s.get('ds_name', default_name))] if s.get('ds') else []
@@ -428,7 +433,7 @@ def build(ser):
     <div class="series-intro__photo"><img src="{ser['photo']}" alt="Модуль {page_title}"></div>
     <h2 class="series-intro__title">Документация серии</h2>
     <ul class="doc-list">
-      {doc_list(ser, tail=[d for x in ser['sizes'] for d in size_docs(x, x['name'])])}
+      {doc_list(ser, tail=[d for x in ser['sizes'] for d in size_docs(x, x['name'])] + models3d(ser))}
     </ul>
   </div>
 </section>
