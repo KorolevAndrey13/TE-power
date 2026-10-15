@@ -1,5 +1,5 @@
 # Генерирует страницы DC/DC-серий (страница серии + страницы типоразмеров) по образцу TESD.
-# Источники: каталог 2026–2027 (стр. 6, 8, 9, 19), даташит TEH5, ТУ TESDs/TESH.
+# Источники: каталог 2026–2027 (стр. 6, 8, 9, 19), даташит ТЕН5, ТУ TESDs/TESH.
 # Токи, которых нет в документах, считаются как P/U (на канал для двухканальных: P/2/U).
 import io, os, re
 from decimal import Decimal, ROUND_HALF_UP
@@ -73,10 +73,10 @@ SERIES = [
         currents={('TESDs500', '12'): '41,7', ('TESDs500', '15'): '33,3', ('TESDs500', '24'): '20,8', ('TESDs500', '27'): '18,5',
                   ('TESDs500', '36'): '13,9', ('TESDs500', '48'): '10,4', ('TESDs500', '60'): '8,3'}),
   ],
-  related=[('tesd.html', 'TESD'), ('tesh.html', 'TESH'), ('teh.html', 'TEH'), ('tpd.html', 'ТПД')],
+  related=[('tesd.html', 'TESD'), ('tesh.html', 'TESH'), ('ten.html', 'ТЕН'), ('tpd.html', 'ТПД')],
  ),
  dict(
-  slug='teh', name='TEH', page_title='TEH', badge='Новинка',
+  slug='ten', name='ТЕН', page_title='ТЕН', badge='Новинка',
   subtitle='Изолированные DC/DC преобразователи — pin-to-pin аналоги модулей TEN (Traco Power)',
   photo='../content/images/ten.webp',
   inputs=[('12', '12 В', '9…36 В', 'по ГОСТ 54073-2010'), ('27', '27 В', '17…36 В', 'по ГОСТ 19705'),
@@ -85,31 +85,31 @@ SERIES = [
   chan=('С', 'Д'), dual_fmt='slash',
   temps=[('T', '−60…+125 °C'), ('В', '−60…+110 °C')],
   merge_extra=('dims',),
-  docs=[('ДШ', 'ds', 'teh/ДШ-TEH5.pdf', 'Даташит TEH5'), ('ДШ', 'ds', 'teh/TEН8.pdf', 'Даташит TEH8'),
-        ('ДШ', 'ds', 'teh/ТЕНс3.pdf', 'Даташит ТЕНс3')],
+  docs=[('ДШ', 'ds', 'ten/ДШ-ТЕН5.pdf', 'Даташит ТЕН5'), ('ДШ', 'ds', 'ten/ДШ-ТЕН8.pdf', 'Даташит ТЕН8'),
+        ('ДШ', 'ds', 'ten/ДШ-ТЕНс3.pdf', 'Даташит ТЕНс3')],
   features=['Pin-to-pin замена модулей производства Traco Power', 'Выходная мощность от 5 до 40 Вт, КПД до 88 %',
             'Предельная рабочая температура корпуса −60…+125 °C', 'Металлический алюминиевый корпус без фланцев, монтаж на печатную плату',
-            'INPUTS', 'Один или два гальванически развязанных выхода (TEH5, TEH8)',
+            'INPUTS', 'Один или два гальванически развязанных выхода (ТЕН5, ТЕН8)',
             'Регулировка выходного напряжения ±5 % и дистанционное управление',
             'Холостой ход без подгрузки, фиксированная частота преобразования',
             PROTECT, 'Прочность изоляции вход/выход 1500 В', 'Совместимые фильтры ЭМП серии TEFD', 'Расширенная гарантия 20 лет'],
   sizes=[
-   # TEH5 и TEH8 — один корпус, но разная распиновка: отдельные типоразмеры.
-   # Токи и КПД — из даташитов; КПД типоразмера — среднее одноканальных (TEH5: 76, 78, 83, 83; TEH8: 81, 83, 88, 88).
-   dict(slug='teh5', name='TEH5', models=[('TEH5', 5)], dims=[('32×20×10', 'C')], dual_models=['TEH5'], kpd=80, photo='../content/images/ten5.webp',
-        filt='TEFD2.5', ds='teh/ДШ-TEH5.pdf', analog='TEN (Traco Power)',
-        currents={('TEH5', '3.3'): '1,2', ('TEH5', '5'): '1', ('TEH5', '12'): '0,5', ('TEH5', '15'): '0,4',
-                  ('TEH5', '±5'): '0,5', ('TEH5', '±12'): '0,25', ('TEH5', '±15'): '0,2'}),
-   dict(slug='teh8', name='TEH8', models=[('TEH8', 8)], dims=[('32×20×10', 'C')], dual_models=['TEH8'], kpd=85, photo='../content/images/ten5.webp',
-        filt='TEFD2.5', ds='teh/TEН8.pdf', analog='TEN (Traco Power)',
-        currents={('TEH8', '3.3'): '2', ('TEH8', '5'): '1,5', ('TEH8', '12'): '0,665', ('TEH8', '15'): '0,535',
-                  ('TEH8', '±5'): '0,8', ('TEH8', '±12'): '0,335', ('TEH8', '±15'): '0,265'}),
-   # TEH20, TEH30, TEH40 — один корпус, у каждой модели своя страница
-   dict(slug='teh20', name='TEH20', models=[('TEH20', 20)], dims=[('50,8×25,4×10,2', 'C')], dual_models=[], kpd=88,
-        filt='TEFD5', ds='teh/TEН20.pdf', analog='TEN (Traco Power)', photo='../content/images/ten.webp'),
-   dict(slug='teh30', name='TEH30', models=[('TEH30', 30)], dims=[('50,8×25,4×10,2', 'C')], dual_models=[], kpd=88,
+   # ТЕН5 и ТЕН8 — один корпус, но разная распиновка: отдельные типоразмеры.
+   # Токи и КПД — из даташитов; КПД типоразмера — среднее одноканальных (ТЕН5: 76, 78, 83, 83; ТЕН8: 81, 83, 88, 88).
+   dict(slug='ten5', name='ТЕН5', models=[('ТЕН5', 5)], dims=[('32×20×10', 'C')], dual_models=['ТЕН5'], kpd=80, photo='../content/images/ten5.webp',
+        filt='TEFD2.5', ds='ten/ДШ-ТЕН5.pdf', analog='TEN (Traco Power)',
+        currents={('ТЕН5', '3.3'): '1,2', ('ТЕН5', '5'): '1', ('ТЕН5', '12'): '0,5', ('ТЕН5', '15'): '0,4',
+                  ('ТЕН5', '±5'): '0,5', ('ТЕН5', '±12'): '0,25', ('ТЕН5', '±15'): '0,2'}),
+   dict(slug='ten8', name='ТЕН8', models=[('ТЕН8', 8)], dims=[('32×20×10', 'C')], dual_models=['ТЕН8'], kpd=85, photo='../content/images/ten5.webp',
+        filt='TEFD2.5', ds='ten/ДШ-ТЕН8.pdf', analog='TEN (Traco Power)',
+        currents={('ТЕН8', '3.3'): '2', ('ТЕН8', '5'): '1,5', ('ТЕН8', '12'): '0,665', ('ТЕН8', '15'): '0,535',
+                  ('ТЕН8', '±5'): '0,8', ('ТЕН8', '±12'): '0,335', ('ТЕН8', '±15'): '0,265'}),
+   # ТЕН20, ТЕН30, ТЕН40 — один корпус, у каждой модели своя страница
+   dict(slug='ten20', name='ТЕН20', models=[('ТЕН20', 20)], dims=[('50,8×25,4×10,2', 'C')], dual_models=[], kpd=88,
+        filt='TEFD5', ds='ten/ДШ-ТЕН20.pdf', analog='TEN (Traco Power)', photo='../content/images/ten.webp'),
+   dict(slug='ten30', name='ТЕН30', models=[('ТЕН30', 30)], dims=[('50,8×25,4×10,2', 'C')], dual_models=[], kpd=88,
         filt='TEFD5', analog='TEN (Traco Power)', photo='../content/images/ten.webp'),
-   dict(slug='teh40', name='TEH40', models=[('TEH40', 40)], dims=[('50,8×25,4×10,2', 'C')], dual_models=[], kpd=88,
+   dict(slug='ten40', name='ТЕН40', models=[('ТЕН40', 40)], dims=[('50,8×25,4×10,2', 'C')], dual_models=[], kpd=88,
         filt='TEFD5', analog='TEN (Traco Power)', photo='../content/images/ten.webp'),
   ],
   related=[('tesd.html', 'TESD'), ('tesds.html', 'TESDs'), ('tesh.html', 'TESH'), ('tpd.html', 'ТПД')],
@@ -135,7 +135,7 @@ SERIES = [
    dict(slug='tesh200', name='TESH200', models=[('TESH100', 100), ('TESH200', 200)], dims=[('107×67,7×12,85', 'U')], dual=False, kpd=93, filt='внешний фильтр', ds='tesh/TESH200.pdf', ds_name='TESH200'),
    dict(slug='tesh500', name='TESH500', models=[('TESH300', 300), ('TESH500', 500)], dims=[('122×84×15', 'U')], dual=False, kpd=93, filt='внешний фильтр', ds='tesh/TESH500.pdf', ds_name='TESH500'),
   ],
-  related=[('tesd.html', 'TESD'), ('tesds.html', 'TESDs'), ('teh.html', 'TEH'), ('tpd.html', 'ТПД')],
+  related=[('tesd.html', 'TESD'), ('tesds.html', 'TESDs'), ('ten.html', 'ТЕН'), ('tpd.html', 'ТПД')],
  ),
  dict(
   slug='tpd', name='ТПД', badge='Новинка',
@@ -155,7 +155,7 @@ SERIES = [
    dict(slug='tpd60', name='ТПД60', models=[('ТПД30', 30), ('ТПД60', 60)], dims=[('140×80×22', '')], dual=False, kpd=85,
         ds='tpd/ДШ-ТПД.pdf'),
   ],
-  related=[('tesd.html', 'TESD'), ('tesds.html', 'TESDs'), ('tesh.html', 'TESH'), ('teh.html', 'TEH')],
+  related=[('tesd.html', 'TESD'), ('tesds.html', 'TESDs'), ('tesh.html', 'TESH'), ('ten.html', 'ТЕН')],
  ),
  # ---------- AC/DC (каталог 2026–2027: стр. 6, 13, 14, 18). Токи — P/U.
  dict(
@@ -358,6 +358,7 @@ def build(ser):
     page_title = ser.get('page_title', name)
     path = os.path.join(ROOT, f'serii/{slug}.html')
     head, foot = split_page(path)
+    head = re.sub(r'<title>[^<]*</title>', f'<title>{page_title} — TE-POWER</title>', head, count=1)
     crumb_html = io.open(path, encoding='utf-8').read().replace('\r\n', '\n')
     crumb = re.search(r'<div class="wrap breadcrumbs">.*?</div>', crumb_html).group(0)
     has_ds = any(s.get('ds') for s in ser['sizes'])
@@ -583,3 +584,11 @@ def build(ser):
 
 for ser in SERIES:
     build(ser)
+
+# прежние адреса серии ТЕН (teh*.html, до переименования в ten*.html) — перенаправления на новые страницы
+for old in ('teh', 'teh5', 'teh8', 'teh20', 'teh30', 'teh40'):
+    new = old.replace('teh', 'ten') + '.html'
+    io.open(os.path.join(ROOT, f'serii/{old}.html'), 'w', encoding='utf-8', newline='').write(
+        '<!doctype html>\n<html lang="ru"><head><meta charset="utf-8">\n<meta name="robots" content="noindex">\n'
+        f'<meta http-equiv="refresh" content="0; url={new}">\n<link rel="canonical" href="{new}">\n'
+        f'<title>ТЕН — TE-POWER</title></head>\n<body><p>Страница переехала: <a href="{new}">ТЕН</a>.</p></body></html>\n')

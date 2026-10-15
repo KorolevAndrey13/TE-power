@@ -13,7 +13,7 @@ python tools/build_all.py
 |---|---|---|
 | `build_tesd.py` | таблица «Модели» на `serii/tesd.html` | список `G` в начале файла |
 | `build_sizes.py` | страницы типоразмеров TESD (`serii/tesd10.html` …) | словари `S`, `DUAL` |
-| `build_series.py` | TESDs, TEH, TESH, ТПД, ТПС, JETAs, TESAV — страницы серий и типоразмеров | список `SERIES` |
+| `build_series.py` | TESDs, ТЕН, TESH, ТПД, ТПС, JETAs, TESAV — страницы серий и типоразмеров | список `SERIES` |
 | `build_tpi.py` | ТПИ — страница серии и `serii/tpi200.html`, `serii/tpi2500.html` | `SIZES` |
 | `build_filters.py` | TEFD, TEFA, ТПФ, TEFS | `SERIES` |
 | `build_chokes.py` | ДФТ/ДФТК, ДФТП/ДФТПК | `SERIES` |
@@ -25,6 +25,6 @@ python tools/build_all.py
 при следующей сборке пропадут — менять нужно данные в скриптах. Шапка и подвал страниц
 берутся из уже существующих страниц, поэтому их можно править вручную.
 
-Откуда данные: даташиты из `content/docs/` (TESD, TESDs, TEH5), каталог 2026–2027
+Откуда данные: даташиты из `content/docs/` (TESD, TESDs, ТЕН5), каталог 2026–2027
 (`assets/catalog-2026-2027.pdf`) для остальных серий. Где документов нет, токи посчитаны
 как мощность / напряжение — это отмечено комментариями в скриптах.

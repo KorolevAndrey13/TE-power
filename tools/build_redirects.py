@@ -31,7 +31,7 @@ PAGES = {
     'jetas': 'serii/jetas.html', 'jetas-en': 'serii/jetas.html',
     'tefa': 'serii/tefa.html', 'tefd': 'serii/tefd.html', 'tefs': 'serii/tefs.html',
     'tpc': 'serii/tps.html', 'tpf': 'serii/tpf.html',
-    'dft': 'serii/dft.html', 'dftp-dftpk': 'serii/dft.html', 'ten': 'serii/teh.html',
+    'dft': 'serii/dft.html', 'dftp-dftpk': 'serii/dft.html', 'ten': 'serii/ten.html',
     'cart': 'korzina.html', 'заказ': 'korzina.html', 'request-quote': 'korzina.html',
 }
 PRODUCTS = {
@@ -54,7 +54,7 @@ PRODUCTS = {
     'тпс1000-380': 'serii/tps1000.html', 'тпс1500-380': 'serii/tps1500.html', 'тпс2000-380': 'serii/tps2000.html',
     'тпс3000-380': 'serii/tps3000.html', 'тп4000-380': 'serii/tps4000.html',
     'tpf15-380': 'serii/tpf15.html', 'dft': 'serii/dft.html',
-    'тен-5': 'serii/teh5.html', 'тен-8': 'serii/teh8.html', 'тен-20': 'serii/teh20.html',
+    'тен-5': 'serii/ten5.html', 'тен-8': 'serii/ten8.html', 'тен-20': 'serii/ten20.html',
 }
 POSTS = {  # новости, у которых на новом сайте есть своя страница или прямая тема; остальные — на список новостей
     10422: 'novosti/novinka-tpd-zheleznodorozhnye.html', 10382: 'novosti/novinka-tpi-dc-ac-invertory.html',
@@ -85,8 +85,8 @@ def upload_target(name):
         (r'(TESDs\d+)\.pdf', lambda m: f'{D}tesds/ДШ-{m[1]}.pdf'),
         (r'(TESD\d+)\.pdf', lambda m: f'{D}tesd/ДШ-{m[1]}.pdf'),
         (r'(TESH\d+)\.pdf', lambda m: f'{D}tesh/{m[1]}.pdf'),
-        (r'TEН5\.pdf', lambda m: f'{D}teh/ДШ-TEH5.pdf'),
-        (r'(TEН(?:8|20))\.pdf', lambda m: f'{D}teh/{m[1]}.pdf'),
+        (r'TEН5\.pdf', lambda m: f'{D}ten/ДШ-ТЕН5.pdf'),
+        (r'(TEН(?:8|20))\.pdf', lambda m: f'{D}ten/ДШ-ТЕН{m[1][3:]}.pdf'),
         (r'TПИ(\d+)\.pdf', lambda m: f'{D}tpi/ДШ-ТПИ{m[1]}.pdf'),
         (r'ТПД\.pdf', lambda m: f'{D}tpd/ДШ-ТПД.pdf'),
         (r'ТПС(\d+)\.pdf', lambda m: f'{D}tps/ДШ-ТПС{m[1]}.pdf'),

@@ -35,7 +35,7 @@
 /tefs/,https://korolevandrey13.github.io/TE-power/serii/tefs.html,0,301
 /dft/,https://korolevandrey13.github.io/TE-power/serii/dft.html,0,301
 /dftp-dftpk/,https://korolevandrey13.github.io/TE-power/serii/dft.html,0,301
-/ten/,https://korolevandrey13.github.io/TE-power/serii/teh.html,0,301
+/ten/,https://korolevandrey13.github.io/TE-power/serii/ten.html,0,301
 /product/tefd2-5/,https://korolevandrey13.github.io/TE-power/serii/tefd2-5.html,0,301
 /product/tesd5/,https://korolevandrey13.github.io/TE-power/serii/tesd10.html,0,301
 /product/tesd10/,https://korolevandrey13.github.io/TE-power/serii/tesd10.html,0,301
@@ -86,9 +86,9 @@
 /product/%D1%82%D0%BF4000-380/,https://korolevandrey13.github.io/TE-power/serii/tps4000.html,0,301
 /product/tesds40/,https://korolevandrey13.github.io/TE-power/serii/tesds40.html,0,301
 /product/%D1%82%D0%BF%D1%811500-380/,https://korolevandrey13.github.io/TE-power/serii/tps1500.html,0,301
-/product/%D1%82%D0%B5%D0%BD-5/,https://korolevandrey13.github.io/TE-power/serii/teh5.html,0,301
-/product/%D1%82%D0%B5%D0%BD-8/,https://korolevandrey13.github.io/TE-power/serii/teh8.html,0,301
-/product/%D1%82%D0%B5%D0%BD-20/,https://korolevandrey13.github.io/TE-power/serii/teh20.html,0,301
+/product/%D1%82%D0%B5%D0%BD-5/,https://korolevandrey13.github.io/TE-power/serii/ten5.html,0,301
+/product/%D1%82%D0%B5%D0%BD-8/,https://korolevandrey13.github.io/TE-power/serii/ten8.html,0,301
+/product/%D1%82%D0%B5%D0%BD-20/,https://korolevandrey13.github.io/TE-power/serii/ten20.html,0,301
 /dcdc-tesd/,https://korolevandrey13.github.io/TE-power/serii/tesd.html,0,301
 /seminars/,https://korolevandrey13.github.io/TE-power/novosti.html,0,301
 /seminars-en/,https://korolevandrey13.github.io/TE-power/novosti.html,0,301
@@ -259,9 +259,9 @@
 /wp-content/uploads/TESH50.pdf,https://korolevandrey13.github.io/TE-power/content/docs/tesh/TESH50.pdf,0,301
 /wp-content/uploads/TESH500-150WSxx-F7-%D1%85U.stp,https://korolevandrey13.github.io/TE-power/content/docs/tesh/3D-TESH.zip,0,301
 /wp-content/uploads/TESH500.pdf,https://korolevandrey13.github.io/TE-power/content/docs/tesh/TESH500.pdf,0,301
-/wp-content/uploads/TE%D0%9D20.pdf,https://korolevandrey13.github.io/TE-power/content/docs/teh/TE%D0%9D20.pdf,0,301
-/wp-content/uploads/TE%D0%9D5.pdf,https://korolevandrey13.github.io/TE-power/content/docs/teh/%D0%94%D0%A8-TEH5.pdf,0,301
-/wp-content/uploads/TE%D0%9D8.pdf,https://korolevandrey13.github.io/TE-power/content/docs/teh/TE%D0%9D8.pdf,0,301
+/wp-content/uploads/TE%D0%9D20.pdf,https://korolevandrey13.github.io/TE-power/content/docs/ten/%D0%94%D0%A8-%D0%A2%D0%95%D0%9D20.pdf,0,301
+/wp-content/uploads/TE%D0%9D5.pdf,https://korolevandrey13.github.io/TE-power/content/docs/ten/%D0%94%D0%A8-%D0%A2%D0%95%D0%9D5.pdf,0,301
+/wp-content/uploads/TE%D0%9D8.pdf,https://korolevandrey13.github.io/TE-power/content/docs/ten/%D0%94%D0%A8-%D0%A2%D0%95%D0%9D8.pdf,0,301
 /wp-content/uploads/TU-JETAs.pdf,https://korolevandrey13.github.io/TE-power/content/docs/jetas/%D0%A2%D0%A3-JETAs.pdf,0,301
 /wp-content/uploads/TU-TESDs.pdf,https://korolevandrey13.github.io/TE-power/content/docs/tesds/%D0%A2%D0%A3-TESDs.pdf,0,301
 /wp-content/uploads/TU_TESD.pdf,https://korolevandrey13.github.io/TE-power/content/docs/tesd/%D0%A2%D0%A3-TESD.pdf,0,301

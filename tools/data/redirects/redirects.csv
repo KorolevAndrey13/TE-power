@@ -36,7 +36,7 @@
 страница;https://te-power.ru/tefs/;https://korolevandrey13.github.io/TE-power/serii/tefs.html;TEFS
 страница;https://te-power.ru/dft/;https://korolevandrey13.github.io/TE-power/serii/dft.html;ДФТ, ДФТК
 страница;https://te-power.ru/dftp-dftpk/;https://korolevandrey13.github.io/TE-power/serii/dft.html;ДФТП, ДФТПК
-страница;https://te-power.ru/ten/;https://korolevandrey13.github.io/TE-power/serii/teh.html;TEH
+страница;https://te-power.ru/ten/;https://korolevandrey13.github.io/TE-power/serii/ten.html;TEH
 товар;https://te-power.ru/product/tefd2-5/;https://korolevandrey13.github.io/TE-power/serii/tefd2-5.html;TEFD2.5
 товар;https://te-power.ru/product/tesd5/;https://korolevandrey13.github.io/TE-power/serii/tesd10.html;TESD5
 товар;https://te-power.ru/product/tesd10/;https://korolevandrey13.github.io/TE-power/serii/tesd10.html;TESD10
@@ -87,9 +87,9 @@
 товар;https://te-power.ru/product/тп4000-380/;https://korolevandrey13.github.io/TE-power/serii/tps4000.html;ТП4000-380
 товар;https://te-power.ru/product/tesds40/;https://korolevandrey13.github.io/TE-power/serii/tesds40.html;TESDs40
 товар;https://te-power.ru/product/тпс1500-380/;https://korolevandrey13.github.io/TE-power/serii/tps1500.html;ТПС1500-380
-товар;https://te-power.ru/product/тен-5/;https://korolevandrey13.github.io/TE-power/serii/teh5.html;ТЕН 5
-товар;https://te-power.ru/product/тен-8/;https://korolevandrey13.github.io/TE-power/serii/teh8.html;ТЕН 8
-товар;https://te-power.ru/product/тен-20/;https://korolevandrey13.github.io/TE-power/serii/teh20.html;ТЕН 20
+товар;https://te-power.ru/product/тен-5/;https://korolevandrey13.github.io/TE-power/serii/ten5.html;ТЕН 5
+товар;https://te-power.ru/product/тен-8/;https://korolevandrey13.github.io/TE-power/serii/ten8.html;ТЕН 8
+товар;https://te-power.ru/product/тен-20/;https://korolevandrey13.github.io/TE-power/serii/ten20.html;ТЕН 20
 новость;https://te-power.ru/dcdc-tesd/;https://korolevandrey13.github.io/TE-power/serii/tesd.html;Сделано в России! DC/DC модули электропитания cерии TESD.
 новость;https://te-power.ru/seminars/;https://korolevandrey13.github.io/TE-power/novosti.html;Технические семинары
 новость;https://te-power.ru/seminars-en/;https://korolevandrey13.github.io/TE-power/novosti.html;Technical seminars
@@ -260,9 +260,9 @@
 файл;https://te-power.ru/wp-content/uploads/TESH50.pdf;https://korolevandrey13.github.io/TE-power/content/docs/tesh/TESH50.pdf;
 файл;https://te-power.ru/wp-content/uploads/TESH500-150WSxx-F7-хU.stp;https://korolevandrey13.github.io/TE-power/content/docs/tesh/3D-TESH.zip;
 файл;https://te-power.ru/wp-content/uploads/TESH500.pdf;https://korolevandrey13.github.io/TE-power/content/docs/tesh/TESH500.pdf;
-файл;https://te-power.ru/wp-content/uploads/TEН20.pdf;https://korolevandrey13.github.io/TE-power/content/docs/teh/TE%D0%9D20.pdf;
-файл;https://te-power.ru/wp-content/uploads/TEН5.pdf;https://korolevandrey13.github.io/TE-power/content/docs/teh/%D0%94%D0%A8-TEH5.pdf;
-файл;https://te-power.ru/wp-content/uploads/TEН8.pdf;https://korolevandrey13.github.io/TE-power/content/docs/teh/TE%D0%9D8.pdf;
+файл;https://te-power.ru/wp-content/uploads/TEН20.pdf;https://korolevandrey13.github.io/TE-power/content/docs/ten/%D0%94%D0%A8-%D0%A2%D0%95%D0%9D20.pdf;
+файл;https://te-power.ru/wp-content/uploads/TEН5.pdf;https://korolevandrey13.github.io/TE-power/content/docs/ten/%D0%94%D0%A8-%D0%A2%D0%95%D0%9D5.pdf;
+файл;https://te-power.ru/wp-content/uploads/TEН8.pdf;https://korolevandrey13.github.io/TE-power/content/docs/ten/%D0%94%D0%A8-%D0%A2%D0%95%D0%9D8.pdf;
 файл;https://te-power.ru/wp-content/uploads/TU-JETAs.pdf;https://korolevandrey13.github.io/TE-power/content/docs/jetas/%D0%A2%D0%A3-JETAs.pdf;
 файл;https://te-power.ru/wp-content/uploads/TU-TESDs.pdf;https://korolevandrey13.github.io/TE-power/content/docs/tesds/%D0%A2%D0%A3-TESDs.pdf;
 файл;https://te-power.ru/wp-content/uploads/TU_TESD.pdf;https://korolevandrey13.github.io/TE-power/content/docs/tesd/%D0%A2%D0%A3-TESD.pdf;
