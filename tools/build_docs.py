@@ -62,7 +62,7 @@ docs += [dict(series=k, type='РП', name='~радиатор', label='Реком
          for k in ('tesd', 'tesds', 'tesh', 'teh', 'tpd', 'tps', 'jetas', 'tesav')]
 
 GROUPS = [
-    ('DC/DC модули', [('tesd', 'TESD'), ('tesds', 'TESDs'), ('tesh', 'TESH'), ('teh', 'TEH (ТЕН)'), ('tpd', 'ТПД')]),
+    ('DC/DC модули', [('tesd', 'TESD'), ('tesds', 'TESDs'), ('tesh', 'TESH'), ('teh', 'TEH'), ('tpd', 'ТПД')]),
     ('AC/DC модули', [('tps', 'ТПС'), ('jetas', 'JETAs'), ('tesav', 'TESAV')]),
     ('Инверторы', [('tpi', 'ТПИ')]),
     ('Модули фильтрации', [('tefd', 'TEFD'), ('tefs', 'TEFS'), ('tpf', 'ТПФ'), ('tefa', 'TEFA')]),

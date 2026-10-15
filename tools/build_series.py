@@ -73,10 +73,10 @@ SERIES = [
         currents={('TESDs500', '12'): '41,7', ('TESDs500', '15'): '33,3', ('TESDs500', '24'): '20,8', ('TESDs500', '27'): '18,5',
                   ('TESDs500', '36'): '13,9', ('TESDs500', '48'): '10,4', ('TESDs500', '60'): '8,3'}),
   ],
-  related=[('tesd.html', 'TESD'), ('tesh.html', 'TESH'), ('teh.html', 'TEH (ТЕН)'), ('tpd.html', 'ТПД')],
+  related=[('tesd.html', 'TESD'), ('tesh.html', 'TESH'), ('teh.html', 'TEH'), ('tpd.html', 'ТПД')],
  ),
  dict(
-  slug='teh', name='TEH', page_title='TEH (ТЕН)', badge='Новинка',
+  slug='teh', name='TEH', page_title='TEH', badge='Новинка',
   subtitle='Изолированные DC/DC преобразователи — pin-to-pin аналоги модулей TEN (Traco Power)',
   photo='../content/images/ten.webp',
   inputs=[('12', '12 В', '9…36 В', 'по ГОСТ 54073-2010'), ('27', '27 В', '17…36 В', 'по ГОСТ 19705'),
@@ -135,7 +135,7 @@ SERIES = [
    dict(slug='tesh200', name='TESH200', models=[('TESH100', 100), ('TESH200', 200)], dims=[('107×67,7×12,85', 'U')], dual=False, kpd=93, filt='внешний фильтр', ds='tesh/TESH200.pdf', ds_name='TESH200'),
    dict(slug='tesh500', name='TESH500', models=[('TESH300', 300), ('TESH500', 500)], dims=[('122×84×15', 'U')], dual=False, kpd=93, filt='внешний фильтр', ds='tesh/TESH500.pdf', ds_name='TESH500'),
   ],
-  related=[('tesd.html', 'TESD'), ('tesds.html', 'TESDs'), ('teh.html', 'TEH (ТЕН)'), ('tpd.html', 'ТПД')],
+  related=[('tesd.html', 'TESD'), ('tesds.html', 'TESDs'), ('teh.html', 'TEH'), ('tpd.html', 'ТПД')],
  ),
  dict(
   slug='tpd', name='ТПД', badge='Новинка',
@@ -155,7 +155,7 @@ SERIES = [
    dict(slug='tpd60', name='ТПД60', models=[('ТПД30', 30), ('ТПД60', 60)], dims=[('140×80×22', '')], dual=False, kpd=85,
         ds='tpd/ДШ-ТПД.pdf'),
   ],
-  related=[('tesd.html', 'TESD'), ('tesds.html', 'TESDs'), ('tesh.html', 'TESH'), ('teh.html', 'TEH (ТЕН)')],
+  related=[('tesd.html', 'TESD'), ('tesds.html', 'TESDs'), ('tesh.html', 'TESH'), ('teh.html', 'TEH')],
  ),
  # ---------- AC/DC (каталог 2026–2027: стр. 6, 13, 14, 18). Токи — P/U.
  dict(
