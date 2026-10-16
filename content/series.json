@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "tesd",
+    "name": "TESD",
+    "href": "serii/tesd.html",
+    "group": "DC/DC модули"
+  },
+  {
+    "slug": "tesds",
+    "name": "TESDs",
+    "href": "serii/tesds.html",
+    "group": "DC/DC модули"
+  },
+  {
+    "slug": "tesh",
+    "name": "TESH",
+    "href": "serii/tesh.html",
+    "group": "DC/DC модули"
+  },
+  {
+    "slug": "ten",
+    "name": "ТЕН",
+    "href": "serii/ten.html",
+    "group": "DC/DC модули"
+  },
+  {
+    "slug": "tpd",
+    "name": "ТПД",
+    "href": "serii/tpd.html",
+    "group": "DC/DC модули"
+  },
+  {
+    "slug": "tps",
+    "name": "ТПС",
+    "href": "serii/tps.html",
+    "group": "AC/DC модули"
+  },
+  {
+    "slug": "jetas",
+    "name": "JETAs",
+    "href": "serii/jetas.html",
+    "group": "AC/DC модули"
+  },
+  {
+    "slug": "tesav",
+    "name": "TESAV",
+    "href": "serii/tesav.html",
+    "group": "AC/DC модули"
+  },
+  {
+    "slug": "tpi",
+    "name": "ТПИ",
+    "href": "serii/tpi.html",
+    "group": "Инверторы"
+  },
+  {
+    "slug": "tefd",
+    "name": "TEFD",
+    "href": "serii/tefd.html",
+    "group": "Модули фильтрации"
+  },
+  {
+    "slug": "tefs",
+    "name": "TEFS",
+    "href": "serii/tefs.html",
+    "group": "Модули фильтрации"
+  },
+  {
+    "slug": "tpf",
+    "name": "ТПФ",
+    "href": "serii/tpf.html",
+    "group": "Модули фильтрации"
+  },
+  {
+    "slug": "tefa",
+    "name": "TEFA",
+    "href": "serii/tefa.html",
+    "group": "Модули фильтрации"
+  },
+  {
+    "slug": "dft",
+    "name": "ДФТ, ДФТК, ДФТП, ДФТПК",
+    "href": "serii/dft.html",
+    "group": "Дроссели фильтрации"
+  }
+]

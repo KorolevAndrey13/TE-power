@@ -1,5 +1,5 @@
 # Перестраивает раздел «Документация» на podderzhka.html: слева — серии, справа — документы выбранной серии.
-import io, re, os
+import io, json, re, os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # папка сайта (на уровень выше tools/)
 P = os.path.join(ROOT, 'podderzhka.html')
@@ -82,6 +82,20 @@ def doc_order(d):
 series_names = {k: v for _, items in GROUPS for k, v in items}
 known = set(series_names)
 assert all(d['series'] in known for d in docs), {d['series'] for d in docs} - known
+
+# PDF, добавленные через админку (content/docs/<серия>/ТУ-… или ДШ-…), появляются в списке сами
+listed = {d['href'] for d in docs}
+for key in sorted(known):
+    folder = os.path.join(ROOT, 'content', 'docs', key)
+    for fn in sorted(os.listdir(folder)) if os.path.isdir(folder) else []:
+        m = re.match(r'(ТУ|ДШ)-(.+)\.pdf$', fn, re.I)
+        href = f'content/docs/{key}/{fn}'
+        if m and href not in listed:
+            docs.append(dict(series=key, type=m.group(1).upper(), name=m.group(2), href=href))
+
+# список серий для админки (выбор серии у новости и у документа)
+io.open(os.path.join(ROOT, 'content', 'series.json'), 'w', encoding='utf-8', newline='\n').write(json.dumps(
+    [dict(slug=k, name=v, href=f'serii/{k}.html', group=g) for g, items in GROUPS for k, v in items], ensure_ascii=False, indent=2) + '\n')
 
 nav, sections = [], []
 first = GROUPS[0][1][0][0]

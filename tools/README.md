@@ -18,6 +18,8 @@ python tools/build_all.py
 | `build_filters.py` | TEFD, TEFA, ТПФ, TEFS | `SERIES` |
 | `build_chokes.py` | ДФТ/ДФТК, ДФТП/ДФТПК | `SERIES` |
 | `build_docs.py` | раздел «Документация» на `podderzhka.html` | `data/podderzhka-original.html` + списки в файле |
+| `build_news.py` | новости: `novosti/*.html`, список `novosti.html`, новостные слайды карусели на главной (до 10 последних с отметкой «в карусели») | `content/news/*.json` — их правит админка |
+| `build_series_docs.py` | дописывает в «Документацию серии» PDF, загруженные через админку (`content/docs/<серия>/ТУ-…`, `ДШ-…`) | файлы в `content/docs/` |
 | `build_meta.py` | метатеги всех страниц (описание, превью для соцсетей, canonical, иконка), `sitemap.xml`, `robots.txt` — запускается последним | `BASE` (адрес сайта) и `DESCRIPTIONS` в начале файла |
 | `build_redirects.py` | переадресация со старого сайта te-power.ru: таблицы для хостинга в `data/redirects/` (не публикуются на сайте) | `data/wp-urls.json` (адреса из базы WordPress) и словари в файле |
 
@@ -28,3 +30,24 @@ python tools/build_all.py
 Откуда данные: даташиты из `content/docs/` (TESD, TESDs, ТЕН5), каталог 2026–2027
 (`assets/catalog-2026-2027.pdf`) для остальных серий. Где документов нет, токи посчитаны
 как мощность / напряжение — это отмечено комментариями в скриптах.
+
+## Админка (`/admin/`)
+
+PHP-страница на хостинге REG.RU для трёх редакторов: новости (с выводом в карусель) и PDF серий.
+Админка ничего не пишет на сервер сама: каждое сохранение — коммит в этот репозиторий через GitHub API.
+После коммита GitHub Actions (`.github/workflows/deploy.yml`) запускает `build_all.py`, сохраняет собранные
+страницы и выкладывает сайт на хостинг. От «Сохранить» до сайта — 1–3 минуты.
+
+Настройка на сервере (один раз):
+
+1. Ключ GitHub: github.com → Settings → Developer settings → Fine-grained tokens → Generate new token;
+   доступ только к репозиторию TE-power; права Contents — Read and write, Actions — Read-only.
+2. Пользователи: `python tools/admin_user.py` для каждого (логин, имя, пароль) — выдаёт строку для настроек.
+3. Скопировать `tools/admin-config.example.php` на сервер как `te-admin/config.php` **рядом с папкой сайта,
+   не внутри неё** (сайт в `www/te-power.ru/` → настройки в `www/te-admin/config.php`), вписать ключ и пользователей,
+   права файла 600.
+4. Открыть `https://<сайт>/admin/`.
+
+Защита: пароли хранятся только хэшами (PBKDF2-SHA256, 600 000 итераций); после 5 неудачных попыток вход
+закрыт на 15 минут; формы защищены от подделки (CSRF); сессия — 2 часа; загружаются только PDF и картинки
+(картинки пересохраняются без метаданных); `admin/lib/` закрыта от браузера.

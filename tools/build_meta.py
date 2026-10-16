@@ -97,5 +97,5 @@ io.open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8', newline='\n').
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     + '\n'.join(sitemap) + '\n</urlset>\n')
 io.open(os.path.join(ROOT, 'robots.txt'), 'w', encoding='utf-8', newline='\n').write(
-    f'User-agent: *\nDisallow: {BASE_PATH}tools/\nDisallow: {BASE_PATH}korzina.html\n\nSitemap: {BASE}sitemap.xml\n')
+    f'User-agent: *\nDisallow: {BASE_PATH}tools/\nDisallow: {BASE_PATH}admin/\nDisallow: {BASE_PATH}korzina.html\n\nSitemap: {BASE}sitemap.xml\n')
 print('meta:', len(pages), 'pages, sitemap:', len(sitemap), 'urls')

@@ -1,5 +1,8 @@
-# Выкладка сайта на хостинг REG.RU после каждого изменения в ветке main.
-# Включается переменной репозитория DEPLOY_ENABLED = true (Settings → Secrets and variables → Actions → Variables).
+# Сборка и выкладка сайта после каждого изменения в ветке main (в том числе из админки).
+# 1. Сборка: запускает tools/build_all.py и, если страницы изменились, сохраняет их в репозиторий —
+#    так правки из админки (новости, документы) попадают на GitHub Pages.
+# 2. Выкладка на хостинг REG.RU по FTP — включается переменной репозитория DEPLOY_ENABLED = true
+#    (Settings → Secrets and variables → Actions → Variables).
 # Доступ к хостингу хранится в секретах репозитория (Settings → Secrets and variables → Actions → Secrets):
 #   FTP_SERVER   — адрес FTP-сервера из панели REG.RU
 #   FTP_USERNAME — логин FTP
@@ -8,33 +11,50 @@
 # Протокол — переменная FTP_PROTOCOL (ftps по умолчанию; ftp, если хостинг не поддерживает шифрование).
 # На хостинг уходят только файлы сайта: служебные папки (tools, .github) и описания (*.md) не выкладываются.
 # Выкладка загружает новые и изменённые файлы и удаляет с сервера то, что удалили из репозитория;
-# чужие файлы на сервере (например, старый WordPress) она не трогает.
-name: Выкладка на REG.RU
+# чужие файлы на сервере (например, старый WordPress или настройки админки te-admin) она не трогает.
+name: Сборка и выкладка
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
+# правки идут по очереди: следующая сборка начинается после предыдущей и берёт свежую версию main
 concurrency:
   group: deploy
   cancel-in-progress: false
 
-# Выкладке нужно только чтение репозитория
+# запись нужна, чтобы сохранить собранные страницы в репозиторий
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  deploy:
-    if: ${{ vars.DEPLOY_ENABLED == 'true' }}
+  build-deploy:
     runs-on: ubuntu-latest
     steps:
       # Версии закреплены по коммиту: чужой код, получающий пароль FTP, не может подмениться незаметно
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
         with:
-          persist-credentials: false
+          ref: main
+          fetch-depth: 0  # история нужна для дат в sitemap.xml
+
+      - name: Сборка страниц
+        run: python3 tools/build_all.py
+
+      - name: Сохранение собранных страниц
+        run: |
+          git config user.name "te-power-build"
+          git config user.email "te-power-build@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Страницы не изменились"
+          else
+            git commit -m "Сборка сайта"
+            git push origin HEAD:main
+          fi
 
       - name: Загрузка файлов на хостинг
+        if: ${{ vars.DEPLOY_ENABLED == 'true' }}
         uses: SamKirkland/FTP-Deploy-Action@8e83cea8672e3fbcbb9fdafff34debf6ae4c5f65  # v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}

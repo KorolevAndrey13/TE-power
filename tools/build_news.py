@@ -8,7 +8,7 @@
 import glob, html, io, json, os, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # папка сайта (на уровень выше tools/)
-CAROUSEL_MAX = 4  # сколько последних новостей с carousel=true показывать на главной
+CAROUSEL_MAX = 10  # сколько последних новостей с carousel=true показывать на главной
 DOC_ICON = {'ДШ': 'ds', 'ТУ': 'tu', 'РП': 'rp', '3D': '3d'}
 
 def esc(s):
