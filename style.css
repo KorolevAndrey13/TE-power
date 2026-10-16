@@ -126,10 +126,10 @@ button{font-family:inherit; cursor:pointer;}
 
 .carousel__slide--product{background:linear-gradient(120deg, rgb(15,19,22) 0%, rgb(23,29,34) 60%, rgb(15,19,22) 100%); cursor:pointer;}
 .carousel__product-img{position:absolute; right:120px; top:50%; transform:translateY(-50%); max-height:96%; max-width:60%; width:auto; object-fit:contain; filter:drop-shadow(0 24px 44px rgba(0,0,0,.55));}
-/* узкие экраны: модуль уменьшен и стоит над текстом, затемнение — снизу вверх */
+/* узкие экраны: модуль фоном у правого края — видна его левая половина, затемнён на 50 % */
 @media (max-width:900px){
-  .carousel__product-img{top:22px; right:auto; left:50%; transform:translateX(-50%); max-height:30%; max-width:64%;}
-  .carousel__slide--product .carousel__news-overlay{background:linear-gradient(180deg, rgba(10,12,14,0) 30%, rgba(10,12,14,.75) 60%, rgba(10,12,14,.9) 100%);}
+  .carousel__product-img{top:50%; right:auto; left:50%; transform:translateY(-50%); width:100%; max-width:none; max-height:none; height:auto; filter:brightness(.5);}
+  .carousel__slide--product .carousel__news-overlay{background:linear-gradient(90deg, rgba(10,12,14,.85) 0%, rgba(10,12,14,.5) 45%, rgba(10,12,14,0) 70%);}
 }
 .carousel__news-overlay{
   position:relative; z-index:2; width:100%; height:100%; padding:56px 64px;
