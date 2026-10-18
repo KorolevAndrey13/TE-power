@@ -161,7 +161,7 @@ def esc(s):
 
 def link_docs(s):
     # [[текст|файл]] — ссылка на другой документ; упоминание файла политики — ссылкой с её названием
-    s = re.sub(r'\[\[([^|\]]+)\|([^\]]+)\]\]', r'<a href="" class="text-link"></a>', s)
+    s = re.sub(r'\[\[([^|\]]+)\|([^\]]+)\]\]', r'<a href="\2" class="text-link">\1</a>', s)
     s = s.replace(f'странице {esc(POLICY)}', f'странице <a href="{POLICY}" class="text-link">«Политика обработки персональных данных»</a>')
     s = s.replace(esc(OP['email']), f'<a href="mailto:{OP["email"]}" class="text-link">{OP["email"]}</a>')
     return s
