@@ -356,8 +356,8 @@ function cartCount(){
 
 // Базовый путь сайта берём из адреса подключённого theme.js ('' или '../')
 function siteBase(){
-  var s = document.querySelector('script[src$="theme.js"]');
-  return s ? s.getAttribute('src').replace(/theme\.js$/, '') : '';
+  var s = document.querySelector('script[src*="theme.js"]');  // адрес может быть с меткой версии: theme.js?v=…
+  return s ? s.getAttribute('src').replace(/theme\.js(\?.*)?$/, '') : '';
 }
 
 var CART_ICON = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="19.5" r="1.4" fill="currentColor"/><circle cx="17" cy="19.5" r="1.4" fill="currentColor"/></svg>';
