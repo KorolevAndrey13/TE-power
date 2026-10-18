@@ -124,7 +124,7 @@ print('tpi series ok')
 
 # ---------- страницы типоразмеров ----------
 def opts(pairs):
-    return '<option value="">Не выбрано</option>' + ''.join(f'<option value="{v}">{t}</option>' for v, t in pairs)
+    return '<option value="">Все</option>' + ''.join(f'<option value="{v}">{t}</option>' for v, t in pairs)
 
 def merge_rows(matrix, merge_cols, group_starts):
     # matrix: строки из ячеек (html, ключ); в столбцах merge_cols одинаковые соседние ключи -> одна ячейка с rowspan

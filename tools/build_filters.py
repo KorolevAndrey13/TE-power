@@ -206,7 +206,7 @@ def build(ser):
                         f'<td>{s["dims"]} мм</td><td>{temp}</td>'
                         f'<td><button type="button" class="cart-btn" data-cart-name="{nm}" data-cart-desc="{desc}" title="Добавить в корзину" aria-label="Добавить {nm} в корзину">{CART_SVG}</button></td></tr>')
         def opts(pairs):
-            return '<option value="">Не выбрано</option>' + ''.join(f'<option value="{v}">{t}</option>' for v, t in pairs)
+            return '<option value="">Все</option>' + ''.join(f'<option value="{v}">{t}</option>' for v, t in pairs)
         params = [('Номинальный проходной ток', f'{s["cur"]} А'), ('Входное напряжение', [v for _, v in ser['inputs']]),
                   ('Исполнение корпуса', [l for _, l in ser['bodies']]), ('Габариты', f'{s["dims"]} мм'),
                   ('Температура корпуса', [t for _, t in ser['temps']])]

@@ -35,7 +35,7 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=7f7b8f1e04">
+<link rel="stylesheet" href="../style.css?v=7368d56442">
 
 </head>
 <body>
@@ -89,14 +89,14 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
   <thead>
   <tr><th>Наименование</th><th>Мощность</th><th>Входное напряжение</th><th>Выходное напряжение*</th><th>Количество каналов</th><th>Макс. вых. ток</th><th>Размеры**</th><th>Диапазон рабочих температур</th><th>Заказ</th></tr>
   <tr class="size-models__filters">
-    <th><select class="size-models__select" data-key="model"><option value="">Не выбрано</option><option value="TESD5">TESD5</option><option value="TESD10">TESD10</option></select></th>
-    <th><select class="size-models__select" data-key="power"><option value="">Не выбрано</option><option value="5">5 Вт</option><option value="10">10 Вт</option></select></th>
-    <th><select class="size-models__select" data-key="in"><option value="">Не выбрано</option><option value="12W">=12 В (9…36 В)</option><option value="27">=27 В (17…36 В)</option><option value="24W">=24 В (18…75 В)</option></select></th>
-    <th><select class="size-models__select" data-key="out"><option value="">Не выбрано</option><option value="3,3">3,3 В</option><option value="5">5 В</option><option value="9">9 В</option><option value="12">12 В</option><option value="15">15 В</option><option value="24">24 В</option><option value="27">27 В</option><option value="36">36 В</option><option value="48">48 В</option><option value="60">60 В</option><option value="±5">±5 В</option><option value="±12">±12 В</option><option value="±15">±15 В</option></select></th>
-    <th><select class="size-models__select" data-key="ch"><option value="">Не выбрано</option><option value="1">1</option><option value="2">2</option></select></th>
-    <th><select class="size-models__select" data-key="cur"><option value="">Не выбрано</option><option value="0,08">0,08 А</option><option value="0,10">0,10 А</option><option value="0,14">0,14 А</option><option value="0,16">0,16 А</option><option value="0,17">0,17 А</option><option value="0,18">0,18 А</option><option value="0,21">0,21 А</option><option value="0,28">0,28 А</option><option value="0,33">0,33 А</option><option value="0,37">0,37 А</option><option value="0,42">0,42 А</option><option value="0,5">0,5 А</option><option value="0,66">0,66 А</option><option value="0,84">0,84 А</option><option value="1">1 А</option><option value="1,11">1,11 А</option><option value="2">2 А</option><option value="3,03">3,03 А</option></select></th>
-    <th><select class="size-models__select" data-key="dims"><option value="">Не выбрано</option><option value="40×20,2×10,15">40×20,2×10,15 мм</option><option value="30,2×20,2×10,15">30,2×20,2×10,15 мм</option></select></th>
-    <th><select class="size-models__select" data-key="temp"><option value="">Не выбрано</option><option value="−60…+125 °C">−60…+125 °C</option><option value="−60…+110 °C">−60…+110 °C</option></select></th>
+    <th><select class="size-models__select" data-key="model"><option value="">Все</option><option value="TESD5">TESD5</option><option value="TESD10">TESD10</option></select></th>
+    <th><select class="size-models__select" data-key="power"><option value="">Все</option><option value="5">5 Вт</option><option value="10">10 Вт</option></select></th>
+    <th><select class="size-models__select" data-key="in"><option value="">Все</option><option value="12W">=12 В (9…36 В)</option><option value="27">=27 В (17…36 В)</option><option value="24W">=24 В (18…75 В)</option></select></th>
+    <th><select class="size-models__select" data-key="out"><option value="">Все</option><option value="3,3">3,3 В</option><option value="5">5 В</option><option value="9">9 В</option><option value="12">12 В</option><option value="15">15 В</option><option value="24">24 В</option><option value="27">27 В</option><option value="36">36 В</option><option value="48">48 В</option><option value="60">60 В</option><option value="±5">±5 В</option><option value="±12">±12 В</option><option value="±15">±15 В</option></select></th>
+    <th><select class="size-models__select" data-key="ch"><option value="">Все</option><option value="1">1</option><option value="2">2</option></select></th>
+    <th><select class="size-models__select" data-key="cur"><option value="">Все</option><option value="0,08">0,08 А</option><option value="0,10">0,10 А</option><option value="0,14">0,14 А</option><option value="0,16">0,16 А</option><option value="0,17">0,17 А</option><option value="0,18">0,18 А</option><option value="0,21">0,21 А</option><option value="0,28">0,28 А</option><option value="0,33">0,33 А</option><option value="0,37">0,37 А</option><option value="0,42">0,42 А</option><option value="0,5">0,5 А</option><option value="0,66">0,66 А</option><option value="0,84">0,84 А</option><option value="1">1 А</option><option value="1,11">1,11 А</option><option value="2">2 А</option><option value="3,03">3,03 А</option></select></th>
+    <th><select class="size-models__select" data-key="dims"><option value="">Все</option><option value="40×20,2×10,15">40×20,2×10,15 мм</option><option value="30,2×20,2×10,15">30,2×20,2×10,15 мм</option></select></th>
+    <th><select class="size-models__select" data-key="temp"><option value="">Все</option><option value="−60…+125 °C">−60…+125 °C</option><option value="−60…+110 °C">−60…+110 °C</option></select></th>
     <th></th>
   </tr>
   </thead>
@@ -434,6 +434,6 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
     </form>
   </div>
 </div>
-<script src="../theme.js?v=7165765806"></script>
+<script src="../theme.js?v=1b9a0cdfdd"></script>
 </body>
 </html>

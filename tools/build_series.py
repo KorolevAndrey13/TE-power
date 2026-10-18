@@ -546,15 +546,15 @@ def build(ser):
   <thead>
   <tr><th>Наименование</th><th>Мощность</th><th>Входное напряжение</th><th>Выходное напряжение*</th>{'<th>Количество каналов</th>' if has_dual else ''}<th>Макс. вых. ток</th>{'<th>Исполнение корпуса</th>' if show_body else ''}<th>Размеры**</th><th>Диапазон рабочих температур</th><th>Заказ</th></tr>
   <tr class="size-models__filters">
-    <th><select class="size-models__select" data-key="model"><option value="">Не выбрано</option>{options([m for m, _ in s['models']], lambda v: v)}</select></th>
-    <th><select class="size-models__select" data-key="power"><option value="">Не выбрано</option>{options(powers, lambda v: v + ' Вт')}</select></th>
-    <th><select class="size-models__select" data-key="in"><option value="">Не выбрано</option>{''.join(f'<option value="{k}">{"" if a.startswith("~") else "="}{a} ({b})</option>' for k, a, b, _ in inps)}</select></th>
-    <th><select class="size-models__select" data-key="out"><option value="">Не выбрано</option>{options(outs_opts, lambda v: v + ' В')}</select></th>
-    {'<th><select class="size-models__select" data-key="ch"><option value="">Не выбрано</option><option value="1">1</option><option value="2">2</option></select></th>' if has_dual else ''}
-    <th><select class="size-models__select" data-key="cur"><option value="">Не выбрано</option>{options(cur_opts, lambda v: v + ' А')}</select></th>
-    {'<th><select class="size-models__select" data-key="body"><option value="">Не выбрано</option>' + ''.join(f'<option value="{b}">{body_label(s, b)}</option>' for _, b in s['dims']) + '</select></th>' if show_body else ''}
-    <th><select class="size-models__select" data-key="dims"><option value="">Не выбрано</option>{options(list(dict.fromkeys(d for d, _ in s['dims'])), lambda v: v + ' мм')}</select></th>
-    <th><select class="size-models__select" data-key="temp"><option value="">Не выбрано</option>{options([t for _, t in ser['temps']], lambda v: v)}</select></th>
+    <th><select class="size-models__select" data-key="model"><option value="">Все</option>{options([m for m, _ in s['models']], lambda v: v)}</select></th>
+    <th><select class="size-models__select" data-key="power"><option value="">Все</option>{options(powers, lambda v: v + ' Вт')}</select></th>
+    <th><select class="size-models__select" data-key="in"><option value="">Все</option>{''.join(f'<option value="{k}">{"" if a.startswith("~") else "="}{a} ({b})</option>' for k, a, b, _ in inps)}</select></th>
+    <th><select class="size-models__select" data-key="out"><option value="">Все</option>{options(outs_opts, lambda v: v + ' В')}</select></th>
+    {'<th><select class="size-models__select" data-key="ch"><option value="">Все</option><option value="1">1</option><option value="2">2</option></select></th>' if has_dual else ''}
+    <th><select class="size-models__select" data-key="cur"><option value="">Все</option>{options(cur_opts, lambda v: v + ' А')}</select></th>
+    {'<th><select class="size-models__select" data-key="body"><option value="">Все</option>' + ''.join(f'<option value="{b}">{body_label(s, b)}</option>' for _, b in s['dims']) + '</select></th>' if show_body else ''}
+    <th><select class="size-models__select" data-key="dims"><option value="">Все</option>{options(list(dict.fromkeys(d for d, _ in s['dims'])), lambda v: v + ' мм')}</select></th>
+    <th><select class="size-models__select" data-key="temp"><option value="">Все</option>{options([t for _, t in ser['temps']], lambda v: v)}</select></th>
     <th></th>
   </tr>
   </thead>

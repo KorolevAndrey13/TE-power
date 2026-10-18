@@ -148,14 +148,14 @@ for slug, (title, ds, photo, dims, inputs, suffix, models, eff_max, analogs) in 
   <thead>
   <tr><th>Наименование</th><th>Мощность</th><th>Входное напряжение</th><th>Выходное напряжение*</th>{'<th>Количество каналов</th>' if has_dual else ''}<th>Макс. вых. ток</th><th>Размеры**</th><th>Диапазон рабочих температур</th><th>Заказ</th></tr>
   <tr class="size-models__filters">
-    <th><select class="size-models__select" data-key="model"><option value="">Не выбрано</option>{''.join(f'<option value="{m}">{m}</option>' for m, _, _ in models)}</select></th>
-    <th><select class="size-models__select" data-key="power"><option value="">Не выбрано</option>{options(powers, 'Вт')}</select></th>
-    <th><select class="size-models__select" data-key="in"><option value="">Не выбрано</option>{''.join(f'<option value="{k}">{INPUTS[k]}</option>' for k in inputs)}</select></th>
-    <th><select class="size-models__select" data-key="out"><option value="">Не выбрано</option>{options(outs + ['±' + d for d in duals], 'В')}</select></th>
-    {'<th><select class="size-models__select" data-key="ch"><option value="">Не выбрано</option><option value="1">1</option><option value="2">2</option></select></th>' if has_dual else ''}
-    <th><select class="size-models__select" data-key="cur"><option value="">Не выбрано</option>{options(currents_all, 'А')}</select></th>
-    <th><select class="size-models__select" data-key="dims"><option value="">Не выбрано</option>{''.join(f'<option value="{d}">{d} мм</option>' for _, d in bodies)}</select></th>
-    <th><select class="size-models__select" data-key="temp"><option value="">Не выбрано</option>{''.join(f'<option value="{t}">{t}</option>' for _, t in TEMPS)}</select></th>
+    <th><select class="size-models__select" data-key="model"><option value="">Все</option>{''.join(f'<option value="{m}">{m}</option>' for m, _, _ in models)}</select></th>
+    <th><select class="size-models__select" data-key="power"><option value="">Все</option>{options(powers, 'Вт')}</select></th>
+    <th><select class="size-models__select" data-key="in"><option value="">Все</option>{''.join(f'<option value="{k}">{INPUTS[k]}</option>' for k in inputs)}</select></th>
+    <th><select class="size-models__select" data-key="out"><option value="">Все</option>{options(outs + ['±' + d for d in duals], 'В')}</select></th>
+    {'<th><select class="size-models__select" data-key="ch"><option value="">Все</option><option value="1">1</option><option value="2">2</option></select></th>' if has_dual else ''}
+    <th><select class="size-models__select" data-key="cur"><option value="">Все</option>{options(currents_all, 'А')}</select></th>
+    <th><select class="size-models__select" data-key="dims"><option value="">Все</option>{''.join(f'<option value="{d}">{d} мм</option>' for _, d in bodies)}</select></th>
+    <th><select class="size-models__select" data-key="temp"><option value="">Все</option>{''.join(f'<option value="{t}">{t}</option>' for _, t in TEMPS)}</select></th>
     <th></th>
   </tr>
   </thead>

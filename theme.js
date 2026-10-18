@@ -382,29 +382,49 @@ function updateCartBadge(){
   });
   var cart = getCart();
   document.querySelectorAll('.cart-btn').forEach(function(btn){
-    var inCart = cartIndex(cart, cartBtnId(btn)) !== -1;
-    btn.classList.toggle('cart-btn--added', inCart);
-    btn.title = inCart ? 'В корзине — нажмите, чтобы убрать' : 'Добавить в корзину';
+    var i = cartIndex(cart, cartBtnId(btn));
+    var step = btn.nextElementSibling;
+    if(!step || !step.classList.contains('cart-step')){
+      step = document.createElement('span');
+      step.className = 'cart-step';
+      step.innerHTML = '<button type="button" class="cart-step__btn" data-d="-1" aria-label="Меньше">−</button>' +
+        '<span class="cart-step__qty" aria-live="polite"></span>' +
+        '<button type="button" class="cart-step__btn" data-d="1" aria-label="Больше">+</button>';
+      btn.parentNode.insertBefore(step, btn.nextSibling);
+    }
+    btn.hidden = i !== -1;
+    step.hidden = i === -1;
+    if(i !== -1) step.querySelector('.cart-step__qty').textContent = cart[i].qty;
   });
 }
 
-// Кнопки корзины в таблице модельного ряда: первый клик добавляет, повторный убирает
+// Кнопки корзины в таблице модельного ряда: клик добавляет модель, дальше в строке — счётчик «− 1 +»
 function initCartButtons(){
   document.addEventListener('click', function(e){
-    var btn = e.target.closest('.cart-btn');
-    if(!btn) return;
+    var stepBtn = e.target.closest('.cart-step__btn');
+    var btn = stepBtn ? stepBtn.closest('.cart-step').previousElementSibling : e.target.closest('.cart-btn');
+    if(!btn || !btn.classList.contains('cart-btn')) return;
     var cart = getCart();
     var name = btn.getAttribute('data-cart-name');
     var id = cartBtnId(btn);
     var i = cartIndex(cart, id);
-    if(i === -1){
-      cart.push({id: id, name: name, desc: btn.getAttribute('data-cart-desc') || '', qty: 1});
-      showCartToast(name + ' добавлен в корзину');
-    }else{
-      cart.splice(i, 1);
-      showCartToast(name + ' убран из корзины');
+    if(!stepBtn){  // кнопка корзины: добавить одну штуку
+      if(i === -1){
+        cart.push({id: id, name: name, desc: btn.getAttribute('data-cart-desc') || '', qty: 1});
+        showCartToast(name + ' добавлен в корзину');
+      }
+    }else if(i !== -1){  // счётчик «− 1 +»; минус на единице убирает модель из корзины
+      cart[i].qty += parseInt(stepBtn.getAttribute('data-d'), 10);
+      if(cart[i].qty < 1){
+        cart.splice(i, 1);
+        showCartToast(name + ' убран из корзины');
+      }
     }
     saveCart(cart);
+    if(!stepBtn && i === -1){  // фокус — на «+», чтобы с клавиатуры можно было сразу менять количество
+      var plus = btn.nextElementSibling && btn.nextElementSibling.querySelector('[data-d="1"]');
+      if(plus) plus.focus();
+    }
   });
 }
 var toastTimer = null;

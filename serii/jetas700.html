@@ -35,7 +35,7 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=7f7b8f1e04">
+<link rel="stylesheet" href="../style.css?v=7368d56442">
 
 </head>
 <body>
@@ -89,15 +89,15 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
   <thead>
   <tr><th>Наименование</th><th>Мощность</th><th>Входное напряжение</th><th>Выходное напряжение*</th><th>Количество каналов</th><th>Макс. вых. ток</th><th>Исполнение корпуса</th><th>Размеры**</th><th>Диапазон рабочих температур</th><th>Заказ</th></tr>
   <tr class="size-models__filters">
-    <th><select class="size-models__select" data-key="model"><option value="">Не выбрано</option><option value="JETAs500">JETAs500</option><option value="JETAs600">JETAs600</option><option value="JETAs700">JETAs700</option></select></th>
-    <th><select class="size-models__select" data-key="power"><option value="">Не выбрано</option><option value="500">500 Вт</option><option value="600">600 Вт</option><option value="700">700 Вт</option></select></th>
-    <th><select class="size-models__select" data-key="in"><option value="">Не выбрано</option><option value="115">~115 В (80…138 В)</option><option value="230">~230 В (176…242 В)</option><option value="230W">~230 В (100…242 В)</option></select></th>
-    <th><select class="size-models__select" data-key="out"><option value="">Не выбрано</option><option value="5">5 В</option><option value="9">9 В</option><option value="12">12 В</option><option value="15">15 В</option><option value="24">24 В</option><option value="27">27 В</option><option value="36">36 В</option><option value="48">48 В</option><option value="60">60 В</option><option value="±5">±5 В</option><option value="±12">±12 В</option><option value="±15">±15 В</option></select></th>
-    <th><select class="size-models__select" data-key="ch"><option value="">Не выбрано</option><option value="1">1</option><option value="2">2</option></select></th>
-    <th><select class="size-models__select" data-key="cur"><option value="">Не выбрано</option><option value="8,33">8,33 А</option><option value="10">10 А</option><option value="10,4">10,4 А</option><option value="11,7">11,7 А</option><option value="12,5">12,5 А</option><option value="13,9">13,9 А</option><option value="14,6">14,6 А</option><option value="16,7">16,7 А</option><option value="18,5">18,5 А</option><option value="19,4">19,4 А</option><option value="20">20 А</option><option value="20,8">20,8 А</option><option value="22,2">22,2 А</option><option value="23,3">23,3 А</option><option value="25">25 А</option><option value="25,9">25,9 А</option><option value="29,2">29,2 А</option><option value="33,3">33,3 А</option><option value="40">40 А</option><option value="41,7">41,7 А</option><option value="46,7">46,7 А</option><option value="50">50 А</option><option value="55,6">55,6 А</option><option value="58,3">58,3 А</option><option value="60">60 А</option><option value="66,7">66,7 А</option><option value="70">70 А</option><option value="77,8">77,8 А</option><option value="100">100 А</option><option value="120">120 А</option><option value="140">140 А</option></select></th>
-    <th><select class="size-models__select" data-key="body"><option value="">Не выбрано</option><option value="SС">клеммные колодки</option><option value="SН">ножевые контакты</option></select></th>
-    <th><select class="size-models__select" data-key="dims"><option value="">Не выбрано</option><option value="175×93×29">175×93×29 мм</option></select></th>
-    <th><select class="size-models__select" data-key="temp"><option value="">Не выбрано</option><option value="−40…+85 °C">−40…+85 °C</option><option value="−50…+85 °C">−50…+85 °C</option></select></th>
+    <th><select class="size-models__select" data-key="model"><option value="">Все</option><option value="JETAs500">JETAs500</option><option value="JETAs600">JETAs600</option><option value="JETAs700">JETAs700</option></select></th>
+    <th><select class="size-models__select" data-key="power"><option value="">Все</option><option value="500">500 Вт</option><option value="600">600 Вт</option><option value="700">700 Вт</option></select></th>
+    <th><select class="size-models__select" data-key="in"><option value="">Все</option><option value="115">~115 В (80…138 В)</option><option value="230">~230 В (176…242 В)</option><option value="230W">~230 В (100…242 В)</option></select></th>
+    <th><select class="size-models__select" data-key="out"><option value="">Все</option><option value="5">5 В</option><option value="9">9 В</option><option value="12">12 В</option><option value="15">15 В</option><option value="24">24 В</option><option value="27">27 В</option><option value="36">36 В</option><option value="48">48 В</option><option value="60">60 В</option><option value="±5">±5 В</option><option value="±12">±12 В</option><option value="±15">±15 В</option></select></th>
+    <th><select class="size-models__select" data-key="ch"><option value="">Все</option><option value="1">1</option><option value="2">2</option></select></th>
+    <th><select class="size-models__select" data-key="cur"><option value="">Все</option><option value="8,33">8,33 А</option><option value="10">10 А</option><option value="10,4">10,4 А</option><option value="11,7">11,7 А</option><option value="12,5">12,5 А</option><option value="13,9">13,9 А</option><option value="14,6">14,6 А</option><option value="16,7">16,7 А</option><option value="18,5">18,5 А</option><option value="19,4">19,4 А</option><option value="20">20 А</option><option value="20,8">20,8 А</option><option value="22,2">22,2 А</option><option value="23,3">23,3 А</option><option value="25">25 А</option><option value="25,9">25,9 А</option><option value="29,2">29,2 А</option><option value="33,3">33,3 А</option><option value="40">40 А</option><option value="41,7">41,7 А</option><option value="46,7">46,7 А</option><option value="50">50 А</option><option value="55,6">55,6 А</option><option value="58,3">58,3 А</option><option value="60">60 А</option><option value="66,7">66,7 А</option><option value="70">70 А</option><option value="77,8">77,8 А</option><option value="100">100 А</option><option value="120">120 А</option><option value="140">140 А</option></select></th>
+    <th><select class="size-models__select" data-key="body"><option value="">Все</option><option value="SС">клеммные колодки</option><option value="SН">ножевые контакты</option></select></th>
+    <th><select class="size-models__select" data-key="dims"><option value="">Все</option><option value="175×93×29">175×93×29 мм</option></select></th>
+    <th><select class="size-models__select" data-key="temp"><option value="">Все</option><option value="−40…+85 °C">−40…+85 °C</option><option value="−50…+85 °C">−50…+85 °C</option></select></th>
     <th></th>
   </tr>
   </thead>
@@ -579,6 +579,6 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
     </form>
   </div>
 </div>
-<script src="../theme.js?v=7165765806"></script>
+<script src="../theme.js?v=1b9a0cdfdd"></script>
 </body>
 </html>
