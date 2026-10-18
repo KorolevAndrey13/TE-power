@@ -187,7 +187,13 @@ function page_start(string $title): void {
     foreach ($_SESSION['flash'] ?? [] as [$kind, $msg]) { echo '<div class="msg msg--' . h($kind) . '">' . h($msg) . '</div>'; }
     unset($_SESSION['flash']);
 }
-function page_end(): void { echo '</main></body></html>'; }
+function page_end(): void {
+    // повторное нажатие «Сохранить», пока идёт отправка, не создаёт вторую копию: кнопка блокируется после первого
+    echo '<script>document.addEventListener("submit",function(e){if(e.defaultPrevented)return;var f=e.target;'
+       . 'if(f.dataset.sent){e.preventDefault();return;}f.dataset.sent="1";'
+       . 'f.querySelectorAll("button").forEach(function(b){b.disabled=true;if(b.classList.contains("btn"))b.textContent="Сохраняем…";});});</script>';
+    echo '</main></body></html>';
+}
 
 const ADMIN_CSS = <<<'CSS'
 :root{--bg:#F1F2F0;--panel:#fff;--line:#D9DCDD;--text:#1C2124;--muted:#5D6870;--accent:#215FA6;--accent-dark:#174A85;--red:#B3261E;--green:#1E7B45;}

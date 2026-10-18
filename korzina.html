@@ -101,7 +101,7 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
     </button>
     <div class="order-modal__form-wrap">
       <h3 class="callback-modal__title">Оформить заявку</h3>
-      <p class="callback-modal__note">Заявка со списком модулей придёт менеджеру. Мы свяжемся с вами, чтобы уточнить сроки и стоимость.</p>
+      <p class="callback-modal__note">Мы свяжемся с вами, чтобы уточнить сроки и стоимость.<br>Выставление счёта происходит после подтверждения заказа менеджером компании.</p>
       <form class="form order-modal__form" onsubmit="return submitCartOrder(event)">
         <input class="form__honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="form__field"><label class="form__label">ФИО *</label><input class="form__input" type="text" name="fio" required pattern=".*\S.*" autocomplete="name"></div>
