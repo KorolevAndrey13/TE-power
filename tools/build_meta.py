@@ -1,7 +1,7 @@
 # Метатеги всех страниц: описание, превью для соцсетей и мессенджеров (Open Graph), canonical, иконка сайта.
 # Запускается последним в build_all.py: генераторы копируют шапку страниц, а этот скрипт переписывает
 # блок между <!-- meta --> и <!-- /meta --> на каждой странице. Плюс sitemap.xml и robots.txt.
-import glob, html, io, os, re, subprocess
+import datetime, glob, html, io, os, re, subprocess
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # папка сайта (на уровень выше tools/)
 BASE = 'https://korolevandrey13.github.io/TE-power/'  # адрес сайта; при переезде на свой домен поменять здесь
@@ -90,7 +90,10 @@ for rel in pages:
     page = re.sub(r'(<title>.*?</title>)', lambda m: m.group(1) + '\n' + block, page, count=1, flags=re.S)
     io.open(path, 'w', encoding='utf-8', newline='').write(page.replace('\n', nl))
     if rel not in NOINDEX:
-        date = subprocess.run(['git', 'log', '-1', '--format=%cs', '--', rel], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+        # дата последнего коммита страницы; если страница только что изменена и ещё не сохранена в git — сегодня
+        changed = subprocess.run(['git', 'status', '--porcelain', '--', rel], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+        date = datetime.date.today().isoformat() if changed else \
+            subprocess.run(['git', 'log', '-1', '--format=%cs', '--', rel], cwd=ROOT, capture_output=True, text=True).stdout.strip()
         sitemap.append(f'  <url><loc>{url}</loc>' + (f'<lastmod>{date}</lastmod>' if date else '') + '</url>')
 
 io.open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8', newline='\n').write(
