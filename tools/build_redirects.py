@@ -190,6 +190,9 @@ with io.open(os.path.join(ROOT, '.htaccess'), 'w', encoding='utf-8', newline='\n
             '  Header always set Referrer-Policy "strict-origin-when-cross-origin"\n'
             '  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"\n'
             f'  Header always set Content-Security-Policy "{CSP}"\n'
+            '  # страницы браузер каждый раз сверяет с сервером (не изменилась — короткий ответ 304),\n'
+            '  # чтобы после выкладки посетители сразу видели новую версию\n'
+            '  <FilesMatch "\\.html$">\n    Header set Cache-Control "no-cache"\n  </FilesMatch>\n'
             '</IfModule>\n\n'
             '# Старые адреса te-power.ru (WordPress) → страницы и файлы нового сайта\n')
     for old, new, _, _ in rows:
