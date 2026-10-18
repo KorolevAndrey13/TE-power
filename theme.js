@@ -480,7 +480,7 @@ function showToast(text, link){
   }
   t.classList.add('toast--show');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(function(){ t.classList.remove('toast--show'); }, 3500);
+  toastTimer = setTimeout(function(){ t.classList.remove('toast--show'); }, 4500);
 }
 function showCartToast(text){
   showToast(text, {href: siteBase() + 'korzina.html', text: 'Перейти в корзину'});
