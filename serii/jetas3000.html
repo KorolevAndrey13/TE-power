@@ -33,7 +33,7 @@ applyTheme();
 // устаревший снимок страницы без применения текущей темы
 window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); });
 </script>
-<link rel="stylesheet" href="../style.css?v=af72c625b9">
+<link rel="stylesheet" href="../style.css?v=d26a7fa011">
 
 </head>
 <body>
@@ -159,7 +159,7 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
   <div><a href="mailto:russia@te-power.ru">russia@te-power.ru</a></div>
 </div>
 <div class="wrap footer__row">
-<div>© ООО «ТЕ». Все материалы — интеллектуальная собственность компании.</div>
+<div class="footer__legal"><div>© ООО «ТЕ». Все материалы — интеллектуальная собственность компании.</div><div class="footer__docs"><a href="../politika-personalnyh-dannyh.html">Политика обработки персональных данных</a><a href="../soglasie-na-obrabotku-dannyh.html">Согласие на обработку персональных данных</a></div></div>
 <div>394036, г. Воронеж, ул. Комиссаржевской, 10 · <a href="tel:+74732574041">+7 (473) 257-40-41</a></div>
 </div></footer>
 <div class="callback-modal" id="callback-modal">
@@ -175,11 +175,12 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
       <div class="form__field"><label class="form__label">Телефон *</label><input class="form__input" type="tel" name="phone" required pattern=".*\S.*" autofocus></div>
       <div class="form__field"><label class="form__label">Имя *</label><input class="form__input" type="text" name="name" required pattern=".*\S.*" autocomplete="name"></div>
       <p class="form__required-note">* Поля, обязательные для заполнения</p>
+      <label class="form__consent"><input class="form__consent-box" type="checkbox" name="consent" value="1" required><span>Я даю согласие на обработку моих персональных данных в соответствии с <a href="../politika-personalnyh-dannyh.html" class="text-link" target="_blank">Политикой обработки персональных данных</a> и <a href="../soglasie-na-obrabotku-dannyh.html" class="text-link" target="_blank">Согласием на обработку персональных данных</a>.</span></label>
       <p class="form__error" hidden></p>
       <button type="submit" class="btn btn--accent callback-modal__submit">Заказать звонок</button>
     </form>
   </div>
 </div>
-<script src="../theme.js?v=50bb6e7d1a"></script>
+<script src="../theme.js?v=18db371c3b"></script>
 </body>
 </html>

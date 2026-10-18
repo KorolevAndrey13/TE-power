@@ -39,6 +39,7 @@ function sendForm(form, payload, title, lines, onDone){
   btn.disabled = true;
   btn.textContent = 'Отправляем…';
   payload._honey = form._honey ? form._honey.value : '';
+  payload.consent = !!(form.consent && form.consent.checked);  // галочка согласия на обработку персональных данных
   payload.page = window.location.href;
   fetch(SEND_URL, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload)})
     .then(function(r){

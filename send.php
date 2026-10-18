@@ -29,6 +29,7 @@ if ($origin !== '' && parse_url($origin, PHP_URL_HOST) !== parse_url('//' . ($_S
 $data = json_decode((string)file_get_contents('php://input', false, null, 0, 65536), true);
 if (!is_array($data)) { reply(400, 'Неверный запрос'); }
 if (trim((string)($data['_honey'] ?? '')) !== '') { reply(200); }  // поле-ловушка заполнено — бот; отвечаем «ок», письмо не шлём
+if (($data['consent'] ?? false) !== true) { reply(400, 'Отметьте согласие на обработку персональных данных.'); }
 
 // ---- ограничение частоты: счётчики лежат вне папки сайта ----
 $dir = dirname((string)($_SERVER['DOCUMENT_ROOT'] ?? __DIR__)) . '/te-forms';
@@ -37,6 +38,9 @@ if (!is_dir($dir) || !is_writable($dir)) { $dir = sys_get_temp_dir(); }
 function hits(string $file, int $window): array {
     $a = is_file($file) ? (json_decode((string)file_get_contents($file), true) ?: []) : [];
     return array_values(array_filter($a, function ($t) use ($window) { return is_int($t) && $t > time() - $window; }));
+}
+foreach (glob($dir . '/ip-*.json') ?: [] as $old) {  // хэши IP-адресов старше суток удаляются (срок указан в политике)
+    if (filemtime($old) < time() - 86400) { @unlink($old); }
 }
 $ipFile = $dir . '/ip-' . hash('sha256', (string)($_SERVER['REMOTE_ADDR'] ?? '')) . '.json';
 $allFile = $dir . '/all.json';
@@ -100,7 +104,9 @@ if ($type === 'callback') {
 } else {
     reply(400, 'Неизвестная форма');
 }
-$body .= "\n" . line('Страница', $page) . line('Время', date('d.m.Y H:i')) . "\nОтветить клиенту: " . ($replyTo !== '' ? 'кнопкой «Ответить».' : 'по телефону.') . "\n";
+$body .= "\n" . line('Страница', $page) . line('Время', date('d.m.Y H:i'))
+       . line('Согласие на обработку персональных данных', 'дано ' . date('d.m.Y H:i') . ' (галочка в форме; Политика и Согласие на сайте)')
+       . "\nОтветить клиенту: " . ($replyTo !== '' ? 'кнопкой «Ответить».' : 'по телефону.') . "\n";
 
 // ---- письмо ----
 $enc = function (string $s): string { return '=?UTF-8?B?' . base64_encode($s) . '?='; };
