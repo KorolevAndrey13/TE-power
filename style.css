@@ -179,6 +179,10 @@ button{font-family:inherit; cursor:pointer;}
 .callback-modal__title{font-size:21px; font-weight:800; margin-bottom:8px;}
 .callback-modal__note{font-size:13.5px; color:var(--graphite-2); margin-bottom:20px;}
 .callback-modal__submit{width:100%; justify-content:center; margin-top:4px;}
+/* ---- done-modal: «Ваша заявка оформлена» (меньше окна заявки, по центру) ---- */
+.done-modal__panel{max-width:320px; padding:30px 26px 26px; text-align:center;}
+.done-modal__icon{width:54px; height:54px; margin:0 auto 14px; border-radius:50%; background:var(--accent-tint); color:var(--accent); display:flex; align-items:center; justify-content:center;}
+.done-modal__icon svg{width:28px; height:28px;}
 
 /* ==========================================================
    Секции общего вида

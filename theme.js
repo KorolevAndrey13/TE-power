@@ -49,7 +49,7 @@ function sendForm(form, payload, title, lines, onDone){
     .then(function(){
       form.reset();
       onDone();
-      showToast('Ваша заявка отправлена');
+      showDoneModal();
     })
     .catch(function(err){
       if(!errorEl) return;
@@ -68,6 +68,37 @@ function sendForm(form, payload, title, lines, onDone){
       btn.disabled = false;
       btn.textContent = label;
     });
+}
+
+// Окно «Ваша заявка оформлена» — по центру на затемнённом фоне, как окно заявки, только меньше
+function showDoneModal(){
+  var m = document.getElementById('done-modal');
+  if(!m){
+    m = document.createElement('div');
+    m.id = 'done-modal';
+    m.className = 'callback-modal done-modal';
+    m.setAttribute('role', 'dialog');
+    m.setAttribute('aria-modal', 'true');
+    m.setAttribute('aria-labelledby', 'done-modal-title');
+    m.innerHTML =
+      '<div class="callback-modal__overlay" data-close></div>' +
+      '<div class="callback-modal__panel done-modal__panel">' +
+        '<div class="done-modal__icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>' +
+        '<h3 class="callback-modal__title" id="done-modal-title">Ваша заявка оформлена</h3>' +
+        '<p class="callback-modal__note">С вами скоро свяжется менеджер.</p>' +
+        '<button type="button" class="btn btn--accent callback-modal__submit" data-close>Хорошо</button>' +
+      '</div>';
+    m.addEventListener('click', function(e){ if(e.target.closest('[data-close]')) closeDoneModal(); });
+    document.body.appendChild(m);
+  }
+  m.classList.add('callback-modal--open');
+  document.body.style.overflow = 'hidden';
+  m.querySelector('button').focus();
+}
+function closeDoneModal(){
+  var m = document.getElementById('done-modal');
+  if(m) m.classList.remove('callback-modal--open');
+  document.body.style.overflow = '';
 }
 
 function submitCallback(e){
@@ -539,7 +570,7 @@ function submitCartOrder(e){
     });
   return false;
 }
-document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeOrderModal(); });
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ closeOrderModal(); closeDoneModal(); } });
 
 document.addEventListener('DOMContentLoaded', function(){
   initHeaderCart();
