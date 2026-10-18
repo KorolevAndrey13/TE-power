@@ -171,9 +171,9 @@ with io.open(os.path.join(OUT, 'nginx.conf'), 'w', encoding='utf-8', newline='\n
 # На GitHub Pages файл не действует, выкладывается на хостинг вместе с сайтом.
 DOMAIN = 'https://te-power.ru/'
 # Политика источников: скрипты и стили только свои (плюс встроенные в страницы), шрифты Google,
-# заявки из корзины — на formsubmit.co. Сайт нельзя встроить в чужой фрейм.
+# заявки — на send.php этого же сайта. Сайт нельзя встроить в чужой фрейм.
 CSP = ("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
-       "font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co; "
+       "font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; "
        "object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'")
 with io.open(os.path.join(ROOT, '.htaccess'), 'w', encoding='utf-8', newline='\n') as f:
     f.write('# Собирается tools/build_redirects.py — вручную не править.\n'

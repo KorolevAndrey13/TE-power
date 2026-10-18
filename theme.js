@@ -23,20 +23,72 @@ function closeCallbackModal(){
   if(modal) modal.classList.remove('callback-modal--open');
   document.body.style.overflow = '';
 }
+// Заявки («Заказать звонок», форма в «Контактах», корзина) уходят на сервер — send.php рядом с theme.js,
+// он пересылает их письмом в отдел продаж. После отправки — всплывающее «Ваша заявка отправлена».
+// Если сервер недоступен (например, на GitHub Pages нет PHP) — ссылка, чтобы отправить заявку письмом.
+var SEND_URL = (function(){
+  var s = document.currentScript;
+  return s && s.src ? s.src.replace(/theme\.js(\?.*)?$/, 'send.php') : 'send.php';
+})();
+var SALES_EMAIL = 'russia@te-power.ru';
+function sendForm(form, payload, title, lines, onDone){
+  var btn = form.querySelector('button[type="submit"]');
+  var label = btn.textContent;
+  var errorEl = form.querySelector('.form__error');
+  if(errorEl) errorEl.hidden = true;
+  btn.disabled = true;
+  btn.textContent = 'Отправляем…';
+  payload._honey = form._honey ? form._honey.value : '';
+  payload.page = window.location.href;
+  fetch(SEND_URL, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload)})
+    .then(function(r){
+      return r.json().catch(function(){ return {}; }).then(function(data){
+        if(!r.ok || !data.ok) throw new Error(data.error || '');
+      });
+    })
+    .then(function(){
+      form.reset();
+      onDone();
+      showToast('Ваша заявка отправлена');
+    })
+    .catch(function(err){
+      if(!errorEl) return;
+      errorEl.innerHTML = '';
+      errorEl.appendChild(document.createTextNode((err.message || 'Не удалось отправить заявку.') + ' Можно '));
+      var a = document.createElement('a');
+      a.href = 'mailto:' + SALES_EMAIL + '?subject=' + encodeURIComponent(title) +
+        '&body=' + encodeURIComponent(lines.concat(['Страница - ' + window.location.href]).join('\n'));
+      a.className = 'text-link';
+      a.textContent = 'отправить её письмом';
+      errorEl.appendChild(a);
+      errorEl.appendChild(document.createTextNode('.'));
+      errorEl.hidden = false;
+    })
+    .then(function(){
+      btn.disabled = false;
+      btn.textContent = label;
+    });
+}
+
 function submitCallback(e){
   e.preventDefault();
   var f = e.target;
-  var modal = document.getElementById('callback-modal');
-  var callbackEmail = modal.getAttribute('data-callback-email');
-  var name = f.name.value.trim() || 'Клиент не представился';
-  var subject = window.location.origin || window.location.href;
-  var body =
-    'Телефон - ' + f.phone.value + '\n' +
-    'Имя - ' + name + '\n' +
-    'Страница - ' + window.location.href;
-  window.location.href = 'mailto:' + callbackEmail +
-    '?subject=' + encodeURIComponent(subject + ' [ИЗ ВИДЖЕТА]') +
-    '&body=' + encodeURIComponent(body);
+  var name = f.name.value.trim(), phone = f.phone.value.trim();
+  sendForm(f, {type: 'callback', name: name, phone: phone}, 'Заказ звонка с сайта TE-POWER',
+    ['Имя - ' + name, 'Телефон - ' + phone], closeCallbackModal);
+  return false;
+}
+
+// Форма на странице «Контакты»
+function submitContact(e){
+  e.preventDefault();
+  var f = e.target;
+  var v = {name: f.name.value.trim(), company: f.company.value.trim(), email: f.email.value.trim(),
+           phone: f.phone.value.trim(), comment: f.comment.value.trim()};
+  sendForm(f, {type: 'contact', name: v.name, company: v.company, email: v.email, phone: v.phone, comment: v.comment},
+    'Заявка с сайта TE-POWER',
+    ['Имя - ' + v.name, 'Компания - ' + v.company, 'E-mail - ' + v.email, 'Телефон - ' + v.phone, 'Комментарий - ' + (v.comment || '—')],
+    function(){});
   return false;
 }
 
@@ -284,7 +336,6 @@ window.addEventListener('resize', updateScrollShades);
 // Заявка отправляется письмом
 // (mailto), как и «Заказать звонок».
 var CART_KEY = 'tepower-cart';
-var CART_EMAIL = 'russia@te-power.ru';
 function getCart(){
   try{ return JSON.parse(localStorage.getItem(CART_KEY)) || []; }catch(e){ return []; }
 }
@@ -356,24 +407,31 @@ function initCartButtons(){
     saveCart(cart);
   });
 }
-var cartToastTimer = null;
-function showCartToast(text){
-  var t = document.querySelector('.cart-toast');
+var toastTimer = null;
+// Всплывающее уведомление внизу экрана; link — необязательная ссылка {href, text}
+function showToast(text, link){
+  var t = document.querySelector('.toast');
   if(!t){
     t = document.createElement('div');
-    t.className = 'cart-toast';
+    t.className = 'toast';
     t.setAttribute('role', 'status');
     document.body.appendChild(t);
   }
   t.innerHTML = '';
-  t.appendChild(document.createTextNode(text + ' · '));
-  var link = document.createElement('a');
-  link.href = siteBase() + 'korzina.html';
-  link.textContent = 'Перейти в корзину';
-  t.appendChild(link);
-  t.classList.add('cart-toast--show');
-  clearTimeout(cartToastTimer);
-  cartToastTimer = setTimeout(function(){ t.classList.remove('cart-toast--show'); }, 3000);
+  t.appendChild(document.createTextNode(text));
+  if(link){
+    t.appendChild(document.createTextNode(' · '));
+    var a = document.createElement('a');
+    a.href = link.href;
+    a.textContent = link.text;
+    t.appendChild(a);
+  }
+  t.classList.add('toast--show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ t.classList.remove('toast--show'); }, 3500);
+}
+function showCartToast(text){
+  showToast(text, {href: siteBase() + 'korzina.html', text: 'Перейти в корзину'});
 }
 
 // Страница корзины (korzina.html)
@@ -426,8 +484,7 @@ function openOrderModal(){
   var modal = document.getElementById('order-modal');
   if(!modal || !getCart().length) return;
   modal.querySelector('.order-modal__form-wrap').hidden = false;
-  modal.querySelector('.order-modal__done').hidden = true;
-  modal.querySelector('.order-modal__error').hidden = true;
+  modal.querySelector('.form__error').hidden = true;
   modal.classList.add('callback-modal--open');
   document.body.style.overflow = 'hidden';
   var first = modal.querySelector('input');
@@ -439,74 +496,27 @@ function closeOrderModal(){
   document.body.style.overflow = '';
 }
 
-// Заявка уходит на CART_EMAIL через сервис FormSubmit (formsubmit.co): у сайта нет своего сервера,
-// а статическая страница сама отправить письмо не может. При первой заявке FormSubmit присылает
-// на CART_EMAIL письмо со ссылкой активации — после подтверждения заявки приходят автоматически.
-// Если сервис недоступен — запасной вариант: письмо через почтовую программу посетителя (mailto).
-var ORDER_ENDPOINT = 'https://formsubmit.co/ajax/' + CART_EMAIL;
+// Заявка из корзины — на сервер, как и остальные формы (sendForm выше)
 function submitCartOrder(e){
   e.preventDefault();
   var f = e.target;
   var cart = getCart();
   if(!cart.length) return false;
-  var modal = document.getElementById('order-modal');
-  var errorEl = modal.querySelector('.order-modal__error');
-  var btn = f.querySelector('button[type="submit"]');
+  var v = {fio: f.fio.value.trim(), company: f.company.value.trim(), phone: f.phone.value.trim(),
+           email: f.email.value.trim(), comment: f.comment.value.trim()};
   var lines = cart.map(function(item, i){
     return (i + 1) + '. ' + item.name + ' — ' + item.qty + ' шт.' + (item.desc ? ' (' + item.desc + ')' : '');
   });
-  var fields = {
-    'ФИО': f.fio.value.trim() || 'не указано',
-    'Компания': f.company.value.trim() || 'не указана',
-    'Телефон': f.phone.value.trim(),
-    'E-mail': f.email.value.trim() || 'не указан',
-    'Комментарий': f.comment.value.trim() || '—',
-    'Состав заявки': lines.join('\n'),
-    'Страница': window.location.href
-  };
-  var subject = 'Заявка с сайта TE-POWER (' + cart.length + ' поз.)';
-
-  function mailtoFallback(){
-    var body = Object.keys(fields).map(function(k){ return k + ' - ' + fields[k]; }).join('\n');
-    return 'mailto:' + CART_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-  }
-
-  errorEl.hidden = true;
-  btn.disabled = true;
-  btn.textContent = 'Отправляем…';
-  // _honey — скрытое поле-ловушка: его заполняют только боты, такие заявки FormSubmit отбрасывает
-  var payload = {_subject: subject, _template: 'table', _captcha: 'false', _honey: f._honey ? f._honey.value : ''};
-  if(fields['E-mail'].indexOf('@') !== -1) payload._replyto = fields['E-mail'];
-  Object.keys(fields).forEach(function(k){ payload[k] = fields[k]; });
-
-  fetch(ORDER_ENDPOINT, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-    body: JSON.stringify(payload)
-  }).then(function(r){
-    return r.json().catch(function(){ return {}; }).then(function(data){
-      if(!r.ok || String(data.success) === 'false') throw new Error(data.message || ('HTTP ' + r.status));
+  sendForm(f, {type: 'order', fio: v.fio, company: v.company, phone: v.phone, email: v.email, comment: v.comment,
+               items: cart.map(function(item){ return {name: item.name, qty: item.qty, desc: item.desc || ''}; })},
+    'Заявка с сайта TE-POWER (' + cart.length + ' поз.)',
+    ['ФИО - ' + v.fio, 'Компания - ' + v.company, 'Телефон - ' + v.phone, 'E-mail - ' + v.email,
+     'Комментарий - ' + (v.comment || '—'), 'Состав заявки:'].concat(lines),
+    function(){
+      saveCart([]);
+      renderCartPage();
+      closeOrderModal();
     });
-  }).then(function(){
-    saveCart([]);
-    renderCartPage();
-    f.reset();
-    modal.querySelector('.order-modal__form-wrap').hidden = true;
-    modal.querySelector('.order-modal__done').hidden = false;
-  }).catch(function(){
-    errorEl.innerHTML = '';
-    errorEl.appendChild(document.createTextNode('Не удалось отправить заявку. Попробуйте ещё раз или '));
-    var a = document.createElement('a');
-    a.href = mailtoFallback();
-    a.className = 'text-link';
-    a.textContent = 'отправьте её письмом';
-    errorEl.appendChild(a);
-    errorEl.appendChild(document.createTextNode('.'));
-    errorEl.hidden = false;
-  }).then(function(){
-    btn.disabled = false;
-    btn.textContent = 'Отправить заявку';
-  });
   return false;
 }
 document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeOrderModal(); });

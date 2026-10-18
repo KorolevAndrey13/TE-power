@@ -74,34 +74,20 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
   </div>
   <div class="contacts__form-card">
     <h3 class="contacts__form-title">Оставить заявку</h3>
-    <p class="contacts__form-note">Заявка откроется в вашей почтовой программе и отправится на <a href="mailto:russia@te-power.ru" class="text-link">russia@te-power.ru</a>.</p>
-    <form class="form" onsubmit="return sendToEmail(event)">
+    <p class="contacts__form-note">Заявка придёт в отдел продаж на <a href="mailto:russia@te-power.ru" class="text-link">russia@te-power.ru</a>.</p>
+    <form class="form" onsubmit="return submitContact(event)">
+      <input class="form__honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="form__field"><label class="form__label">Имя *</label><input class="form__input" type="text" name="name" required pattern=".*\S.*"></div>
       <div class="form__field"><label class="form__label">Название компании *</label><input class="form__input" type="text" name="company" required pattern=".*\S.*"></div>
       <div class="form__field"><label class="form__label">E-mail *</label><input class="form__input" type="email" name="email" required></div>
       <div class="form__field"><label class="form__label">Телефон *</label><input class="form__input" type="tel" name="phone" required pattern=".*\S.*"></div>
       <div class="form__field"><label class="form__label">Комментарий</label><textarea class="form__input" name="comment" rows="3"></textarea></div>
       <p class="form__required-note">* Поле, обязательное для заполнения</p>
+      <p class="form__error" hidden></p>
       <button type="submit" class="btn btn--accent">Отправить заявку</button>
     </form>
   </div>
 </div>
-<script>
-function sendToEmail(e){
-  e.preventDefault();
-  var f = e.target;
-  var subject = encodeURIComponent('Заявка с сайта TE-POWER');
-  var body = encodeURIComponent(
-    'Имя: ' + f.name.value + '\n' +
-    'Компания: ' + f.company.value + '\n' +
-    'E-mail: ' + f.email.value + '\n' +
-    'Телефон: ' + f.phone.value + '\n' +
-    'Комментарий: ' + (f.comment.value || '—')
-  );
-  window.location.href = 'mailto:russia@te-power.ru?subject=' + subject + '&body=' + body;
-  return false;
-}
-</script>
 <footer class="footer">
 <div class="wrap footer__mobile-info">
   <div>Пн–Пт 08:00–17:00 · г. Воронеж</div>
@@ -112,18 +98,20 @@ function sendToEmail(e){
 <div>© ООО «ТЕ». Все материалы — интеллектуальная собственность компании.</div>
 <div>394036, г. Воронеж, ул. Комиссаржевской, 10 · <a href="tel:+74732574041">+7 (473) 257-40-41</a></div>
 </div></footer>
-<div class="callback-modal" id="callback-modal" data-callback-email="CallBack@te-power.ru">
+<div class="callback-modal" id="callback-modal">
   <div class="callback-modal__overlay" onclick="closeCallbackModal()"></div>
   <div class="callback-modal__panel">
     <button type="button" class="callback-modal__close" onclick="closeCallbackModal()" aria-label="Закрыть">
       <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
     <h3 class="callback-modal__title">Заказать звонок</h3>
-    <p class="callback-modal__note">Оставьте телефон — перезвоним в рабочее время (Пн–Пт 08:00–17:00).</p>
+    <p class="callback-modal__note">Оставьте имя и телефон — перезвоним в рабочее время (Пн–Пт 08:00–17:00).</p>
     <form class="form" onsubmit="return submitCallback(event)">
+      <input class="form__honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="form__field"><label class="form__label">Телефон *</label><input class="form__input" type="tel" name="phone" required pattern=".*\S.*" autofocus></div>
-      <div class="form__field"><label class="form__label">Имя (необязательно)</label><input class="form__input" type="text" name="name"></div>
-      <p class="form__required-note">* Поле, обязательное для заполнения</p>
+      <div class="form__field"><label class="form__label">Имя *</label><input class="form__input" type="text" name="name" required pattern=".*\S.*" autocomplete="name"></div>
+      <p class="form__required-note">* Поля, обязательные для заполнения</p>
+      <p class="form__error" hidden></p>
       <button type="submit" class="btn btn--accent callback-modal__submit">Заказать звонок</button>
     </form>
   </div>

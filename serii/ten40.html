@@ -154,18 +154,20 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
 <div>© ООО «ТЕ». Все материалы — интеллектуальная собственность компании.</div>
 <div>394036, г. Воронеж, ул. Комиссаржевской, 10 · <a href="tel:+74732574041">+7 (473) 257-40-41</a></div>
 </div></footer>
-<div class="callback-modal" id="callback-modal" data-callback-email="CallBack@te-power.ru">
+<div class="callback-modal" id="callback-modal">
   <div class="callback-modal__overlay" onclick="closeCallbackModal()"></div>
   <div class="callback-modal__panel">
     <button type="button" class="callback-modal__close" onclick="closeCallbackModal()" aria-label="Закрыть">
       <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
     <h3 class="callback-modal__title">Заказать звонок</h3>
-    <p class="callback-modal__note">Оставьте телефон — перезвоним в рабочее время (Пн–Пт 08:00–17:00).</p>
+    <p class="callback-modal__note">Оставьте имя и телефон — перезвоним в рабочее время (Пн–Пт 08:00–17:00).</p>
     <form class="form" onsubmit="return submitCallback(event)">
+      <input class="form__honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="form__field"><label class="form__label">Телефон *</label><input class="form__input" type="tel" name="phone" required pattern=".*\S.*" autofocus></div>
-      <div class="form__field"><label class="form__label">Имя (необязательно)</label><input class="form__input" type="text" name="name"></div>
-      <p class="form__required-note">* Поле, обязательное для заполнения</p>
+      <div class="form__field"><label class="form__label">Имя *</label><input class="form__input" type="text" name="name" required pattern=".*\S.*" autocomplete="name"></div>
+      <p class="form__required-note">* Поля, обязательные для заполнения</p>
+      <p class="form__error" hidden></p>
       <button type="submit" class="btn btn--accent callback-modal__submit">Заказать звонок</button>
     </form>
   </div>

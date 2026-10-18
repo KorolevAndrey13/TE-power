@@ -429,10 +429,10 @@ span.series-models__model{color:var(--graphite);}
 .header-cart__count{position:absolute; top:-7px; right:-7px; min-width:18px; height:18px; padding:0 5px; border-radius:9px; background:var(--signal); color:#fff; font-family:var(--mono); font-size:10.5px; font-weight:700; line-height:18px; text-align:center;}
 .header-cart__count[hidden]{display:none;}
 
-/* ---- cart-toast: уведомление о добавлении ---- */
-.cart-toast{position:fixed; left:50%; bottom:24px; transform:translate(-50%, 20px); max-width:calc(100% - 32px); padding:12px 18px; border-radius:4px; background:var(--graphite); color:var(--bg); font-size:13.5px; box-shadow:0 8px 24px rgba(0,0,0,.2); opacity:0; pointer-events:none; transition:opacity .2s, transform .2s; z-index:100;}
-.cart-toast--show{opacity:1; transform:translate(-50%, 0); pointer-events:auto;}
-.cart-toast a{color:inherit; font-weight:700; text-decoration:underline; text-underline-offset:3px;}
+/* ---- toast: всплывающее уведомление (добавлено в корзину, заявка отправлена) ---- */
+.toast{position:fixed; left:50%; bottom:24px; transform:translate(-50%, 20px); max-width:calc(100% - 32px); padding:12px 18px; border-radius:4px; background:var(--graphite); color:var(--bg); font-size:13.5px; box-shadow:0 8px 24px rgba(0,0,0,.2); opacity:0; pointer-events:none; transition:opacity .2s, transform .2s; z-index:100;}
+.toast--show{opacity:1; transform:translate(-50%, 0); pointer-events:auto;}
+.toast a{color:inherit; font-weight:700; text-decoration:underline; text-underline-offset:3px;}
 
 /* ==========================================================
    Блок: cart — страница корзины (korzina.html)
@@ -456,7 +456,7 @@ span.series-models__model{color:var(--graphite);}
 .cart__actions{display:flex; justify-content:flex-end; flex-wrap:wrap; gap:10px; margin-top:14px;}
 .order-modal .callback-modal__panel{max-height:calc(100vh - 32px); overflow-y:auto;}
 .order-modal__form{max-width:none;}
-.order-modal__error{font-size:13px; color:var(--signal);}
+.form__error{font-size:13px; color:var(--signal);}
 
 /* ==========================================================
    Блок: note — информационная плашка (напр. "полный каталог в PDF")
