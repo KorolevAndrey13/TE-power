@@ -1,7 +1,7 @@
 # Метатеги всех страниц: описание, превью для соцсетей и мессенджеров (Open Graph), canonical, иконка сайта.
 # Запускается последним в build_all.py: генераторы копируют шапку страниц, а этот скрипт переписывает
 # блок между <!-- meta --> и <!-- /meta --> на каждой странице. Плюс sitemap.xml и robots.txt.
-import datetime, glob, html, io, os, re, subprocess
+import datetime, glob, hashlib, html, io, os, re, subprocess
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # папка сайта (на уровень выше tools/)
 BASE = 'https://korolevandrey13.github.io/TE-power/'  # адрес сайта; при переезде на свой домен поменять здесь
@@ -51,6 +51,12 @@ def image(rel, page):
 def esc(s):
     return html.escape(s, quote=True)
 
+# Метка версии у style.css и theme.js (style.css?v=…): хостинг разрешает браузерам хранить их 45 дней,
+# а с меткой новая версия файла подхватывается сразу после выкладки.
+ASSET_VER = {name: hashlib.sha256(io.open(os.path.join(ROOT, name), 'rb').read()).hexdigest()[:10] for name in ('style.css', 'theme.js')}
+def versioned(page):
+    return re.sub(r'((?:\.\./)?(style\.css|theme\.js))(?:\?v=[0-9a-f]*)?"', lambda m: f'{m.group(1)}?v={ASSET_VER[m.group(2)]}"', page)
+
 pages = sorted(f.replace(os.sep, '/') for f in glob.glob('*.html', root_dir=ROOT) + glob.glob('serii/*.html', root_dir=ROOT)
                + glob.glob('novosti/*.html', root_dir=ROOT) if f != '404.html')  # 404 собирает build_404.py
 sitemap = []
@@ -87,7 +93,7 @@ for rel in pages:
     if rel in NOINDEX:
         tags.insert(0, '<meta name="robots" content="noindex">')
     block = '<!-- meta -->\n' + '\n'.join(tags) + '\n<!-- /meta -->'
-    page = re.sub(r'(<title>.*?</title>)', lambda m: m.group(1) + '\n' + block, page, count=1, flags=re.S)
+    page = versioned(re.sub(r'(<title>.*?</title>)', lambda m: m.group(1) + '\n' + block, page, count=1, flags=re.S))
     io.open(path, 'w', encoding='utf-8', newline='').write(page.replace('\n', nl))
     if rel not in NOINDEX:
         # дата последнего коммита страницы; если страница только что изменена и ещё не сохранена в git — сегодня
