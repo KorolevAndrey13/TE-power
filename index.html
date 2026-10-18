@@ -33,7 +33,7 @@ applyTheme();
 // устаревший снимок страницы без применения текущей темы
 window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); });
 </script>
-<link rel="stylesheet" href="style.css?v=d26a7fa011">
+<link rel="stylesheet" href="style.css?v=02e6526cf4">
 
 </head>
 <body>
@@ -76,6 +76,17 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
           </div>
 
           <!-- news-slides -->
+          <a href="novosti/novinka-ten-analog-traco-power.html" class="carousel__slide carousel__slide--news carousel__slide--product">
+            <div class="carousel__news-overlay">
+              <div class="eyebrow carousel__news-eyebrow">Новости</div>
+              <div class="carousel__news-date">13.04.2026</div>
+              <h2 class="carousel__news-title">Новинка! Отечественные аналоги на продукцию Traco Power. Серия ТЕН.</h2>
+              <p class="carousel__news-excerpt">Отечественные модули серии ТЕН — полные pin-to-pin аналоги модулей TEN от Traco Power, с повышенным КПД и расширенным температурным диапазоном.</p>
+              <span class="carousel__news-link">Читать →</span>
+            </div>
+            <img class="carousel__product-img" src="content/images/ten.webp" alt="Новинка! Отечественные аналоги на продукцию Traco Power. Серия ТЕН.">
+          </a>
+
           <a href="novosti/novinka-tpd-zheleznodorozhnye.html" class="carousel__slide carousel__slide--news" style="background-image:url('content/images/sapsan.webp');">
             <div class="carousel__news-overlay">
               <div class="eyebrow carousel__news-eyebrow">Новости</div>
@@ -98,16 +109,6 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
           </a>
 
           <!-- /news-slides -->
-
-          <a href="serii/ten.html" class="carousel__slide carousel__slide--product">
-            <div class="carousel__news-overlay">
-              <div class="eyebrow carousel__news-eyebrow">Новинка</div>
-              <h2 class="carousel__news-title">Серия ТЕН</h2>
-              <p class="carousel__news-excerpt">Отечественные pin-to-pin аналоги Traco Power. Мощность до 40 Вт, КПД до 87%, рабочая температура корпуса −60…+125°C. Расширенная гарантия — 20 лет.</p>
-              <span class="carousel__news-link">Смотреть серию →</span>
-            </div>
-            <img class="carousel__product-img" src="content/images/ten.webp" alt="ТЕН">
-          </a>
 
         </div>
       </div>
