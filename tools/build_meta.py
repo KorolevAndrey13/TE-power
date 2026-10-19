@@ -56,7 +56,9 @@ def esc(s):
 
 # Метка версии у style.css и theme.js (style.css?v=…): хостинг разрешает браузерам хранить их 45 дней,
 # а с меткой новая версия файла подхватывается сразу после выкладки.
-ASSET_VER = {name: hashlib.sha256(io.open(os.path.join(ROOT, name), 'rb').read()).hexdigest()[:10] for name in ('style.css', 'theme.js')}
+# хэш — без учёта окончаний строк (CRLF на Windows, LF на GitHub), чтобы метка была одинаковой при любой сборке
+ASSET_VER = {name: hashlib.sha256(io.open(os.path.join(ROOT, name), 'rb').read().replace(b'\r\n', b'\n')).hexdigest()[:10]
+             for name in ('style.css', 'theme.js')}
 def versioned(page):
     return re.sub(r'((?:\.\./)?(style\.css|theme\.js))(?:\?v=[0-9a-f]*)?"', lambda m: f'{m.group(1)}?v={ASSET_VER[m.group(2)]}"', page)
 

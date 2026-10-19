@@ -21,7 +21,7 @@ docs += [
     dict(series='ten', type='ДШ', name='ТЕН5', href='content/docs/ten/ДШ-ТЕН5.pdf'),
     dict(series='ten', type='ДШ', name='ТЕН8', href='content/docs/ten/ДШ-ТЕН8.pdf'),
     dict(series='ten', type='ДШ', name='ТЕН20', href='content/docs/ten/ДШ-ТЕН20.pdf'),
-    dict(series='ten', type='ДШ', name='ТЕНс3', href='content/docs/ten/ДШ-ТЕНс3.pdf'),
+    dict(series='ten', type='ДШ', name='ТЕН3', href='content/docs/ten/ДШ-ТЕН3.pdf'),
     dict(series='tps', type='ДШ', name='ТПС5000', href='content/docs/tps/ТПС5000-380С60-КМ.PDF'),
     dict(series='tefd', type='ТУ', name='TEFD', href='content/docs/tefd/ТУ-TEFD.pdf'),
     dict(series='dft', type='ТУ', name='ДФТ, ДФТК, ДФТП, ДФТПК', href='content/docs/dft/ТУ-ДФТ.pdf'),
