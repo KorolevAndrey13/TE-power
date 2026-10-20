@@ -80,7 +80,11 @@ def doc_list(ser, size=None, models3d=False):
         docs.append(('3D', '3d', f, f"3D-модели {ser['name']}"))
     if not docs:
         return ''
-    docs.sort(key=lambda d: {'ТУ': 0, 'ДШ': 1, '3D': 2}.get(d[0], 9))  # сначала ТУ, затем даташиты, затем 3D
+    # сначала ТУ, затем даташиты по возрастанию номинала (по числу в названии), затем 3D
+    def power(d):
+        m = re.search(r'\d+(?:[.,]\d+)?', d[3]) if d[0] == 'ДШ' else None
+        return float(m.group(0).replace(',', '.')) if m else 0
+    docs.sort(key=lambda d: ({'ТУ': 0, 'ДШ': 1, '3D': 2}.get(d[0], 9), power(d)))
     return '<ul class="doc-list">\n      ' + '\n      '.join(
         f'<li><a class="doc-list__link" href="../content/docs/{f}" target="_blank" rel="noreferrer"><span class="doc-icon doc-icon--{c}">{t}</span>{label}</a></li>'
         for t, c, f, label in docs) + '\n    </ul>\n    '

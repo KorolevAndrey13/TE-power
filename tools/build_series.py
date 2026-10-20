@@ -298,7 +298,11 @@ DOC_ORDER = {'ТУ': 0, 'ДШ': 1, '3D': 2}
 
 def doc_list(ser, extra=None, tail=None):
     docs = list(extra or []) + ser['docs'] + list(tail or [])
-    docs.sort(key=lambda d: DOC_ORDER.get(d[0], 9))  # сначала ТУ, затем даташиты, затем 3D-модели
+    # сначала ТУ, затем даташиты по возрастанию мощности (по числу в названии: ТЕНс3, ТЕН5, ТЕН8, ТЕН20), затем 3D-модели
+    def power(d):
+        m = re.search(r'\d+(?:[.,]\d+)?', d[3]) if d[0] == 'ДШ' else None
+        return float(m.group(0).replace(',', '.')) if m else 0
+    docs.sort(key=lambda d: (DOC_ORDER.get(d[0], 9), power(d)))
     seen, out = set(), []
     for t, c, f, label in docs:
         if f in seen:
