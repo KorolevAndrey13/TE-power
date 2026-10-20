@@ -86,7 +86,7 @@ SERIES = [
   temps=[('T', '−60…+125 °C'), ('В', '−60…+110 °C')],
   merge_extra=('dims',),
   docs=[('ДШ', 'ds', 'ten/ДШ-ТЕН5.pdf', 'Даташит ТЕН5'), ('ДШ', 'ds', 'ten/ДШ-ТЕН8.pdf', 'Даташит ТЕН8'),
-        ('ДШ', 'ds', 'ten/ДШ-ТЕН3.pdf', 'Даташит ТЕН3')],
+        ('ДШ', 'ds', 'ten/ДШ-ТЕНс3.pdf', 'Даташит ТЕНс3')],
   features=['Pin-to-pin замена модулей производства Traco Power', 'Выходная мощность от 5 до 40 Вт, КПД до 88 %',
             'Предельная рабочая температура корпуса −60…+125 °C', 'Металлический алюминиевый корпус без фланцев, монтаж на печатную плату',
             'INPUTS', 'Один или два гальванически развязанных выхода (ТЕН5, ТЕН8)',
@@ -298,11 +298,7 @@ DOC_ORDER = {'ТУ': 0, 'ДШ': 1, '3D': 2}
 
 def doc_list(ser, extra=None, tail=None):
     docs = list(extra or []) + ser['docs'] + list(tail or [])
-    # сначала ТУ, затем даташиты по возрастанию мощности (по числу в названии: ТЕН3, ТЕН5, ТЕН8, ТЕН20), затем 3D-модели
-    def power(d):
-        m = re.search(r'\d+(?:[.,]\d+)?', d[3]) if d[0] == 'ДШ' else None
-        return float(m.group(0).replace(',', '.')) if m else 0
-    docs.sort(key=lambda d: (DOC_ORDER.get(d[0], 9), power(d)))
+    docs.sort(key=lambda d: DOC_ORDER.get(d[0], 9))  # сначала ТУ, затем даташиты, затем 3D-модели
     seen, out = set(), []
     for t, c, f, label in docs:
         if f in seen:
