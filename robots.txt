@@ -1,6 +1,6 @@
 User-agent: *
-Disallow: /TE-power/tools/
-Disallow: /TE-power/admin/
-Disallow: /TE-power/korzina.html
+Disallow: /tools/
+Disallow: /admin/
+Disallow: /korzina.html
 
-Sitemap: https://korolevandrey13.github.io/TE-power/sitemap.xml
+Sitemap: https://new.te-power.ru/sitemap.xml

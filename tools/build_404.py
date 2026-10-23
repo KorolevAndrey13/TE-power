@@ -1,7 +1,8 @@
 # Страница «Страница не найдена» (404.html) в оформлении сайта.
 # Шапка и подвал берутся с главной. Страница открывается по любому несуществующему адресу,
-# поэтому относительные ссылки отсчитываются от корня сайта через <base> (на github.io — от /TE-power/).
+# поэтому относительные ссылки отсчитываются от корня сайта через <base> (путь сайта — из tools/site_config.py).
 import io, os, re
+from site_config import SITE_PATH
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # папка сайта (на уровень выше tools/)
 src = io.open(os.path.join(ROOT, 'index.html'), encoding='utf-8').read().replace('\r\n', '\n')
@@ -9,8 +10,7 @@ head = src[:src.index('<section')]                  # всё до первого
 foot = src[src.index('<footer class="footer">'):]
 head = re.sub(r'\n?<!-- meta -->.*?<!-- /meta -->', '', head, flags=re.S)
 head = re.sub(r'<title>.*?</title>', '<title>Страница не найдена — TE-POWER</title>', head, count=1)
-base = ('<script>document.write(\'<base href="\' + (location.hostname.slice(-10) === \'github.io\' ? '
-        '\'/TE-power/\' : \'/\') + \'">\');</script>\n<meta name="robots" content="noindex">\n'
+base = (f'<base href="{SITE_PATH}">\n<meta name="robots" content="noindex">\n'
         '<link rel="icon" type="image/png" href="assets/favicon.png">')
 head = head.replace('<meta charset="UTF-8">', '<meta charset="UTF-8">\n' + base, 1)
 head = head.replace('header__nav-link header__nav-link--active', 'header__nav-link')

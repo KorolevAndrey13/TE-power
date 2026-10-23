@@ -11,7 +11,7 @@ from urllib.parse import unquote, quote
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-TARGET = 'https://korolevandrey13.github.io/TE-power/'  # куда ведут переадресации; при переезде на свой домен поменять
+from site_config import SITE_URL as TARGET  # куда ведут переадресации — адрес сайта из tools/site_config.py
 OUT = os.path.join(HERE, 'data', 'redirects')
 data = json.load(io.open(os.path.join(HERE, 'data', 'wp-urls.json'), encoding='utf-8'))
 
