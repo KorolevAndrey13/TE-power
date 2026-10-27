@@ -362,7 +362,7 @@ def build(ser):
     page_title = ser.get('page_title', name)
     path = os.path.join(ROOT, f'serii/{slug}.html')
     head, foot = split_page(path)
-    head = re.sub(r'<title>[^<]*</title>', f'<title>{page_title} — TE-POWER</title>', head, count=1)
+    head = re.sub(r'<title>[^<]*</title>', f'<title>{page_title} — TE POWER</title>', head, count=1)
     crumb_html = io.open(path, encoding='utf-8').read().replace('\r\n', '\n')
     crumb = re.search(r'<div class="wrap breadcrumbs">.*?</div>', crumb_html).group(0)
     has_ds = any(s.get('ds') for s in ser['sizes'])
@@ -582,7 +582,7 @@ def build(ser):
 </div>
 
 '''
-        size_head = re.sub(r'<title>[^<]*</title>', f'<title>{s["name"]} — {page_title} — TE-POWER</title>', head, count=1)
+        size_head = re.sub(r'<title>[^<]*</title>', f'<title>{s["name"]} — {page_title} — TE POWER</title>', head, count=1)
         io.open(os.path.join(ROOT, f'serii/{s["slug"]}.html'), 'w', encoding='utf-8', newline='').write(size_head + body + foot)
         print('  ', s['slug'], len(rows), 'rows')
 
@@ -595,4 +595,4 @@ for old in ('teh', 'teh5', 'teh8', 'teh20', 'teh30', 'teh40'):
     io.open(os.path.join(ROOT, f'serii/{old}.html'), 'w', encoding='utf-8', newline='').write(
         '<!doctype html>\n<html lang="ru"><head><meta charset="utf-8">\n<meta name="robots" content="noindex">\n'
         f'<meta http-equiv="refresh" content="0; url={new}">\n<link rel="canonical" href="{new}">\n'
-        f'<title>ТЕН — TE-POWER</title></head>\n<body><p>Страница переехала: <a href="{new}">ТЕН</a>.</p></body></html>\n')
+        f'<title>ТЕН — TE POWER</title></head>\n<body><p>Страница переехала: <a href="{new}">ТЕН</a>.</p></body></html>\n')

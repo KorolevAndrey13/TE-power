@@ -177,8 +177,8 @@ function read_image(array $f): array {
 function page_start(string $title): void {
     $u = user();
     echo '<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
-       . '<meta name="robots" content="noindex, nofollow"><title>' . h($title) . ' — админка TE-POWER</title><style>' . ADMIN_CSS . '</style></head><body>';
-    echo '<header class="top"><a class="top__brand" href="./">TE-POWER · админка</a>';
+       . '<meta name="robots" content="noindex, nofollow"><title>' . h($title) . ' — админка TE POWER</title><style>' . ADMIN_CSS . '</style></head><body>';
+    echo '<header class="top"><a class="top__brand" href="./">TE POWER · админка</a>';
     if ($u) {
         echo '<nav class="top__nav"><a href="./?p=news">Новости</a><a href="./?p=docs">Документы</a><a href="../" target="_blank" rel="noreferrer">Сайт ↗</a></nav>'
            . '<form method="post" action="./?p=logout" class="top__out">' . csrf_field() . '<span>' . h($u['name']) . '</span><button>Выйти</button></form>';

@@ -179,6 +179,6 @@ for slug, (title, ds, photo, dims, inputs, suffix, models, eff_max, analogs) in 
 </div>
 
 '''
-    html = HEAD.replace('<title>TESD — TE-POWER</title>', f'<title>{title} — TESD — TE-POWER</title>') + body + FOOT
+    html = HEAD.replace('<title>TESD — TE POWER</title>', f'<title>{title} — TESD — TE POWER</title>') + body + FOOT
     io.open(os.path.join(ROOT, f'serii/{slug}.html'), 'w', encoding='utf-8', newline='').write(html)
     print(slug, len(rows), 'rows')

@@ -271,7 +271,7 @@ def build(ser):
 </div>
 
 '''
-        shead = re.sub(r'<title>[^<]*</title>', f'<title>{s["name"]} — {ser["name"]} — TE-POWER</title>', head, count=1)
+        shead = re.sub(r'<title>[^<]*</title>', f'<title>{s["name"]} — {ser["name"]} — TE POWER</title>', head, count=1)
         io.open(os.path.join(ROOT, f'serii/{s["slug"]}.html'), 'w', encoding='utf-8', newline='').write(shead + sbody + foot)
         print('  ', s['slug'], len(rows), 'rows')
 

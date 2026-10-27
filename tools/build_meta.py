@@ -5,7 +5,7 @@ import datetime, glob, hashlib, html, io, os, re, subprocess
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # папка сайта (на уровень выше tools/)
 from site_config import SITE_URL as BASE, SITE_PATH as BASE_PATH  # адрес сайта — в tools/site_config.py
-SITE = 'TE-POWER'
+SITE = 'TE POWER'
 DEFAULT_IMAGE = 'assets/catalog-cover-2026.jpg'
 NOINDEX = {'korzina.html'}  # корзина — личная страница посетителя, в поиске не нужна
 

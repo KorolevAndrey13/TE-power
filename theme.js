@@ -106,7 +106,7 @@ function submitCallback(e){
   e.preventDefault();
   var f = e.target;
   var name = f.name.value.trim(), phone = f.phone.value.trim();
-  sendForm(f, {type: 'callback', name: name, phone: phone}, 'Заказ звонка с сайта TE-POWER',
+  sendForm(f, {type: 'callback', name: name, phone: phone}, 'Заказ звонка с сайта TE POWER',
     ['Имя - ' + name, 'Телефон - ' + phone], closeCallbackModal);
   return false;
 }
@@ -118,7 +118,7 @@ function submitContact(e){
   var v = {name: f.name.value.trim(), company: f.company.value.trim(), email: f.email.value.trim(),
            phone: f.phone.value.trim(), comment: f.comment.value.trim()};
   sendForm(f, {type: 'contact', name: v.name, company: v.company, email: v.email, phone: v.phone, comment: v.comment},
-    'Заявка с сайта TE-POWER',
+    'Заявка с сайта TE POWER',
     ['Имя - ' + v.name, 'Компания - ' + v.company, 'E-mail - ' + v.email, 'Телефон - ' + v.phone, 'Комментарий - ' + (v.comment || '—')],
     function(){});
   return false;
@@ -561,7 +561,7 @@ function submitCartOrder(e){
   });
   sendForm(f, {type: 'order', fio: v.fio, company: v.company, phone: v.phone, email: v.email, comment: v.comment,
                items: cart.map(function(item){ return {name: item.name, qty: item.qty, desc: item.desc || ''}; })},
-    'Заявка с сайта TE-POWER (' + cart.length + ' поз.)',
+    'Заявка с сайта TE POWER (' + cart.length + ' поз.)',
     ['ФИО - ' + v.fio, 'Компания - ' + v.company, 'Телефон - ' + v.phone, 'E-mail - ' + v.email,
      'Комментарий - ' + (v.comment || '—'), 'Состав заявки:'].concat(lines),
     function(){

@@ -119,7 +119,7 @@ series_body = f'''<div class="wrap breadcrumbs"><a href="../produktsiya.html" cl
 </div>
 
 '''
-io.open(os.path.join(ROOT, 'serii/tpi.html'), 'w', encoding='utf-8', newline='').write(page_head('ТПИ — TE-POWER') + series_body + FOOT)
+io.open(os.path.join(ROOT, 'serii/tpi.html'), 'w', encoding='utf-8', newline='').write(page_head('ТПИ — TE POWER') + series_body + FOOT)
 print('tpi series ok')
 
 # ---------- страницы типоразмеров ----------
@@ -232,5 +232,5 @@ for s in SIZES:
 </div>
 
 '''
-    io.open(os.path.join(ROOT, f'serii/{s["slug"]}.html'), 'w', encoding='utf-8', newline='').write(page_head(f'{s["name"]} — ТПИ — TE-POWER') + body + FOOT)
+    io.open(os.path.join(ROOT, f'serii/{s["slug"]}.html'), 'w', encoding='utf-8', newline='').write(page_head(f'{s["name"]} — ТПИ — TE POWER') + body + FOOT)
     print('  ', s['slug'], len(rows), 'rows')

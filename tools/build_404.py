@@ -9,7 +9,7 @@ src = io.open(os.path.join(ROOT, 'index.html'), encoding='utf-8').read().replace
 head = src[:src.index('<section')]                  # всё до первого блока главной: <head>, шапка сайта
 foot = src[src.index('<footer class="footer">'):]
 head = re.sub(r'\n?<!-- meta -->.*?<!-- /meta -->', '', head, flags=re.S)
-head = re.sub(r'<title>.*?</title>', '<title>Страница не найдена — TE-POWER</title>', head, count=1)
+head = re.sub(r'<title>.*?</title>', '<title>Страница не найдена — TE POWER</title>', head, count=1)
 base = (f'<base href="{SITE_PATH}">\n<meta name="robots" content="noindex">\n'
         '<link rel="icon" type="image/png" href="assets/favicon.png">')
 head = head.replace('<meta charset="UTF-8">', '<meta charset="UTF-8">\n' + base, 1)

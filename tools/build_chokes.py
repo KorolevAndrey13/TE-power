@@ -79,7 +79,7 @@ def table_rows(t):
 path = os.path.join(ROOT, 'serii/dft.html')
 html = io.open(path, encoding='utf-8').read().replace('\r\n', '\n')
 head, foot = html[:html.index('<div class="wrap breadcrumbs">')], html[html.index('<footer class="footer">'):]
-head = re.sub(r'<title>.*?</title>', f'<title>{TITLE} — TE-POWER</title>', head)
+head = re.sub(r'<title>.*?</title>', f'<title>{TITLE} — TE POWER</title>', head)
 photo = '../content/images/dft.png'
 tables = []
 for g in GROUPS:
@@ -151,4 +151,4 @@ print('dft', sum(len(g['types']) for g in GROUPS), 'types')
 io.open(os.path.join(ROOT, 'serii/dftp.html'), 'w', encoding='utf-8', newline='').write(
     '<!doctype html>\n<html lang="ru"><head><meta charset="utf-8">\n'
     '<meta http-equiv="refresh" content="0; url=dft.html">\n<link rel="canonical" href="dft.html">\n'
-    f'<title>{TITLE} — TE-POWER</title></head>\n<body><p>Страница переехала: <a href="dft.html">{TITLE}</a>.</p></body></html>\n')
+    f'<title>{TITLE} — TE POWER</title></head>\n<body><p>Страница переехала: <a href="dft.html">{TITLE}</a>.</p></body></html>\n')

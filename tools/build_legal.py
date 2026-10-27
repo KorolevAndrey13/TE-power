@@ -196,6 +196,6 @@ head = head.replace('header__nav-link header__nav-link--active', 'header__nav-li
 for fn, title, intro, sections, other in (
         (POLICY, 'Политика обработки персональных данных', '', POLICY_SECTIONS, (CONSENT, 'Согласие на обработку персональных данных')),
         (CONSENT, 'Согласие на обработку персональных данных', CONSENT_INTRO, CONSENT_SECTIONS, (POLICY, 'Политика обработки персональных данных'))):
-    page_head = re.sub(r'<title>.*?</title>', f'<title>{title} — TE-POWER</title>', head, count=1)
+    page_head = re.sub(r'<title>.*?</title>', f'<title>{title} — TE POWER</title>', head, count=1)
     io.open(os.path.join(ROOT, fn), 'w', encoding='utf-8', newline='\n').write(page_head + body(title, intro, sections, other) + foot)
 print('legal: 2 pages')

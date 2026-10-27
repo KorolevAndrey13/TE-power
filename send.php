@@ -111,7 +111,7 @@ $body .= "\n" . line('Страница', $page) . line('Время', date('d.m.Y
 // ---- письмо ----
 $enc = function (string $s): string { return '=?UTF-8?B?' . base64_encode($s) . '?='; };
 $headers = [
-    'From: ' . $enc('Сайт TE-POWER') . ' <' . FROM_EMAIL . '>',
+    'From: ' . $enc('Сайт TE POWER') . ' <' . FROM_EMAIL . '>',
     'MIME-Version: 1.0',
     'Content-Type: text/plain; charset=UTF-8',
     'Content-Transfer-Encoding: base64',

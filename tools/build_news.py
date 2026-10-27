@@ -88,7 +88,7 @@ for i, n in enumerate(news):
     pager = (f'<a href="{newer["slug"]}.html" class="news-article__pager-link">← {esc(newer["title"])}</a>' if newer else
              ('<span></span>' if older else ''))
     pager += f'<a href="{older["slug"]}.html" class="news-article__pager-link">{esc(older["title"])} →</a>' if older else ''
-    page_head = re.sub(r'<title>.*?</title>', f'<title>{t} — TE-POWER</title>', sub_head, count=1)
+    page_head = re.sub(r'<title>.*?</title>', f'<title>{t} — TE POWER</title>', sub_head, count=1)
     body = f'''<div class="wrap breadcrumbs"><a href="../novosti.html" class="breadcrumbs__link">Новости</a> / {t}</div>
 <article class="wrap news-article">
   <img src="../{esc(n["image"])}" alt="{t}" class="news-article__img">
