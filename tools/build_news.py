@@ -5,11 +5,18 @@
 #   carousel — показывать на главной; carousel_style — photo (фото фоном) | product (модуль на тёмном фоне);
 #   carousel_title, carousel_text, carousel_image — необязательные замены заголовка, анонса и картинки для слайда.
 # Телефоны, e-mail и адреса http(s) в тексте становятся ссылками сами.
-import glob, html, io, json, os, re
+import glob, hashlib, html, io, json, os, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # папка сайта (на уровень выше tools/)
 CAROUSEL_MAX = 10  # сколько последних новостей с carousel=true показывать на главной
 DOC_ICON = {'ДШ': 'ds', 'ТУ': 'tu', 'РП': 'rp', '3D': '3d'}
+
+def img(path):
+    # адрес картинки с меткой версии (?v=…): хостинг разрешает браузерам долго хранить картинки,
+    # а при замене файла под тем же именем (например, в админке) метка меняется и браузер берёт новую
+    f = os.path.join(ROOT, path)
+    v = hashlib.sha256(io.open(f, 'rb').read()).hexdigest()[:10] if os.path.isfile(f) else ''
+    return esc(path + (f'?v={v}' if v else ''))
 
 def esc(s):
     return html.escape(s, quote=True)
@@ -91,7 +98,7 @@ for i, n in enumerate(news):
     page_head = re.sub(r'<title>.*?</title>', f'<title>{t} — TE POWER</title>', sub_head, count=1)
     body = f'''<div class="wrap breadcrumbs"><a href="../novosti.html" class="breadcrumbs__link">Новости</a> / {t}</div>
 <article class="wrap news-article">
-  <img src="../{esc(n["image"])}" alt="{t}" class="news-article__img">
+  <img src="../{img(n["image"])}" alt="{t}" class="news-article__img">
   <div class="news-article__date">{ru_date(n["date"])}</div>
   <h1 class="news-article__title">{t}</h1>
   <div class="news-article__body">
@@ -109,7 +116,7 @@ for i, n in enumerate(news):
 # ---- список «Все новости» ----
 items = ''.join(f'''
   <a href="novosti/{n["slug"]}.html" class="news-archive__item">
-    <div class="news-archive__thumb" style="background-image:url('{esc(n["image"])}');"></div>
+    <div class="news-archive__thumb" style="background-image:url('{img(n["image"])}');"></div>
     <div>
       <div class="news-archive__date">{ru_date(n["date"])}</div>
       <h3 class="news-archive__title">{esc(n["title"])}</h3>
@@ -123,11 +130,11 @@ write('novosti.html', arch)
 def slide(n):
     title = esc(n.get('carousel_title') or n['title'])
     text = esc(n.get('carousel_text') or n['excerpt'])
-    img = esc(n.get('carousel_image') or n['image'])
+    pic_url = img(n.get('carousel_image') or n['image'])
     product = n.get('carousel_style') == 'product'
     cls = 'carousel__slide carousel__slide--news' + (' carousel__slide--product' if product else '')
-    bg = '' if product else f''' style="background-image:url('{img}');"'''
-    pic = f'\n            <img class="carousel__product-img" src="{img}" alt="{title}">' if product else ''
+    bg = '' if product else f''' style="background-image:url('{pic_url}');"'''
+    pic = f'\n            <img class="carousel__product-img" src="{pic_url}" alt="{title}">' if product else ''
     return f'''
           <a href="novosti/{n["slug"]}.html" class="{cls}"{bg}>
             <div class="carousel__news-overlay">
