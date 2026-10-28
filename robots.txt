@@ -3,4 +3,4 @@ Disallow: /tools/
 Disallow: /admin/
 Disallow: /korzina.html
 
-Sitemap: https://new.te-power.ru/sitemap.xml
+Sitemap: https://te-power.ru/sitemap.xml
