@@ -87,29 +87,38 @@ SERIES = [
   merge_extra=('dims',),
   docs=[('ДШ', 'ds', 'ten/ДШ-ТЕН5.pdf', 'Даташит ТЕН5'), ('ДШ', 'ds', 'ten/ДШ-ТЕН8.pdf', 'Даташит ТЕН8'),
         ('ДШ', 'ds', 'ten/ДШ-ТЕНс3.pdf', 'Даташит ТЕНс3')],
-  features=['Pin-to-pin замена модулей производства Traco Power', 'Выходная мощность от 5 до 40 Вт, КПД до 88 %',
+  features=['Pin-to-pin замена модулей производства Traco Power', 'Выходная мощность от 3 до 40 Вт, КПД до 88 %',
             'Предельная рабочая температура корпуса −60…+125 °C', 'Металлический алюминиевый корпус без фланцев, монтаж на печатную плату',
-            'INPUTS', 'Один или два гальванически развязанных выхода (ТЕН5, ТЕН8)',
+            'INPUTS', 'Один или два гальванически развязанных выхода (ТЕНс3, ТЕН5, ТЕН8)',
             'Регулировка выходного напряжения ±5 % и дистанционное управление',
             'Холостой ход без подгрузки, фиксированная частота преобразования',
             PROTECT, 'Прочность изоляции вход/выход 1500 В', 'Совместимые фильтры ЭМП серии TEFD', 'Расширенная гарантия 20 лет'],
   sizes=[
+   # ТЕНс3 — свои входы (А, В), выходы, температура и наименование (ТЕНс3-А05, ТЕНс3-В1212) — по даташиту ТЕНс3.
+   # КПД типоразмера — среднее одноканальных (75, 79, 80, 81, 82).
+   dict(slug='tens3', name='ТЕНс3', models=[('ТЕНс3', 3)], dims=[('22,3×11,6×9,8', 'C')], body_labels={'C': ''},
+        dual_models=['ТЕНс3'], kpd=79, photo='../content/images/tens3.webp', filt='TEFD2.5', ds='ten/ДШ-ТЕНс3.pdf',
+        inputs_def=[('А', '12 В', '9…20 В', ''), ('В', '24 В', '18…40 В', '')],
+        outs=['3.3', '5', '9', '12', '15'], duals=['5', '12', '15'], temps=[('', '−60…+105 °C')],
+        name_fmt=lambda m, k, u, dual: f'{m}-{k}' + ru(vcode(u)) * (2 if dual else 1),
+        currents={('ТЕНс3', '3.3'): '0,7', ('ТЕНс3', '5'): '0,6', ('ТЕНс3', '9'): '0,33', ('ТЕНс3', '12'): '0,25',
+                  ('ТЕНс3', '15'): '0,2', ('ТЕНс3', '±5'): '0,3', ('ТЕНс3', '±12'): '0,125', ('ТЕНс3', '±15'): '0,1'}),
    # ТЕН5 и ТЕН8 — один корпус, но разная распиновка: отдельные типоразмеры.
    # Токи и КПД — из даташитов; КПД типоразмера — среднее одноканальных (ТЕН5: 76, 78, 83, 83; ТЕН8: 81, 83, 88, 88).
-   dict(slug='ten5', name='ТЕН5', models=[('ТЕН5', 5)], dims=[('32×20×10', 'C')], dual_models=['ТЕН5'], kpd=80, photo='../content/images/ten5.webp',
+   dict(slug='ten5', name='ТЕН5', models=[('ТЕН5', 5)], dims=[('32×20×10', 'C')], body_labels={'C': ''}, dual_models=['ТЕН5'], kpd=80, photo='../content/images/ten5.webp',
         filt='TEFD2.5', ds='ten/ДШ-ТЕН5.pdf', analog='TEN (Traco Power)',
         currents={('ТЕН5', '3.3'): '1,2', ('ТЕН5', '5'): '1', ('ТЕН5', '12'): '0,5', ('ТЕН5', '15'): '0,4',
                   ('ТЕН5', '±5'): '0,5', ('ТЕН5', '±12'): '0,25', ('ТЕН5', '±15'): '0,2'}),
-   dict(slug='ten8', name='ТЕН8', models=[('ТЕН8', 8)], dims=[('32×20×10', 'C')], dual_models=['ТЕН8'], kpd=85, photo='../content/images/ten5.webp',
+   dict(slug='ten8', name='ТЕН8', models=[('ТЕН8', 8)], dims=[('32×20×10', 'C')], body_labels={'C': ''}, dual_models=['ТЕН8'], kpd=85, photo='../content/images/ten5.webp',
         filt='TEFD2.5', ds='ten/ДШ-ТЕН8.pdf', analog='TEN (Traco Power)',
         currents={('ТЕН8', '3.3'): '2', ('ТЕН8', '5'): '1,5', ('ТЕН8', '12'): '0,665', ('ТЕН8', '15'): '0,535',
                   ('ТЕН8', '±5'): '0,8', ('ТЕН8', '±12'): '0,335', ('ТЕН8', '±15'): '0,265'}),
    # ТЕН20, ТЕН30, ТЕН40 — один корпус, у каждой модели своя страница
-   dict(slug='ten20', name='ТЕН20', models=[('ТЕН20', 20)], dims=[('50,8×25,4×10,2', 'C')], dual_models=[], kpd=88,
+   dict(slug='ten20', name='ТЕН20', models=[('ТЕН20', 20)], dims=[('50,8×25,4×10,2', 'C')], body_labels={'C': ''}, dual_models=[], kpd=88,
         filt='TEFD5', ds='ten/ДШ-ТЕН20.pdf', analog='TEN (Traco Power)', photo='../content/images/ten.webp'),
-   dict(slug='ten30', name='ТЕН30', models=[('ТЕН30', 30)], dims=[('50,8×25,4×10,2', 'C')], dual_models=[], kpd=88,
+   dict(slug='ten30', name='ТЕН30', models=[('ТЕН30', 30)], dims=[('50,8×25,4×10,2', 'C')], body_labels={'C': ''}, dual_models=[], kpd=88,
         filt='TEFD5', analog='TEN (Traco Power)', photo='../content/images/ten.webp'),
-   dict(slug='ten40', name='ТЕН40', models=[('ТЕН40', 40)], dims=[('50,8×25,4×10,2', 'C')], dual_models=[], kpd=88,
+   dict(slug='ten40', name='ТЕН40', models=[('ТЕН40', 40)], dims=[('50,8×25,4×10,2', 'C')], body_labels={'C': ''}, dual_models=[], kpd=88,
         filt='TEFD5', analog='TEN (Traco Power)', photo='../content/images/ten.webp'),
   ],
   related=[('tesd.html', 'TESD'), ('tesds.html', 'TESDs'), ('tesh.html', 'TESH'), ('tpd.html', 'ТПД')],
@@ -328,12 +337,22 @@ def split_page(path):
     foot = html[html.index('<footer class="footer">'):]
     return head, foot
 
+# Типоразмер может отличаться от серии (как ТЕНс3): свои входы (inputs_def), выходы (outs, duals),
+# температура (temps) и схема наименования (name_fmt).
 def size_inputs(ser, s):
+    if 'inputs_def' in s:
+        return s['inputs_def']
     codes = s.get('inputs')
     return [x for x in ser['inputs'] if not codes or x[0] in codes]
 
+def size_duals(ser, s):
+    return s.get('duals', ser['duals'])
+
+def size_temps(ser, s):
+    return s.get('temps', ser['temps'])
+
 def model_outs(ser, s, m):
-    return s.get('model_outs', {}).get(m, ser['outs'])
+    return s.get('model_outs', {}).get(m, s.get('outs', ser['outs']))
 
 def size_outs(ser, s):
     return sorted({u for m, _ in s['models'] for u in model_outs(ser, s, m)}, key=num)
@@ -375,7 +394,7 @@ def build(ser):
     groups = []
     for s in ser['sizes']:
         dm = dual_models(s)
-        outs = [ru(u) for u in size_outs(ser, s)] + (['±' + d for d in ser['duals']] if dm else [])
+        outs = [ru(u) for u in size_outs(ser, s)] + (['±' + d for d in size_duals(ser, s)] if dm else [])
         low = low_out(ser, s)
         d = ''.join(f'<span class="series-models__line">{dim}{" <small>" + lb + "</small>" if lb else ""}</span>' for dim, lb in dims_lines(s))
         ds_cell = ''
@@ -421,6 +440,7 @@ def build(ser):
             if i == 0: rows += [c for c in (cell(gi, 'eff'), cell(gi, 'ds')) if c]
             rows.append('</tr>')
     low = groups[0]['low']
+    ex = next(s for s in ser['sizes'] if 'name_fmt' not in s)  # пример наименования — по общей схеме серии
     low_note = (f'При выходном напряжении {ru(low)} В.' if all(g['low'] == low for g in groups)
                 else 'При выходном напряжении 5 В (если 5 В нет — при минимальном стандартном).')
     ds_th = '<th>Даташит</th>' if has_ds else ''
@@ -456,7 +476,7 @@ def build(ser):
   <div class="series-models__notes">
     <p>* {REQ}</p>
     <p>** Без учёта длины выводов.</p>
-    <p>*** Индекс входного напряжения ставится в наименование, например {ser['sizes'][0]['models'][-1][0]}-{ser['inputs'][1][0]}{ser['chan'][0]}{vcode(low)}-{ser['sizes'][0]['dims'][0][1]}{ser['temps'][0][0]}.</p>
+    <p>*** Индекс входного напряжения ставится в наименование, например {ex['models'][-1][0]}-{ser['inputs'][1][0]}{ser['chan'][0]}{vcode(low)}-{ex['dims'][0][1]}{ser['temps'][0][0]}.</p>
     <p>**** {low_note}</p>
   </div>
 </section>
@@ -480,7 +500,7 @@ def build(ser):
         outs_single = size_outs(ser, s)
         inps = size_inputs(ser, s)
         for m, p in s['models']:
-            outputs = [(u, False) for u in model_outs(ser, s, m)] + ([(u, True) for u in ser['duals']] if m in dm else [])
+            outputs = [(u, False) for u in model_outs(ser, s, m)] + ([(u, True) for u in size_duals(ser, s)] if m in dm else [])
             for k, a, b, _ in inps:
                 for u, dual in outputs:
                     uo = ('±' if dual else '') + ru(u)
@@ -493,8 +513,8 @@ def build(ser):
                     cur_html = f'{i} А <small>на канал</small>' if dual else f'{i} А'
                     ch_td = f'<td>{ch}</td>' if has_dual else ''
                     for dim, body in s['dims']:
-                        for t, temp in ser['temps']:
-                            nm = f'{m}-{k}{code}-{body}{t}'
+                        for t, temp in size_temps(ser, s):
+                            nm = s['name_fmt'](m, k, u, dual) if 'name_fmt' in s else f'{m}-{k}{code}-{body}{t}'
                             inp = (f'{a} ({b})' if a.startswith('~') else f'={a} ({b})')
                             desc = f'типоразмер {s["name"]}; {p} Вт; вход {inp}; выход {uo} В; каналов: {ch}; {dim} мм; {temp}'
                             rows.append(
@@ -503,15 +523,15 @@ def build(ser):
                                 f'<td>{uo} В</td>{ch_td}<td>{cur_html}</td>' + (f'<td>{body_label(s, body)}</td>' if show_body else '') + f'<td>{dim} мм</td><td>{temp}</td>'
                                 f'<td><button type="button" class="cart-btn" data-cart-id="{nm}@{s["slug"]}" data-cart-name="{nm}" data-cart-desc="{desc}" title="Добавить в корзину" aria-label="Добавить {nm} в корзину">{CART_SVG}</button></td></tr>')
         powers = [str(p) for _, p in s['models']]
-        outs_opts = [ru(u) for u in outs_single] + (['±' + d for d in ser['duals']] if has_dual else [])
+        outs_opts = [ru(u) for u in outs_single] + (['±' + d for d in size_duals(ser, s)] if has_dual else [])
         cur_opts = sorted({re.search(r'data-cur="([^"]+)"', r).group(1) for r in rows}, key=num)
         params = [
             ('Модели', ', '.join(m for m, _ in s['models'])),
             ('Мощность', f'{powers[0]}–{powers[-1]} Вт' if len(powers) > 1 else f'{powers[0]} Вт'),
             ('Входное напряжение', [f'{a} ({b})' for _, a, b, _ in inps]),
-            ('Выходные напряжения', [f'{ru(outs_single[0])}–{ru(outs_single[-1])} В'] + ([', '.join('±' + d for d in ser['duals']) + ' В'] if has_dual else [])),
+            ('Выходные напряжения', [f'{ru(outs_single[0])}–{ru(outs_single[-1])} В'] + ([', '.join('±' + d for d in size_duals(ser, s)) + ' В'] if has_dual else [])),
             ('Габариты', [f'{dim} мм{" " + lb if lb else ""}' for dim, lb in dims_lines(s)]),
-            ('Температура корпуса', [t for _, t in ser['temps']]),
+            ('Температура корпуса', [t for _, t in size_temps(ser, s)]),
             ('Типовой КПД', f'{s["kpd"]} %'),
             ('Гарантия', '20 лет'),
         ]
@@ -558,7 +578,7 @@ def build(ser):
     <th><select class="size-models__select" data-key="cur"><option value="">Все</option>{options(cur_opts, lambda v: v + ' А')}</select></th>
     {'<th><select class="size-models__select" data-key="body"><option value="">Все</option>' + ''.join(f'<option value="{b}">{body_label(s, b)}</option>' for _, b in s['dims']) + '</select></th>' if show_body else ''}
     <th><select class="size-models__select" data-key="dims"><option value="">Все</option>{options(list(dict.fromkeys(d for d, _ in s['dims'])), lambda v: v + ' мм')}</select></th>
-    <th><select class="size-models__select" data-key="temp"><option value="">Все</option>{options([t for _, t in ser['temps']], lambda v: v)}</select></th>
+    <th><select class="size-models__select" data-key="temp"><option value="">Все</option>{options([t for _, t in size_temps(ser, s)], lambda v: v)}</select></th>
     <th></th>
   </tr>
   </thead>
