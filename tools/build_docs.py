@@ -18,6 +18,7 @@ docs += [dict(series='tesds', type='ДШ', name=f'TESDs{n}', href=f'content/docs
 # документы, добавленные в content/docs позже
 docs += [dict(series='tesh', type='ДШ', name=f'TESH{n}', href=f'content/docs/tesh/TESH{n}.pdf') for n in (50, 200, 500)]
 docs += [
+    dict(series='ten', type='ТУ', name='ТЕН', href='content/docs/ten/ТУ-ТЕН.pdf'),
     dict(series='ten', type='ДШ', name='ТЕН5', href='content/docs/ten/ДШ-ТЕН5.pdf'),
     dict(series='ten', type='ДШ', name='ТЕН8', href='content/docs/ten/ДШ-ТЕН8.pdf'),
     dict(series='ten', type='ДШ', name='ТЕН20', href='content/docs/ten/ДШ-ТЕН20.pdf'),
