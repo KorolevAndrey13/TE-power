@@ -4,6 +4,13 @@ DirectoryIndex index.html
 Options -Indexes
 ErrorDocument 404 /404.html
 
+# www.te-power.ru → te-power.ru (тот же путь)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.te\-power\.ru$ [NC]
+  RewriteRule ^(.*)$ https://te-power.ru/$1 [R=301,L]
+</IfModule>
+
 # Служебные файлы (.git, .env и т.п.) не отдаются
 <FilesMatch "^\.">
   Require all denied

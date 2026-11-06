@@ -170,6 +170,7 @@ with io.open(os.path.join(OUT, 'nginx.conf'), 'w', encoding='utf-8', newline='\n
 # .htaccess нового сайта на хостинге REG.RU (te-power.ru): переадресации старых адресов WordPress на этом же домене.
 # На GitHub Pages файл не действует, выкладывается на хостинг вместе с сайтом.
 DOMAIN = 'https://te-power.ru/'
+HOST = TARGET.split('/')[2]  # te-power.ru
 # Политика источников: скрипты и стили только свои (плюс встроенные в страницы) и шрифты с этого же сайта,
 # заявки — на send.php этого же сайта. Сайт нельзя встроить в чужой фрейм.
 CSP = ("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; "
@@ -181,6 +182,11 @@ with io.open(os.path.join(ROOT, '.htaccess'), 'w', encoding='utf-8', newline='\n
             'DirectoryIndex index.html\n'          # главная — index.html, даже если на сервере остался index.php WordPress
             'Options -Indexes\n'
             'ErrorDocument 404 /404.html\n\n'
+            # www.te-power.ru — тот же сайт; для поисковиков один адрес, без www
+            f'# www.{HOST} → {HOST} (тот же путь)\n'
+            '<IfModule mod_rewrite.c>\n  RewriteEngine On\n'
+            f'  RewriteCond %{{HTTP_HOST}} ^www\\.{re.escape(HOST)}$ [NC]\n'
+            f'  RewriteRule ^(.*)$ {TARGET}$1 [R=301,L]\n</IfModule>\n\n'
             '# Служебные файлы (.git, .env и т.п.) не отдаются\n'
             '<FilesMatch "^\\.">\n  Require all denied\n</FilesMatch>\n\n'
             '# Заголовки безопасности\n'
