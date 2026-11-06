@@ -59,7 +59,21 @@ def esc(s):
 ASSET_VER = {name: hashlib.sha256(io.open(os.path.join(ROOT, name), 'rb').read().replace(b'\r\n', b'\n')).hexdigest()[:10]
              for name in ('style.css', 'theme.js')}
 def versioned(page):
-    return re.sub(r'((?:\.\./)?(style\.css|theme\.js))(?:\?v=[0-9a-f]*)?"', lambda m: f'{m.group(1)}?v={ASSET_VER[m.group(2)]}"', page)
+    return doc_versioned(re.sub(r'((?:\.\./)?(style\.css|theme\.js))(?:\?v=[0-9a-f]*)?"', lambda m: f'{m.group(1)}?v={ASSET_VER[m.group(2)]}"', page))
+
+# То же для документов (content/docs/…): исправленный даташит или ТУ выкладывается под прежним именем,
+# а с меткой браузер сразу открывает новую версию, а не сохранённую.
+DOC_VER = {}
+def doc_ver(rel):
+    if rel not in DOC_VER:
+        f = os.path.join(ROOT, rel)
+        DOC_VER[rel] = hashlib.sha256(io.open(f, 'rb').read()).hexdigest()[:10] if os.path.isfile(f) else ''
+    return DOC_VER[rel]
+def doc_versioned(page):
+    def sub(m):
+        v = doc_ver(m.group(2))
+        return f'href="{m.group(1)}{m.group(2)}' + (f'?v={v}"' if v else '"')
+    return re.sub(r'href="((?:\.\./)?)(content/docs/[^"?#]+)(?:\?v=[0-9a-f]*)?"', sub, page)
 
 pages = sorted(f.replace(os.sep, '/') for f in glob.glob('*.html', root_dir=ROOT) + glob.glob('serii/*.html', root_dir=ROOT)
                + glob.glob('novosti/*.html', root_dir=ROOT) if f != '404.html')  # 404 собирает build_404.py
