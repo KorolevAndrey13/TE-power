@@ -21,7 +21,8 @@ for s in json.load(io.open(os.path.join(ROOT, 'content', 'series.json'), encodin
     for fn in sorted(os.listdir(folder)):
         k = re.match(r'(ТУ|ДШ)-(.+)\.pdf$', fn, re.I)
         href = f'../content/docs/{s["slug"]}/{fn}'
-        if not k or f'href="{href}"' in m.group(2):
+        # ссылка уже есть — с меткой версии (?v=…, ставит build_meta.py) или без неё
+        if not k or re.search(f'href="{re.escape(href)}(\\?v=[0-9a-f]*)?"', m.group(2)):
             continue
         t = k.group(1).upper()
         cls, word = KIND[t]
