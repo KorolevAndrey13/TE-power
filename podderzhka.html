@@ -33,7 +33,7 @@ applyTheme();
 // устаревший снимок страницы без применения текущей темы
 window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); });
 </script>
-<link rel="stylesheet" href="style.css?v=0dae38be72">
+<link rel="stylesheet" href="style.css?v=9d0ca2df25">
 
 </head>
 <body>
@@ -62,12 +62,23 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
 
 <section class="support-hero"><div class="wrap">
   <div class="eyebrow">Поддержка</div>
-  <h1 class="support-hero__title">Техническая поддержка</h1>
-  <p class="support-hero__contact-line">Если у вас возникнут вопросы, Вы можете обратиться к нам — ответим по телефону или почте в рабочее время (Пн–Пт 08:00–17:00).</p>
-  <a href="tel:+74732574041" class="support-hero__phone">☎ +7 (473) 257-40-41</a>
+  <h1 class="support-hero__title">Поддержка</h1>
+  <div class="support-tabs" role="tablist">
+    <button type="button" class="support-tabs__btn is-active" role="tab" data-tab="support" aria-selected="true">Техническая поддержка</button>
+    <button type="button" class="support-tabs__btn" role="tab" data-tab="docs" aria-selected="false">Документация</button>
+    <button type="button" class="support-tabs__btn" role="tab" data-tab="faq" aria-selected="false">Часто задаваемые вопросы</button>
+  </div>
 </div></section>
 
-<section class="section">
+<section class="section support-panel" id="support-panel-support" role="tabpanel">
+  <div class="wrap">
+    <h2 class="section__title">Техническая поддержка</h2>
+    <p class="support-hero__contact-line">Если у вас возникнут вопросы, Вы можете обратиться к нам — ответим по телефону или почте в рабочее время (Пн–Пт 08:00–17:00).</p>
+    <a href="tel:+74732574041" class="support-hero__phone">☎ +7 (473) 257-40-41</a>
+  </div>
+</section>
+
+<section class="section support-panel" id="support-panel-docs" role="tabpanel" hidden>
   <div class="wrap">
     <h2 class="section__title">Документация</h2>
     <div class="docs-filter">
@@ -119,6 +130,20 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
   </div>
 </section>
 
+<section class="section support-panel" id="support-panel-faq" role="tabpanel" hidden>
+  <div class="wrap">
+    <h2 class="section__title">Часто задаваемые вопросы</h2>
+    <div class="faq">
+    <details class="faq__item"><summary class="faq__q">Где скачать технические условия и даташиты?</summary><div class="faq__a">На вкладке «Документация»: выберите серию слева или воспользуйтесь поиском. Документы по каждой серии также собраны на её странице в разделе «Продукция».</div></details>
+    <details class="faq__item"><summary class="faq__q">Как заказать модули?</summary><div class="faq__a">Добавьте нужные модели в корзину и отправьте заявку на сайте, либо позвоните нам по телефону +7 (473) 257-40-41 или напишите на russia@te-power.ru.</div></details>
+    <details class="faq__item"><summary class="faq__q">Можно ли заказать обратный звонок?</summary><div class="faq__a">Да. Нажмите кнопку «Заказать звонок» в шапке сайта, укажите номер телефона — мы перезвоним в рабочее время.</div></details>
+    <details class="faq__item"><summary class="faq__q">Какая гарантия на продукцию?</summary><div class="faq__a">Мы предоставляем расширенную гарантию 20 лет. Подробные условия указаны в технической документации и уточняются у менеджера.</div></details>
+    <details class="faq__item"><summary class="faq__q">Как подобрать аналог импортного модуля?</summary><div class="faq__a">Аналоги указаны на страницах серий в таблице модельного ряда. Если нужной модели нет — отправьте запрос на russia@te-power.ru, мы подберём замену.</div></details>
+    <details class="faq__item"><summary class="faq__q">Нет нужного документа или 3D-модели. Что делать?</summary><div class="faq__a">Напишите на russia@te-power.ru или позвоните — менеджер вышлет недостающие материалы.</div></details>
+    </div>
+  </div>
+</section>
+
 <footer class="footer">
 <div class="wrap footer__mobile-info">
   <div>Пн–Пт 08:00–17:00 · г. Воронеж</div>
@@ -148,6 +173,6 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
     </form>
   </div>
 </div>
-<script src="theme.js?v=7d813a9987"></script>
+<script src="theme.js?v=79f2f4a95b"></script>
 </body>
 </html>

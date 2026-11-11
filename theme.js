@@ -582,3 +582,26 @@ document.addEventListener('DOMContentLoaded', function(){
 // Синхронизация между вкладками и при возврате кнопкой «назад»
 window.addEventListener('storage', function(e){ if(e.key === CART_KEY){ updateCartBadge(); renderCartPage(); } });
 window.addEventListener('pageshow', function(e){ if(e.persisted){ updateCartBadge(); renderCartPage(); } });
+
+// Вкладки страницы «Поддержка»: техническая поддержка / документация / вопросы. Вкладка запоминается в адресе (#docs, #faq).
+(function(){
+  var btns = document.querySelectorAll('.support-tabs__btn');
+  if(!btns.length) return;
+  function show(tab, push){
+    var ok = false;
+    btns.forEach(function(b){ if(b.getAttribute('data-tab') === tab) ok = true; });
+    if(!ok) tab = 'support';
+    btns.forEach(function(b){
+      var on = b.getAttribute('data-tab') === tab;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    document.querySelectorAll('.support-panel').forEach(function(p){
+      p.hidden = p.id !== 'support-panel-' + tab;
+    });
+    if(push){ try{ history.replaceState(null, '', tab === 'support' ? location.pathname + location.search : '#' + tab); }catch(e){} }
+  }
+  btns.forEach(function(b){ b.addEventListener('click', function(){ show(b.getAttribute('data-tab'), true); }); });
+  window.addEventListener('hashchange', function(){ show(location.hash.slice(1), false); });
+  show(location.hash.slice(1), false);
+})();

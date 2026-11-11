@@ -586,3 +586,20 @@ span.series-models__model{color:var(--graphite);}
 .legal__list{color:var(--graphite-2); line-height:1.75; margin:0 0 10px 22px; max-width:840px;}
 .legal__list li{margin-bottom:4px;}
 .legal__other{margin-top:32px;}
+
+/* ============================================================
+   Вкладки страницы «Поддержка» и «Часто задаваемые вопросы»
+   ============================================================ */
+.support-tabs{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;}
+.support-tabs__btn{padding:11px 18px; border:1px solid var(--line-strong); border-radius:2px; background:var(--panel); color:var(--graphite); font:inherit; font-size:15px; font-weight:700; cursor:pointer; transition:background .15s, color .15s, border-color .15s;}
+.support-tabs__btn:hover{border-color:var(--accent); color:var(--accent);}
+.support-tabs__btn.is-active{background:var(--accent); border-color:var(--accent); color:#fff;}
+.support-panel[hidden]{display:none;}
+.faq{display:flex; flex-direction:column; gap:10px; margin-top:22px; max-width:860px;}
+.faq__item{border:1px solid var(--line-strong); border-radius:2px; background:var(--panel);}
+.faq__q{padding:16px 20px; font-weight:700; font-size:16px; cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:16px;}
+.faq__q::-webkit-details-marker{display:none;}
+.faq__q::after{content:"+"; color:var(--accent); font-size:22px; line-height:1;}
+.faq__item[open] .faq__q::after{content:"−";}
+.faq__a{padding:0 20px 18px; color:var(--graphite-2); line-height:1.6;}
+@media (max-width:600px){ .support-tabs__btn{flex:1 1 100%; text-align:left;} }
