@@ -22,7 +22,7 @@ body = '''<section class="section">
       Модули и документацию можно найти в каталоге и на странице поддержки.</p>
     <div class="section__actions">
       <a href="produktsiya.html" class="btn btn--accent">Каталог продукции</a>
-      <a href="podderzhka.html" class="btn btn--line">Документация</a>
+      <a href="podderzhka.html#docs" class="btn btn--line">Документация</a>
       <a href="index.html" class="btn btn--line">На главную</a>
     </div>
   </div>
