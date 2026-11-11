@@ -73,7 +73,7 @@ def doc_versioned(page):
     def sub(m):
         v = doc_ver(m.group(2))
         return f'href="{m.group(1)}{m.group(2)}' + (f'?v={v}"' if v else '"')
-    return re.sub(r'href="((?:\.\./)?)(content/docs/[^"?#]+)(?:\?v=[0-9a-f]*)?"', sub, page)
+    return re.sub(r'href="((?:\.\./)?)((?:content/docs/|assets/)[^"?#]+\.pdf|content/docs/[^"?#]+)(?:\?v=[0-9a-f]*)?"', sub, page)
 
 pages = sorted(f.replace(os.sep, '/') for f in glob.glob('*.html', root_dir=ROOT) + glob.glob('serii/*.html', root_dir=ROOT)
                + glob.glob('novosti/*.html', root_dir=ROOT) if f != '404.html')  # 404 собирает build_404.py
