@@ -33,7 +33,7 @@ applyTheme();
 // устаревший снимок страницы без применения текущей темы
 window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); });
 </script>
-<link rel="stylesheet" href="style.css?v=fe803bdb89">
+<link rel="stylesheet" href="style.css?v=1158be0c22">
 
 </head>
 <body>
@@ -61,7 +61,8 @@ window.addEventListener('pageshow', function(e){ if(e.persisted) applyTheme(); }
 </div></header>
 
 <section class="support-hero"><div class="wrap">
-  <h1 class="eyebrow">Поддержка</h1>
+  <div class="eyebrow">Поддержка</div>
+  <h1 class="support-hero__title">Поддержка</h1>
   <div class="support-tabs" role="tablist">
     <button type="button" class="support-tabs__btn is-active" role="tab" data-tab="support" aria-selected="true">Техническая поддержка</button>
     <button type="button" class="support-tabs__btn" role="tab" data-tab="docs" aria-selected="false">Документация</button>
