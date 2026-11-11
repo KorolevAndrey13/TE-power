@@ -41,6 +41,7 @@ docs += [
     dict(series='dft', type='ДШ', name='ДФТ, ДФТК', href='content/docs/dft/ДШ-ДФТ-ДФТК.pdf'),
     dict(series='dft', type='ДШ', name='ДФТП, ДФТПК', href='content/docs/dft/ДШ-ДФТП-ДФТПК.pdf'),
     dict(series='tpd', type='ДШ', name='ТПД', href='content/docs/tpd/ДШ-ТПД.pdf'),
+    dict(series='tpi', type='ТУ', name='ТПИ', href='content/docs/tpi/ТУ-ТПИ.pdf'),
     dict(series='tpi', type='ДШ', name='ТПИ200', href='content/docs/tpi/ДШ-ТПИ200.pdf'),
     dict(series='tpi', type='ДШ', name='ТПИ2500', href='content/docs/tpi/ДШ-ТПИ2500.pdf'),
 ]
