@@ -525,10 +525,10 @@ span.series-models__model{color:var(--graphite);}
 /* ==========================================================
    Блок: contacts — страница Контакты
    ========================================================== */
-.contacts__title{font-size:30px; font-weight:800; margin:12px 0 18px;}
+.contacts__title{color:var(--graphite); font-size:30px; font-weight:800; margin:12px 0 18px;}
 .contacts{display:grid; grid-template-columns:1fr 1fr; gap:40px; padding-top:44px; padding-bottom:70px;}
 @media (max-width:800px){ .contacts{grid-template-columns:1fr;} }
-.contacts__info{color:var(--graphite); line-height:1.9;}
+.contacts__info{color:var(--graphite-2); line-height:1.9;}
 .contacts__form-card{background:var(--panel); border:1px solid var(--line); border-radius:4px; padding:22px;}
 .contacts__form-title{margin-bottom:14px;}
 .contacts__form-note{font-size:12.5px; color:var(--graphite-2); margin-bottom:14px;}
