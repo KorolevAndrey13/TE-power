@@ -590,7 +590,7 @@ window.addEventListener('pageshow', function(e){ if(e.persisted){ updateCartBadg
   function show(tab, push){
     var ok = false;
     btns.forEach(function(b){ if(b.getAttribute('data-tab') === tab) ok = true; });
-    if(!ok) tab = 'support';
+    if(!ok) tab = 'docs';
     btns.forEach(function(b){
       var on = b.getAttribute('data-tab') === tab;
       b.classList.toggle('is-active', on);
@@ -599,7 +599,7 @@ window.addEventListener('pageshow', function(e){ if(e.persisted){ updateCartBadg
     document.querySelectorAll('.support-panel').forEach(function(p){
       p.hidden = p.id !== 'support-panel-' + tab;
     });
-    if(push){ try{ history.replaceState(null, '', tab === 'support' ? location.pathname + location.search : '#' + tab); }catch(e){} }
+    if(push){ try{ history.replaceState(null, '', tab === 'docs' ? location.pathname + location.search : '#' + tab); }catch(e){} }
   }
   btns.forEach(function(b){ b.addEventListener('click', function(){ show(b.getAttribute('data-tab'), true); }); });
   window.addEventListener('hashchange', function(){ show(location.hash.slice(1), false); });
