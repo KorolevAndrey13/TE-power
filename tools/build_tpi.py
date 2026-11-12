@@ -56,7 +56,7 @@ for si, s in enumerate(SIZES):
         if i == 0:
             rows.append(f'  <td{r}><span class="series-models__line">{s["dims"]}</span></td>')
             if si == 0:
-                rows.append(f'  <td rowspan="{TOTAL}" class="series-models__inputs"><span class="series-models__line"><b>{INPUT[0]}</b> — 27 В (24…30 В)</span></td>')
+                rows.append(f'  <td rowspan="{TOTAL}" class="series-models__inputs"><span class="series-models__line"><b>{INPUT[0]}</b> = 27 В (24…30 В)</span></td>')
             rows.append(f'  <td{r}>{s["out"]}</td>')
         rows.append(f'  <td class="series-models__per">{current(p, s)} А</td>')
         if i == 0:

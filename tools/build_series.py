@@ -295,7 +295,7 @@ def feature_html(s, ser):
     items = []
     for f in s['features']:
         if f == 'INPUTS':
-            sub = [f'{k} — {a} ({b}){", " + c if c else ""}' for k, a, b, c in ser['inputs']]
+            sub = [f'{k} = {a} ({b}){", " + c if c else ""}' for k, a, b, c in ser['inputs']]
             f = ('Варианты входного напряжения:', sub)
         if isinstance(f, tuple):
             items.append(f'<li>{f[0]}\n        <ul class="check-list__sub">' + ''.join(f'<li>{x}</li>' for x in f[1]) + '</ul>\n      </li>')
@@ -374,7 +374,7 @@ def low_out(ser, s):
     return '5' if '5' in outs else outs[0]
 
 def inputs_cell(inps):
-    return ''.join(f'<span class="series-models__line"><b>{k}</b> — {a} ({b})</span>' for k, a, b, _ in inps)
+    return ''.join(f'<span class="series-models__line"><b>{k}</b> = {a} ({b})</span>' for k, a, b, _ in inps)
 
 def build(ser):
     slug, name = ser['slug'], ser['name']

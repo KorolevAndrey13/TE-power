@@ -53,7 +53,7 @@ for models, analogs, powers, dims, inputs, ds, volts, at, effs in G:
     groups.append(dict(n=len(powers), powers=powers, cells=dict(
         name=f'<td class="series-models__name">{name}</td>',
         dims='<td>' + ''.join(f'<span class="series-models__line">{s_} <small>{c}</small></span>' for s_, c in dims) + '</td>',
-        inputs='<td class="series-models__inputs">' + ''.join(f'<span class="series-models__line"><b>{k}</b> — {INPUTS[k][0]} ({INPUTS[k][1]})</span>' for k in inputs) + '</td>',
+        inputs='<td class="series-models__inputs">' + ''.join(f'<span class="series-models__line"><b>{k}</b> = {INPUTS[k][0]} ({INPUTS[k][1]})</span>' for k in inputs) + '</td>',
         volts=f'<td class="series-models__volts">{"; ".join(vols[:-1])}; <span class="series-models__nowrap">{vols[-1]} В</span></td>',
         eff=f'<td>{eff} %</td>',
         ds=f'<td><a class="series-models__ds" href="../content/docs/tesd/{ds}" target="_blank" rel="noreferrer" title="Даташит {models[-1]} (PDF)"><span class="doc-icon doc-icon--ds">ДШ</span></a></td>',
