@@ -608,3 +608,7 @@ span.series-models__model{color:var(--graphite);}
 .faq__a li{margin-bottom:6px;}
 .faq__a sub{font-size:.75em;}
 .nowrap{white-space:nowrap;}
+.news-article__list{margin:0 0 16px; padding-left:34px; list-style:disc; color:var(--graphite-2); font-size:15.5px; line-height:1.75;}
+.news-article__list li{margin-bottom:2px;}
+.news-article__list li::marker{color:var(--accent);}
+.news-article__body a[href^="tel:"]{white-space:nowrap;}

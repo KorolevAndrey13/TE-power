@@ -54,7 +54,29 @@ def linkify(text):
 
 def body_html(body):
     paras = [p.strip() for p in re.split(r'\n\s*\n', body.replace('\r\n', '\n')) if p.strip()]
-    return '\n'.join('<p>' + '<br>\n'.join(linkify(l) for l in p.split('\n')) + '</p>' for p in paras)
+    return '\n'.join(para_html(p) for p in paras)
+
+def para_html(p):
+    # строки, начинающиеся с «- », — маркированный список; остальные строки абзаца — обычный текст с переносами
+    out, text, items = [], [], []
+    def flush():
+        if text:
+            out.append('<p>' + '<br>\n'.join(linkify(l) for l in text) + '</p>')
+            text.clear()
+        if items:
+            out.append('<ul class="news-article__list">' + ''.join(f'<li>{linkify(x)}</li>' for x in items) + '</ul>')
+            items.clear()
+    for l in p.split('\n'):
+        if l.startswith('- '):
+            if text:
+                flush()
+            items.append(l[2:].strip())
+        else:
+            if items:
+                flush()
+            text.append(l)
+    flush()
+    return '\n'.join(out)
 
 def to_sub(fragment):
     # относительные ссылки страницы из корня -> для страницы в novosti/
