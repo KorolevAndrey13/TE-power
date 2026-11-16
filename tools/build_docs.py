@@ -30,7 +30,7 @@ docs += [
     dict(series='dft', type='ТУ', name='ДФТ, ДФТК, ДФТП, ДФТПК', href='content/docs/dft/ТУ-ДФТ.pdf'),
 ]
 # даташиты, ТУ и руководства по применению из пакета документов 10.2026
-docs += [dict(series='jetas', type='ДШ', name=f'JETAs{n}', href=f'content/docs/jetas/ДШ-JETAs{n}.pdf') for n in (60, 120, 300, 700, 1200, 1500, 2000)]
+docs += [dict(series='jetas', type='ДШ', name=f'JETAs{n}', href=f'content/docs/jetas/ДШ-JETAs{n}.pdf') for n in (60, 120, 300, 700, 1200, 1500, 2000, 3000)]
 docs += [dict(series='tps', type='ДШ', name=f'ТПС{n}', href=f'content/docs/tps/ДШ-ТПС{n}.pdf') for n in (1000, 1500, 2000, 3000, 4000)]
 docs += [dict(series='tesav', type='ДШ', name=f'TESAV{n}', href=f'content/docs/tesav/ДШ-TESAV{n}.pdf') for n in (50, 100, 200, 500)]
 docs += [dict(series='tefd', type='ДШ', name=f'TEFD{n}', href=f'content/docs/tefd/ДШ-TEFD{n}.pdf') for n in ('2.5', 5, 10, 20, 40)]

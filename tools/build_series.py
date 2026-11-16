@@ -229,7 +229,7 @@ SERIES = [
         dual=False, kpd=94, inputs=['230'], filt='TEFA20'),
    dict(slug='jetas2000', ds='jetas/ДШ-JETAs2000.pdf', name='JETAs2000', models=[('JETAs2000', 2000)], dims=[('280×170×42', 'SС'), ('280×170×42', 'SН')],
         dual=False, kpd=94, inputs=['230'], filt='TEFA20'),
-   dict(slug='jetas3000', name='JETAs3000', models=[('JETAs3000', 3000)], dims=[('280×170×48', 'SС'), ('280×170×48', 'SН')],
+   dict(slug='jetas3000', ds='jetas/ДШ-JETAs3000.pdf', name='JETAs3000', models=[('JETAs3000', 3000)], dims=[('280×170×48', 'SС'), ('280×170×48', 'SН')],
         dual=False, kpd=93, inputs=['230'], filt='TEFA20'),
   ],
   related=[('tps.html', 'ТПС'), ('tesav.html', 'TESAV')],
@@ -277,11 +277,16 @@ def vcode(u):
 def ru(u):
     return u.replace('.', ',')
 
+JETAS_MAX_I = 125  # А, предельный выходной ток модулей JETAs
+
 def current(size, m, p, u, dual):
     key = (m, ('±' + u) if dual else u)
     if key in size.get('currents', {}):
         return size['currents'][key]
-    return fmt(p / (2 if dual else 1) / float(u))
+    i = p / (2 if dual else 1) / float(u)
+    if size['slug'].startswith('jetas'):
+        i = min(i, JETAS_MAX_I)  # у всей серии JETAs выходной ток не более 125 А
+    return fmt(i)
 
 def dual_models(size):
     if 'dual_models' in size:
