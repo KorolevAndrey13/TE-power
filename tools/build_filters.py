@@ -8,7 +8,7 @@ CAT = ('Модули фильтрации', 'moduli-filtratsii')
 
 SERIES = [
  dict(slug='tefd', name='TEFD', subtitle='Модули защиты и фильтрации для DC сетей',
-      photo='../content/images/tefd5.png',
+      photo='../content/images/tefd20.webp',
       docs=[('ТУ', 'tu', 'tefd/ТУ-TEFD.pdf', 'Технические условия TEFD')],
       inputs=[('12W', '=12 В (9…36 В)'), ('24W', '=24 В (17…84 В)')],
       bodies=[('U', 'с фланцами')], body_prefix='',
