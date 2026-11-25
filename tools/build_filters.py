@@ -19,10 +19,10 @@ SERIES = [
                 ('Вносимое затухание:', ['0,15…0,3 МГц — 30 дБ;', '0,3…1 МГц — 40 дБ;', '1…10 МГц — 50 дБ;', '10…30 МГц — 60 дБ.']),
                 'Максимальный импульсный ток защиты 250–1200 А', 'Прочность изоляции вход/корпус, выход/корпус 1000 В',
                 'Согласованы по посадочным размерам с модулями серии TESD', 'Расширенная гарантия 20 лет'],
-      sizes=[dict(name='TEFD2.5', ds='tefd/ДШ-TEFD2.5.pdf', slug='tefd2-5', cur='2,5', dims='40×20,2×10,15', imp='250–1200 А', iso='=1000 В', compat='TESD5, TESD10, TESD15'),
-             dict(name='TEFD5', ds='tefd/ДШ-TEFD5.pdf', slug='tefd5', cur='5', dims='50×30,2×10,15', imp='250–1200 А', iso='=1000 В', compat='TESD20, TESD30'),
-             dict(name='TEFD10', ds='tefd/ДШ-TEFD10.pdf', slug='tefd10', cur='10', dims='57,5×33,2×10,15', imp='250–1200 А', iso='=1000 В', compat='TESD40, TESD60'),
-             dict(name='TEFD20', ds='tefd/ДШ-TEFD20.pdf', slug='tefd20', cur='20', dims='67,5×40,2×10,15', imp='250–1200 А', iso='=1000 В', compat='TESD100, TESD150, TESD200'),
+      sizes=[dict(name='TEFD2.5', photo='../content/images/tefd2-5.webp', ds='tefd/ДШ-TEFD2.5.pdf', slug='tefd2-5', cur='2,5', dims='40×20,2×10,15', imp='250–1200 А', iso='=1000 В', compat='TESD5, TESD10, TESD15'),
+             dict(name='TEFD5', photo='../content/images/tefd5.webp', ds='tefd/ДШ-TEFD5.pdf', slug='tefd5', cur='5', dims='50×30,2×10,15', imp='250–1200 А', iso='=1000 В', compat='TESD20, TESD30'),
+             dict(name='TEFD10', photo='../content/images/tefd10.webp', ds='tefd/ДШ-TEFD10.pdf', slug='tefd10', cur='10', dims='57,5×33,2×10,15', imp='250–1200 А', iso='=1000 В', compat='TESD40, TESD60'),
+             dict(name='TEFD20', photo='../content/images/tefd20.webp', ds='tefd/ДШ-TEFD20.pdf', slug='tefd20', cur='20', dims='67,5×40,2×10,15', imp='250–1200 А', iso='=1000 В', compat='TESD100, TESD150, TESD200'),
              dict(name='TEFD40', ds='tefd/ДШ-TEFD40.pdf', slug='tefd40', cur='40', dims='84,5×52,5×12,85', imp='250–1200 А', iso='=1000 В', compat='TESD500')],
       related=[('tefs.html', 'TEFS'), ('tpf.html', 'ТПФ'), ('tefa.html', 'TEFA')]),
  dict(slug='tefa', name='TEFA', subtitle='Модули защиты и фильтрации для однофазных AC сетей',
@@ -231,7 +231,7 @@ def build(ser):
     {params_html}
   </div>
   <div class="series-intro__col">
-    <div class="series-intro__photo"><img src="{ser['photo']}" alt="Модуль {s['name']}"></div>
+    <div class="series-intro__photo"><img src="{s.get('photo', ser['photo'])}" alt="Модуль {s['name']}"></div>
     <h2 class="series-intro__title">Документация</h2>
     {doc_list(ser, s)}
   </div>
